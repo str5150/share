@@ -1,33 +1,28 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="480" height="280" viewBox="0 0 480 280" fill="none">
   <style>
-    text { font-family: 'Inter', 'Noto Sans JP', -apple-system, sans-serif; }
-    .title { font-size: 11px; fill: #8a8580; font-weight: 600; letter-spacing: 0.08em; }
-    .label { font-size: 12px; fill: #2a2a2a; font-weight: 500; }
-    .sublabel { font-size: 11px; fill: #8a8580; }
-    .danger { font-size: 10px; fill: #8a8580; }
-    .safe { font-size: 10px; fill: #2a2a2a; font-weight: 500; }
+    text { font-family: 'Noto Sans JP', 'Inter', sans-serif; }
+    .tag { font-size: 10px; fill: #999999; font-weight: 600; letter-spacing: 0.1em; }
+    .label { font-size: 12px; fill: #1a1a1a; font-weight: 500; }
+    .sublabel { font-size: 11px; fill: #999999; }
+    .safe { font-size: 10px; fill: #1bcca9; font-weight: 500; }
   </style>
 
-  <text x="30" y="24" class="title">YOUR PC</text>
-  <rect x="30" y="34" width="420" height="230" rx="2" stroke="#c4bdb5" stroke-width="1.5" fill="#ffffff"/>
+  <text x="30" y="22" class="tag">YOUR PC</text>
+  <rect x="30" y="32" width="420" height="232" rx="0" stroke="#cccccc" stroke-width="1" fill="#ffffff"/>
 
-  <!-- Danger zone items -->
-  <rect x="55" y="60" width="370" height="44" rx="2" fill="#f0ede9" stroke="#c4bdb5" stroke-width="1" stroke-dasharray="4,3"/>
-  <text x="75" y="80" class="label">g????/</text>
-  <text x="280" y="80" class="danger">? AI ?e?_?qz</text>
-  <line x1="260" y1="75" x2="275" y2="75" stroke="#c4bdb5" stroke-width="1"/>
+  <rect x="55" y="58" width="370" height="42" rx="0" fill="#f5f5f5" stroke="#e0e0e0" stroke-width="1" stroke-dasharray="4,3"/>
+  <text x="75" y="82" class="label">顧客データ/</text>
+  <text x="280" y="82" class="sublabel">← AI を入れたら危険</text>
 
-  <rect x="55" y="116" width="370" height="44" rx="2" fill="#f0ede9" stroke="#c4bdb5" stroke-width="1" stroke-dasharray="4,3"/>
-  <text x="75" y="136" class="label">>??/</text>
-  <text x="280" y="136" class="danger">? SS?qz</text>
-  <line x1="260" y1="131" x2="275" y2="131" stroke="#c4bdb5" stroke-width="1"/>
+  <rect x="55" y="112" width="370" height="42" rx="0" fill="#f5f5f5" stroke="#e0e0e0" stroke-width="1" stroke-dasharray="4,3"/>
+  <text x="75" y="136" class="label">社外秘資料/</text>
+  <text x="280" y="136" class="sublabel">← ここも危険</text>
 
-  <!-- Safe zone -->
-  <rect x="55" y="176" width="370" height="68" rx="2" fill="#ffffff" stroke="#2a2a2a" stroke-width="1.5"/>
-  <text x="75" y="198" class="label">projects/</text>
+  <rect x="55" y="170" width="370" height="76" rx="0" fill="#ffffff" stroke="#1a1a1a" stroke-width="1.5"/>
+  <text x="75" y="194" class="label">projects/</text>
 
-  <rect x="85" y="210" width="160" height="26" rx="2" fill="#f0ede9" stroke="#c4bdb5" stroke-width="1"/>
-  <text x="100" y="228" class="safe">my-lp/</text>
+  <rect x="85" y="205" width="160" height="28" rx="0" fill="#f5f5f5" stroke="#e0e0e0" stroke-width="1"/>
+  <text x="100" y="224" class="safe">my-lp/</text>
 
-  <text x="265" y="228" class="safe">? SSgw?Y?</text>
+  <text x="265" y="224" class="safe">← ここで起動する</text>
 </svg>

@@ -1,71 +1,61 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="600" height="500" viewBox="0 0 600 500" fill="none">
   <style>
-    text { font-family: 'Inter', 'Noto Sans JP', -apple-system, sans-serif; }
-    .step-num { font-size: 10px; fill: #8a8580; font-weight: 600; letter-spacing: 0.1em; }
-    .step-title { font-size: 12px; fill: #2a2a2a; font-weight: 600; }
-    .step-desc { font-size: 11px; fill: #8a8580; }
-    .location { font-size: 9px; fill: #b0aba5; letter-spacing: 0.06em; font-weight: 500; }
+    text { font-family: 'Noto Sans JP', 'Inter', sans-serif; }
+    .tag { font-size: 9px; fill: #999999; font-weight: 600; letter-spacing: 0.1em; }
+    .step-title { font-size: 12px; fill: #1a1a1a; font-weight: 500; }
+    .step-desc { font-size: 11px; fill: #999999; }
+    .location { font-size: 9px; fill: #cccccc; font-weight: 500; letter-spacing: 0.06em; }
   </style>
 
-  <!-- Step 1 -->
-  <rect x="40" y="20" width="520" height="56" rx="2" fill="#f0ede9" stroke="#c4bdb5" stroke-width="1"/>
-  <text x="60" y="42" class="step-num">STEP 1</text>
-  <text x="130" y="42" class="step-title">Bj_L:??Y</text>
-  <text x="60" y="60" class="step-desc">>9?nLP?\cfR??g????M
-</text>
+  <rect x="40" y="20" width="520" height="52" rx="0" fill="#f5f5f5" stroke="#e0e0e0" stroke-width="1"/>
+  <text x="60" y="42" class="tag">STEP 1</text>
+  <text x="130" y="42" class="step-title">?????????</text>
+  <text x="60" y="58" class="step-desc">??????LP?????????????????</text>
 
-  <line x1="300" y1="76" x2="300" y2="96" stroke="#c4bdb5" stroke-width="1.5"/>
-  <polygon points="296,96 300,104 304,96" fill="#c4bdb5"/>
+  <line x1="300" y1="72" x2="300" y2="92" stroke="#cccccc" stroke-width="1.5"/>
+  <polygon points="296,92 300,100 304,92" fill="#cccccc"/>
 
-  <!-- Step 2 -->
-  <rect x="40" y="106" width="520" height="56" rx="2" fill="#2a2a2a"/>
-  <text x="60" y="128" class="step-num" fill="#8a8580">STEP 2</text>
-  <text x="130" y="128" class="step-title" fill="#d5d0cb">AI L;??f?</text>
-  <text x="60" y="148" class="step-desc" fill="#8a8580">HTMLCSSJS L£`j&
-</text>
-  <text x="510" y="148" class="location" fill="#6b6560" text-anchor="end">SERVER</text>
+  <rect x="40" y="102" width="520" height="52" rx="0" fill="#1a1a1a"/>
+  <text x="60" y="124" class="tag" fill="#666666">STEP 2</text>
+  <text x="130" y="124" class="step-title" fill="#e0e0e0">AI ???????</text>
+  <text x="60" y="142" class="step-desc" fill="#666666">?HTML?CSS?JS ?????…?</text>
+  <text x="510" y="142" class="location" fill="#666666" text-anchor="end">SERVER</text>
 
-  <line x1="300" y1="162" x2="300" y2="182" stroke="#c4bdb5" stroke-width="1.5"/>
-  <polygon points="296,182 300,190 304,182" fill="#c4bdb5"/>
+  <line x1="300" y1="154" x2="300" y2="174" stroke="#cccccc" stroke-width="1.5"/>
+  <polygon points="296,174 300,182 304,174" fill="#cccccc"/>
 
-  <!-- Loop bracket -->
-  <rect x="24" y="100" width="8" height="310" rx="2" fill="#c4bdb5"/>
-  <text x="16" y="260" class="location" fill="#8a8580" text-anchor="middle" transform="rotate(-90,16,260)" letter-spacing="0.1em">LOOP</text>
+  <rect x="24" y="96" width="6" height="310" rx="0" fill="#1bcca9"/>
+  <text x="15" y="256" font-size="9" fill="#1bcca9" text-anchor="middle" font-weight="600" letter-spacing="0.1em" font-family="Noto Sans JP, sans-serif" transform="rotate(-90,15,256)">LOOP</text>
 
-  <!-- Step 3 -->
-  <rect x="40" y="192" width="520" height="56" rx="2" fill="#ffffff" stroke="#c4bdb5" stroke-width="1"/>
-  <text x="60" y="214" class="step-num">STEP 3</text>
-  <text x="130" y="214" class="step-title">???n-????</text>
-  <text x="60" y="234" class="step-desc">ls ????g?B?????</text>
-  <text x="510" y="234" class="location" text-anchor="end">YOUR PC</text>
+  <rect x="40" y="184" width="520" height="52" rx="0" fill="#ffffff" stroke="#e0e0e0" stroke-width="1"/>
+  <text x="60" y="206" class="tag">STEP 3</text>
+  <text x="130" y="206" class="step-title">??????????</text>
+  <text x="60" y="224" class="step-desc">ls ???????????????</text>
+  <text x="510" y="224" class="location" text-anchor="end">YOUR PC</text>
 
-  <line x1="300" y1="248" x2="300" y2="268" stroke="#c4bdb5" stroke-width="1.5"/>
-  <polygon points="296,268 300,276 304,268" fill="#c4bdb5"/>
+  <line x1="300" y1="236" x2="300" y2="256" stroke="#cccccc" stroke-width="1.5"/>
+  <polygon points="296,256 300,264 304,256" fill="#cccccc"/>
 
-  <!-- Step 4 -->
-  <rect x="40" y="278" width="520" height="56" rx="2" fill="#ffffff" stroke="#c4bdb5" stroke-width="1"/>
-  <text x="60" y="300" class="step-num">STEP 4</text>
-  <text x="130" y="300" class="step-title">???\???</text>
-  <text x="60" y="320" class="step-desc">index.htmlstyle.cssscript.js ?\</text>
-  <text x="510" y="320" class="location" text-anchor="end">YOUR PC</text>
+  <rect x="40" y="266" width="520" height="52" rx="0" fill="#ffffff" stroke="#e0e0e0" stroke-width="1"/>
+  <text x="60" y="288" class="tag">STEP 4</text>
+  <text x="130" y="288" class="step-title">??????????</text>
+  <text x="60" y="306" class="step-desc">index.html?style.css?script.js ???</text>
+  <text x="510" y="306" class="location" text-anchor="end">YOUR PC</text>
 
-  <line x1="300" y1="334" x2="300" y2="354" stroke="#c4bdb5" stroke-width="1.5"/>
-  <polygon points="296,354 300,362 304,354" fill="#c4bdb5"/>
+  <line x1="300" y1="318" x2="300" y2="338" stroke="#cccccc" stroke-width="1.5"/>
+  <polygon points="296,338 300,346 304,338" fill="#cccccc"/>
 
-  <!-- Step 5 -->
-  <rect x="40" y="364" width="520" height="56" rx="2" fill="#ffffff" stroke="#c4bdb5" stroke-width="1"/>
-  <text x="60" y="386" class="step-num">STEP 5</text>
-  <text x="130" y="386" class="step-title">?\????c</text>
-  <text x="60" y="406" class="step-desc">????w? ? ????? ? ?g?c ? ???&</text>
-  <text x="510" y="406" class="location" text-anchor="end">YOUR PC</text>
+  <rect x="40" y="348" width="520" height="52" rx="0" fill="#ffffff" stroke="#e0e0e0" stroke-width="1"/>
+  <text x="60" y="370" class="tag">STEP 5</text>
+  <text x="130" y="370" class="step-title">???????</text>
+  <text x="60" y="388" class="step-desc">?????? ? ????? ? ????? ? ???…</text>
+  <text x="510" y="388" class="location" text-anchor="end">YOUR PC</text>
 
-  <line x1="300" y1="420" x2="300" y2="440" stroke="#c4bdb5" stroke-width="1.5"/>
-  <polygon points="296,440 300,448 304,440" fill="#c4bdb5"/>
+  <line x1="300" y1="400" x2="300" y2="420" stroke="#cccccc" stroke-width="1.5"/>
+  <polygon points="296,420 300,428 304,420" fill="#cccccc"/>
 
-  <!-- Step 6 -->
-  <rect x="40" y="450" width="520" height="44" rx="2" fill="#f0ede9" stroke="#c4bdb5" stroke-width="1"/>
-  <text x="60" y="472" class="step-num">STEP 6</text>
-  <text x="130" y="472" class="step-title">??1J</text>
-  <text x="280" y="472" class="step-desc">gM~W_?????oSSg?H~Y
-</text>
+  <rect x="40" y="430" width="520" height="50" rx="0" fill="#f5f5f5" stroke="#e0e0e0" stroke-width="1"/>
+  <text x="60" y="452" class="tag">STEP 6</text>
+  <text x="130" y="452" class="step-title">????</text>
+  <text x="280" y="452" class="step-desc">?????????????????????</text>
 </svg>

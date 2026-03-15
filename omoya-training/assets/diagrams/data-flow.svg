@@ -1,50 +1,42 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="560" height="260" viewBox="0 0 560 260" fill="none">
   <style>
-    text { font-family: 'Inter', 'Noto Sans JP', -apple-system, sans-serif; }
-    .label { font-size: 12px; fill: #2a2a2a; font-weight: 600; }
-    .sublabel { font-size: 10px; fill: #8a8580; }
-    .pct { font-size: 18px; fill: #2a2a2a; font-weight: 600; }
-    .pct-label { font-size: 10px; fill: #8a8580; }
+    text { font-family: 'Noto Sans JP', 'Inter', sans-serif; }
+    .label { font-size: 12px; fill: #1a1a1a; font-weight: 500; }
+    .sublabel { font-size: 10px; fill: #999999; }
+    .pct { font-size: 20px; fill: #1a1a1a; font-weight: 600; }
+    .pct-label { font-size: 10px; fill: #999999; }
   </style>
 
-  <!-- freee block (left) -->
-  <rect x="30" y="60" width="120" height="56" rx="2" fill="#f0ede9" stroke="#c4bdb5" stroke-width="1"/>
-  <text x="90" y="86" class="label" text-anchor="middle">freee</text>
-  <text x="90" y="102" class="sublabel" text-anchor="middle">???</text>
+  <rect x="30" y="58" width="120" height="52" rx="0" fill="#f5f5f5" stroke="#e0e0e0" stroke-width="1"/>
+  <text x="90" y="82" class="label" text-anchor="middle">freee</text>
+  <text x="90" y="98" class="sublabel" text-anchor="middle">会計データ</text>
 
-  <!-- Arrow: freee -> PC -->
-  <line x1="150" y1="82" x2="200" y2="82" stroke="#c4bdb5" stroke-width="1.5"/>
-  <polygon points="200,78 208,82 200,86" fill="#c4bdb5"/>
+  <line x1="150" y1="78" x2="200" y2="78" stroke="#cccccc" stroke-width="1.5"/>
+  <polygon points="200,74 208,78 200,82" fill="#cccccc"/>
 
-  <!-- PC block (center) -->
-  <rect x="210" y="40" width="160" height="96" rx="2" fill="#ffffff" stroke="#2a2a2a" stroke-width="1.5"/>
-  <text x="218" y="58" font-size="9" fill="#8a8580" font-weight="500" letter-spacing="0.08em" font-family="Inter, Noto Sans JP, sans-serif">YOUR PC</text>
-  <text x="290" y="82" class="label" text-anchor="middle">??????</text>
-  <text x="290" y="100" class="sublabel" text-anchor="middle">g??^</text>
-  <text x="290" y="122" class="sublabel" text-anchor="middle">?????	</text>
+  <rect x="210" y="38" width="160" height="92" rx="0" fill="#ffffff" stroke="#1a1a1a" stroke-width="1.5"/>
+  <text x="218" y="56" font-size="9" fill="#999999" font-weight="600" letter-spacing="0.08em" font-family="Noto Sans JP, sans-serif">YOUR PC</text>
+  <text x="290" y="80" class="label" text-anchor="middle">キーワード辞書</text>
+  <text x="290" y="96" class="sublabel" text-anchor="middle">で自動分類</text>
+  <text x="290" y="116" class="sublabel" text-anchor="middle">（ローカル処理）</text>
 
-  <!-- Arrow: PC -> freee (return) -->
-  <line x1="200" y1="96" x2="150" y2="96" stroke="#c4bdb5" stroke-width="1.5"/>
-  <polygon points="150,92 142,96 150,100" fill="#c4bdb5"/>
+  <line x1="200" y1="92" x2="150" y2="92" stroke="#cccccc" stroke-width="1.5"/>
+  <polygon points="150,88 142,92 150,96" fill="#cccccc"/>
 
-  <!-- Arrow: PC -> Anthropic (down) -->
-  <line x1="290" y1="136" x2="290" y2="176" stroke="#c4bdb5" stroke-width="1.5"/>
-  <polygon points="286,176 290,184 294,176" fill="#c4bdb5"/>
+  <line x1="290" y1="130" x2="290" y2="170" stroke="#cccccc" stroke-width="1.5"/>
+  <polygon points="286,170 290,178 294,170" fill="#cccccc"/>
 
-  <!-- Anthropic block (bottom center) -->
-  <rect x="210" y="186" width="160" height="56" rx="2" fill="#2a2a2a"/>
-  <text x="290" y="212" class="label" text-anchor="middle" fill="#d5d0cb">Anthropic</text>
-  <text x="290" y="230" class="sublabel" text-anchor="middle" fill="#6b6560">$?gMjKc_`Q</text>
+  <rect x="210" y="180" width="160" height="52" rx="0" fill="#1a1a1a"/>
+  <text x="290" y="206" class="label" text-anchor="middle" fill="#e0e0e0">Anthropic</text>
+  <text x="290" y="222" class="sublabel" text-anchor="middle" fill="#666666">判定できなかった分だけ</text>
 
-  <!-- Arrow: Anthropic -> PC (return) -->
-  <line x1="248" y1="186" x2="248" y2="136" stroke="#c4bdb5" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <line x1="250" y1="180" x2="250" y2="130" stroke="#cccccc" stroke-width="1.5" stroke-dasharray="4,3"/>
 
-  <!-- Percentage labels -->
-  <rect x="420" y="48" width="120" height="52" rx="2" fill="#f0ede9"/>
-  <text x="480" y="72" class="pct" text-anchor="middle">80%</text>
-  <text x="480" y="90" class="pct-label" text-anchor="middle">PC ?g?P</text>
+  <rect x="420" y="44" width="120" height="52" rx="0" fill="#f5f5f5"/>
+  <text x="480" y="68" class="pct" text-anchor="middle">80%</text>
+  <text x="480" y="86" class="pct-label" text-anchor="middle">PC 内で完結</text>
 
-  <rect x="420" y="190" width="120" height="52" rx="2" fill="#f0ede9"/>
-  <text x="480" y="214" class="pct" text-anchor="middle">20%</text>
-  <text x="480" y="232" class="pct-label" text-anchor="middle">API k?</text>
+  <rect x="420" y="184" width="120" height="52" rx="0" fill="#f5f5f5"/>
+  <text x="480" y="208" class="pct" text-anchor="middle">20%</text>
+  <text x="480" y="226" class="pct-label" text-anchor="middle">API に送信</text>
 </svg>
