@@ -7,7 +7,7 @@ Cursor で作成したコンテンツの公開リポジトリ。GitHub Pages で
 ```
 share/
 ├── index.html              ← ルートページ（コンテンツ一覧）
-├── omoya-training/         ← Claude Code 導入講座
+├── krokos-training/        ← Claude Code 導入講座
 │   ├── index.html
 │   ├── curriculum/
 │   └── assets/
