@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="340" viewBox="0 0 600 340" fill="none">
+  <style>
+    text { font-family: 'Inter', 'Noto Sans JP', -apple-system, sans-serif; }
+    .title { font-size: 11px; fill: #8a8580; font-weight: 600; letter-spacing: 0.08em; }
+    .label { font-size: 12px; fill: #2a2a2a; font-weight: 500; }
+    .sublabel { font-size: 11px; fill: #8a8580; }
+  </style>
+
+  <!-- Chat AI section -->
+  <text x="40" y="30" class="title">CHAT AI</text>
+  <line x1="40" y1="40" x2="560" y2="40" stroke="#e5e2dd" stroke-width="1"/>
+
+  <!-- Chat AI flow -->
+  <rect x="40" y="58" width="100" height="44" rx="2" fill="#f0ede9" stroke="#c4bdb5" stroke-width="1"/>
+  <text x="90" y="84" class="label" text-anchor="middle">Bj_</text>
+
+  <line x1="140" y1="80" x2="180" y2="80" stroke="#c4bdb5" stroke-width="1.5"/>
+  <polygon points="180,76 188,80 180,84" fill="#c4bdb5"/>
+
+  <rect x="190" y="58" width="100" height="44" rx="2" fill="#f0ede9" stroke="#c4bdb5" stroke-width="1"/>
+  <text x="240" y="84" class="label" text-anchor="middle">O</text>
+
+  <line x1="290" y1="80" x2="330" y2="80" stroke="#c4bdb5" stroke-width="1.5"/>
+  <polygon points="330,76 338,80 330,84" fill="#c4bdb5"/>
+
+  <rect x="340" y="58" width="100" height="44" rx="2" fill="#f0ede9" stroke="#c4bdb5" stroke-width="1"/>
+  <text x="390" y="84" class="label" text-anchor="middle">AI LT</text>
+
+  <line x1="440" y1="80" x2="480" y2="80" stroke="#c4bdb5" stroke-width="1.5"/>
+  <polygon points="480,76 488,80 480,84" fill="#c4bdb5"/>
+
+  <rect x="490" y="58" width="80" height="44" rx="2" fill="#ffffff" stroke="#c4bdb5" stroke-width="1" stroke-dasharray="4,3"/>
+  <text x="530" y="77" class="sublabel" text-anchor="middle">Bj_L</text>
+  <text x="530" y="92" class="sublabel" text-anchor="middle">K\m</text>
+
+  <text x="40" y="130" class="sublabel">AI o`Q
+KKYno</text>
+
+  <!-- AI Agent section -->
+  <text x="40" y="180" class="title">AI AGENT</text>
+  <line x1="40" y1="190" x2="560" y2="190" stroke="#e5e2dd" stroke-width="1"/>
+
+  <!-- Agent flow -->
+  <rect x="40" y="210" width="100" height="44" rx="2" fill="#f0ede9" stroke="#c4bdb5" stroke-width="1"/>
+  <text x="90" y="236" class="label" text-anchor="middle">Bj_</text>
+
+  <line x1="140" y1="232" x2="180" y2="232" stroke="#c4bdb5" stroke-width="1.5"/>
+  <polygon points="180,228 188,232 180,236" fill="#c4bdb5"/>
+
+  <rect x="190" y="206" width="120" height="52" rx="2" fill="#f0ede9" stroke="#c4bdb5" stroke-width="1"/>
+  <text x="250" y="229" class="label" text-anchor="middle">LP \cf
+</text>
+  <text x="250" y="246" class="sublabel" text-anchor="middle">,g:</text>
+
+  <line x1="310" y1="232" x2="350" y2="232" stroke="#c4bdb5" stroke-width="1.5"/>
+  <polygon points="350,228 358,232 350,236" fill="#c4bdb5"/>
+
+  <!-- Agent auto-work block -->
+  <rect x="360" y="200" width="200" height="110" rx="2" fill="#2a2a2a"/>
+  <text x="460" y="228" text-anchor="middle" font-size="11" fill="#d5d0cb" font-weight="600" font-family="Inter, Noto Sans JP, sans-serif">AI Lg\m</text>
+  <line x1="380" y1="240" x2="540" y2="240" stroke="#6b6560" stroke-width="0.5"/>
+  <text x="380" y="260" font-size="10.5" fill="#8a8580" font-family="Inter, Noto Sans JP, sans-serif">?\</text>
+  <text x="380" y="278" font-size="10.5" fill="#8a8580" font-family="Inter, Noto Sans JP, sans-serif">gc</text>
+  <text x="380" y="296" font-size="10.5" fill="#8a8580" font-family="Inter, Noto Sans JP, sans-serif">W_1J</text>
+
+  <text x="40" y="334" class="sublabel">AI LKKY
+?\Kğ~g</text>
+</svg>

@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="260" viewBox="0 0 560 260" fill="none">
+  <style>
+    text { font-family: 'Inter', 'Noto Sans JP', -apple-system, sans-serif; }
+    .label { font-size: 12px; fill: #2a2a2a; font-weight: 600; }
+    .sublabel { font-size: 10px; fill: #8a8580; }
+    .pct { font-size: 18px; fill: #2a2a2a; font-weight: 600; }
+    .pct-label { font-size: 10px; fill: #8a8580; }
+  </style>
+
+  <!-- freee block (left) -->
+  <rect x="30" y="60" width="120" height="56" rx="2" fill="#f0ede9" stroke="#c4bdb5" stroke-width="1"/>
+  <text x="90" y="86" class="label" text-anchor="middle">freee</text>
+  <text x="90" y="102" class="sublabel" text-anchor="middle">???</text>
+
+  <!-- Arrow: freee -> PC -->
+  <line x1="150" y1="82" x2="200" y2="82" stroke="#c4bdb5" stroke-width="1.5"/>
+  <polygon points="200,78 208,82 200,86" fill="#c4bdb5"/>
+
+  <!-- PC block (center) -->
+  <rect x="210" y="40" width="160" height="96" rx="2" fill="#ffffff" stroke="#2a2a2a" stroke-width="1.5"/>
+  <text x="218" y="58" font-size="9" fill="#8a8580" font-weight="500" letter-spacing="0.08em" font-family="Inter, Noto Sans JP, sans-serif">YOUR PC</text>
+  <text x="290" y="82" class="label" text-anchor="middle">??????</text>
+  <text x="290" y="100" class="sublabel" text-anchor="middle">g??^</text>
+  <text x="290" y="122" class="sublabel" text-anchor="middle">?????	</text>
+
+  <!-- Arrow: PC -> freee (return) -->
+  <line x1="200" y1="96" x2="150" y2="96" stroke="#c4bdb5" stroke-width="1.5"/>
+  <polygon points="150,92 142,96 150,100" fill="#c4bdb5"/>
+
+  <!-- Arrow: PC -> Anthropic (down) -->
+  <line x1="290" y1="136" x2="290" y2="176" stroke="#c4bdb5" stroke-width="1.5"/>
+  <polygon points="286,176 290,184 294,176" fill="#c4bdb5"/>
+
+  <!-- Anthropic block (bottom center) -->
+  <rect x="210" y="186" width="160" height="56" rx="2" fill="#2a2a2a"/>
+  <text x="290" y="212" class="label" text-anchor="middle" fill="#d5d0cb">Anthropic</text>
+  <text x="290" y="230" class="sublabel" text-anchor="middle" fill="#6b6560">$?gMjKc_`Q</text>
+
+  <!-- Arrow: Anthropic -> PC (return) -->
+  <line x1="248" y1="186" x2="248" y2="136" stroke="#c4bdb5" stroke-width="1.5" stroke-dasharray="4,3"/>
+
+  <!-- Percentage labels -->
+  <rect x="420" y="48" width="120" height="52" rx="2" fill="#f0ede9"/>
+  <text x="480" y="72" class="pct" text-anchor="middle">80%</text>
+  <text x="480" y="90" class="pct-label" text-anchor="middle">PC ?g?P</text>
+
+  <rect x="420" y="190" width="120" height="52" rx="2" fill="#f0ede9"/>
+  <text x="480" y="214" class="pct" text-anchor="middle">20%</text>
+  <text x="480" y="232" class="pct-label" text-anchor="middle">API k?</text>
+</svg>

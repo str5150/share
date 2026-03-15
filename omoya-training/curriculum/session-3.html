@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>第3回: AIをカスタマイズする | クロコス AI トレーニング</title>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a href="../index.html" class="site-logo">Crocos <span>AI Training</span></a>
+      <nav class="site-nav">
+        <a href="../index.html">講座一覧</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="session-layout">
+    <aside class="session-sidebar">
+      <ul class="sidebar-nav">
+        <li><a href="#internal">AIの内部動作</a></li>
+        <li><a href="#rules">ルールとメモリ</a></li>
+        <li><a href="#mcp">MCP</a></li>
+        <li><a href="#case-study">実例で理解する</a></li>
+        <li><a href="#quiz">振り返りクイズ</a></li>
+        <li><a href="#homework">宿題</a></li>
+      </ul>
+      <ul class="sidebar-sessions">
+        <li><a href="session-1.html">第1回: AIエージェントって何？</a></li>
+        <li><a href="session-2.html">第2回: PCの裏側を知ろう</a></li>
+        <li><a href="session-3.html" class="current">第3回: AIをカスタマイズする</a></li>
+        <li><a href="session-4.html">第4回: 安全に使って共有する</a></li>
+      </ul>
+    </aside>
+
+    <article class="session-content">
+      <header class="session-header">
+        <div class="session-header-number">SESSION 03</div>
+        <h1>AIをカスタマイズする</h1>
+        <div class="session-header-meta">60分 ｜ 座学 + デモ</div>
+      </header>
+
+      <div class="goal-box">
+        <div class="goal-box-label">今日のゴール</div>
+        <p>「ルールの仕組み」と「MCPの仕組み」を理解して、AIを自分好みに育てるイメージを持つ</p>
+      </div>
+
+      <div class="info-box info-box-blue">
+        <div class="info-box-label">前回の宿題確認（5分）</div>
+        <p>ターミナル触ってみてどうだった？ エラー出た人いる？</p>
+      </div>
+
+      <section id="internal" class="content-section">
+        <div class="section-header">
+          <span class="section-number">3-1</span>
+          <h2>AIエージェントの内部動作</h2>
+          <span class="section-time">15分</span>
+        </div>
+        <p>「LPを作って」と指示したら、裏で何が起きるのかを6ステップで説明する。</p>
+        <div class="diagram">
+          <img src="../assets/diagrams/agent-steps.svg" alt="AIエージェントの6ステップ: 指示から完了まで">
+        </div>
+        <div class="info-box info-box-yellow">
+          <div class="info-box-label">核心</div>
+          <p>STEP 2〜5がぐるぐるループしている。サーバーで考えて、PCで実行して、結果を見て、また考えて…これが数十回〜数百回繰り返される。チャットAIは1往復。エージェントはこのループを自動で回す。</p>
+        </div>
+        <h3>許可を求めてくるタイミング</h3>
+        <pre class="code-block code-block-light">勝手にやること → ファイルの読み書き
+確認してくること → コマンド実行、ファイル削除</pre>
+        <div class="info-box info-box-red">
+          <div class="info-box-label">重要</div>
+          <p>この確認画面を読まずにOK連打すると、セキュリティラインが無くなる。</p>
+        </div>
+      </section>
+
+      <section id="rules" class="content-section">
+        <div class="section-header">
+          <span class="section-number">3-2</span>
+          <h2>ルールとメモリ ― AIに「やり方」を教える</h2>
+          <span class="section-time">20分</span>
+        </div>
+        <p>チャットAIで毎回同じことを説明するの、面倒じゃないですか？ AIエージェントにはこれを解決する仕組みがある。</p>
+        <h3>実態を見せる</h3>
+        <pre class="code-block code-block-light">my-project/
+├── index.html
+├── style.css
+└── CLAUDE.md    ← これ！ ただのテキストファイル</pre>
+        <p>CLAUDE.mdを実際に開いて中身を見せる。</p>
+        <pre class="code-block code-block-light"># プロジェクトルール
+- フォントはNoto Sans JPを使う
+- メインカラーは#1a73e8
+- ボタンは角丸8px</pre>
+        <div class="info-box info-box-green">
+          <div class="info-box-label">デモ（5分）</div>
+          <p>1. ルールなしで「ボタンを作って」→ 適当なスタイル / 2. CLAUDE.mdにルール追加 / 3. もう一度「ボタンを作って」→ ルール通りのスタイル</p>
+        </div>
+        <h3>「学習」ではなく「マニュアル」</h3>
+        <table class="content-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>チャットAI</th>
+              <th>AIエージェントのルール</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>仕組み</td>
+              <td>会話の中で覚えている</td>
+              <td>テキストファイルに書いてある</td>
+            </tr>
+            <tr>
+              <td>次の会話</td>
+              <td>忘れている</td>
+              <td>ファイルがある限り有効</td>
+            </tr>
+            <tr>
+              <td>チームで共有</td>
+              <td>できない</td>
+              <td>ファイルを渡すだけ</td>
+            </tr>
+            <tr>
+              <td>中身の確認</td>
+              <td>難しい</td>
+              <td>ファイルを開けば全部見える</td>
+            </tr>
+          </tbody>
+        </table>
+        <h3>ルールの範囲（スコープ）</h3>
+        <pre class="code-block code-block-light">グローバルルール（PC全体に適用）
+  └─ プロジェクトルール（このフォルダだけ）
+       └─ 会話中の指示（今の会話だけ）</pre>
+      </section>
+
+      <section id="mcp" class="content-section">
+        <div class="section-header">
+          <span class="section-number">3-3</span>
+          <h2>MCP ― AIの道具箱を1つずつ組み立てる</h2>
+          <span class="section-time">15分</span>
+        </div>
+        <h3>素のClaude Code</h3>
+        <pre class="code-block code-block-light">素のClaude Code:
+  - ファイルを読む
+  - ファイルを書く
+  - コマンドを実行する
+  → これだけ。外部サービスとの連携はゼロ。</pre>
+        <p>今の状態だと、AIはPCの中のファイルしか触れない。外の世界と繋がっていない。</p>
+        <h3>MCPで道具を追加する</h3>
+        <pre class="code-block code-block-light">Google Sheets MCPを追加 → スプレッドシートを読み書きできるようになる
+Web Search MCPを追加   → Web検索ができるようになる
+Slack MCPを追加        → Slackに投稿できるようになる</pre>
+        <div class="info-box info-box-yellow">
+          <div class="info-box-label">ポイント</div>
+          <p>App Storeで1つずつアプリを入れるのと同じ。MCPを1個入れたら全機能が使えるわけじゃない。1つずつ。だからリスクも1つずつコントロールできる。</p>
+        </div>
+      </section>
+
+      <section id="case-study" class="content-section">
+        <div class="section-header">
+          <span class="section-number">3-4</span>
+          <h2>実例で理解する：60社の会計データ処理</h2>
+          <span class="section-time">10分</span>
+        </div>
+        <p>ある税理士がClaude Codeで60社の仕訳を毎晩自動処理している話。</p>
+        <div class="info-box info-box-blue">
+          <div class="info-box-label">参加者に聞く</div>
+          <p>「60社の会計データをAIで処理…これ、個人情報的に大丈夫だと思いますか？」</p>
+        </div>
+        <h3>データの流れ</h3>
+        <div class="diagram">
+          <img src="../assets/diagrams/data-flow.svg" alt="データの流れ: freee、PC、Anthropicの関係">
+        </div>
+        <p>全部のデータがAIに行っているわけじゃない。8割はPC内のキーワード辞書で処理。Anthropicに送るのは判定できなかった2割だけ。しかもAPIで送ったデータはモデルの学習には使われない。</p>
+        <h3>覚えてほしいこと</h3>
+        <ul>
+          <li>「AIで処理 ＝ 全データがAI会社に行く」ではない</li>
+          <li>データの流れを設計して、送る範囲を最小限にできる</li>
+          <li>APIとチャットではデータの扱いが違う</li>
+        </ul>
+      </section>
+
+      <section id="quiz" class="content-section">
+        <div class="section-header">
+          <span class="section-number">3-5</span>
+          <h2>振り返りクイズ</h2>
+          <span class="section-time">5分</span>
+        </div>
+        <div class="quiz-item">
+          <div class="quiz-question">Q1: CLAUDE.mdの正体は？</div>
+          <div class="quiz-answer">A: ただのテキストファイル。AIに毎回読ませる「業務マニュアル」。</div>
+        </div>
+        <div class="quiz-item">
+          <div class="quiz-question">Q2: MCPを追加するとどうなる？</div>
+          <div class="quiz-answer">A: AIの道具箱に新しい道具が1つ追加される。できることが増えるが、アクセス範囲も広がる。</div>
+        </div>
+        <div class="quiz-item">
+          <div class="quiz-question">Q3: APIで送信したデータはAIの学習に使われる？</div>
+          <div class="quiz-answer">A: 使われない（各社の利用規約に明記）。ブラウザのチャットとは別。</div>
+        </div>
+      </section>
+
+      <section id="homework" class="homework-section">
+        <h2>次回までの宿題</h2>
+        <div class="homework-item">
+          <h3>宿題① ルールファイルを書いてみよう（紙でOK）</h3>
+          <p>自分の業務で「AIに伝えたいルール」を5つ書き出してください。</p>
+          <ul>
+            <li>社名は「株式会社○○」で統一</li>
+            <li>資料のフォントはメイリオ</li>
+            <li>金額は税込表記</li>
+            <li>顧客名はダミーに置き換えて使う</li>
+            <li>敬語は「です/ます」調</li>
+          </ul>
+        </div>
+        <div class="homework-item">
+          <h3>宿題② MCPの必要度を考えよう</h3>
+          <p>第1回の宿題で書いた「AIにやらせたい業務」を見返して、以下のどれに当てはまるか考えてください。</p>
+          <ul>
+            <li>A. PCの中のファイル操作だけでできそう → MCP不要</li>
+            <li>B. 外部サービスが必要 → MCPが必要</li>
+            <li>C. よく分からない → 第4回で一緒に考えましょう</li>
+          </ul>
+        </div>
+      </section>
+
+      <nav class="session-nav-footer">
+        <a href="session-2.html" class="session-nav-link">
+          <span class="session-nav-link-label">前の講座</span>
+          <span class="session-nav-link-title">第2回: PCの裏側を知ろう</span>
+        </a>
+        <a href="session-4.html" class="session-nav-link next">
+          <span class="session-nav-link-label">次の講座</span>
+          <span class="session-nav-link-title">第4回: 安全に使って共有する</span>
+        </a>
+      </nav>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    Crocos AI Training
+  </footer>
+</body>
+</html>

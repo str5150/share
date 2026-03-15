@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>第4回: 安全に使って共有する | クロコス AI トレーニング</title>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a href="../index.html" class="site-logo">Crocos <span>AI Training</span></a>
+      <nav class="site-nav">
+        <a href="../index.html">講座一覧</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="session-layout">
+    <aside class="session-sidebar">
+      <ul class="sidebar-nav">
+        <li><a href="#security">セキュリティ</a></li>
+        <li><a href="#github">GitHub</a></li>
+        <li><a href="#rules-list">社内ルール</a></li>
+        <li><a href="#workshop">ワーク</a></li>
+        <li><a href="#summary">まとめ</a></li>
+        <li><a href="#graduation">卒業課題</a></li>
+      </ul>
+      <ul class="sidebar-sessions">
+        <li><a href="session-1.html">第1回: AIエージェントって何？</a></li>
+        <li><a href="session-2.html">第2回: PCの裏側を知ろう</a></li>
+        <li><a href="session-3.html">第3回: AIをカスタマイズする</a></li>
+        <li><a href="session-4.html" class="current">第4回: 安全に使って共有する</a></li>
+      </ul>
+    </aside>
+
+    <article class="session-content">
+      <header class="session-header">
+        <div class="session-header-number">SESSION 04</div>
+        <h1>安全に使って、チームで共有する</h1>
+        <div class="session-header-meta">60分 ｜ 座学 + ワーク</div>
+      </header>
+
+      <div class="goal-box">
+        <div class="goal-box-label">今日のゴール</div>
+        <p>「何が危なくて何が安全か」が自分で判断できるようになる。作ったものをチームに共有する方法を知る。</p>
+      </div>
+
+      <div class="info-box info-box-blue">
+        <div class="info-box-label">前回の宿題確認（5分）</div>
+        <p>ルール5つ書けた人、1〜2個シェアしてもらう</p>
+      </div>
+
+      <section id="security" class="content-section">
+        <div class="section-header">
+          <span class="section-number">4-1</span>
+          <h2>セキュリティ ― 5つのリスクを知る</h2>
+          <span class="section-time">20分</span>
+        </div>
+        <p>怖がらせるのが目的じゃない。「何がどう危ないか」が分かれば、安全に使える。</p>
+        <h3>危険度レベル表</h3>
+        <table class="content-table">
+          <thead>
+            <tr>
+              <th>レベル</th>
+              <th>AIの操作</th>
+              <th>リスク</th>
+              <th>対策</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>ファイルを読む</td>
+              <td>★☆☆☆☆</td>
+              <td>機密ファイルを置かない</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>ファイルを編集</td>
+              <td>★★☆☆☆</td>
+              <td>Gitで戻せる</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>コマンド実行</td>
+              <td>★★★☆☆</td>
+              <td>確認画面を読む</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>外部API連携（MCP）</td>
+              <td>★★★★☆</td>
+              <td>管理者が判断</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>ブラウザ操作（MCP）</td>
+              <td>★★★★★</td>
+              <td>本当に必要か検討</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="info-box info-box-yellow">
+          <div class="info-box-label">ポイント</div>
+          <p>普段の業務はレベル1〜3で十分。レベル4以上は必要になってから考えればいい。</p>
+        </div>
+        <h3>5つのリスク</h3>
+        <div class="info-box info-box-red">
+          <div class="info-box-label">リスク① ファイルの誤編集</div>
+          <p>Gitで「セーブ」しておけばいつでも戻せる。Gitが保険になる。</p>
+        </div>
+        <div class="info-box info-box-red">
+          <div class="info-box-label">リスク② 機密情報の送信</div>
+          <p>AIに見せたファイルはAnthropicに送られる。顧客名簿を作業フォルダに置かない。</p>
+        </div>
+        <div class="info-box info-box-red">
+          <div class="info-box-label">リスク③ 危険なコマンドの実行</div>
+          <p>AIが npm install 〇〇 を実行しようとしたとき、その〇〇が安全か確認。知らないパッケージ名は一度止めて調べる。</p>
+        </div>
+        <div class="info-box info-box-red">
+          <div class="info-box-label">リスク④ MCPで範囲が広がる</div>
+          <p>Google Sheets MCPを入れたら、そのシートの全データをAIが読める。必要最小限の権限で。</p>
+        </div>
+        <div class="info-box info-box-red">
+          <div class="info-box-label">リスク⑤ コードの脆弱性</div>
+          <p>AIが書いたコードが完璧とは限らない。本番公開前に確認。</p>
+        </div>
+      </section>
+
+      <section id="github" class="content-section">
+        <div class="section-header">
+          <span class="section-number">4-2</span>
+          <h2>GitHub ― 作ったものをチームで共有する</h2>
+          <span class="section-time">15分</span>
+        </div>
+        <p>Claude Codeで作ったLP、他の人にどうやって渡す？</p>
+        <h3>Git = セーブポイント</h3>
+        <pre class="code-block code-block-light">セーブする = git commit（今の状態を記録）
+戻す     = git checkout（過去の状態に戻る）
+分岐する = git branch（別パターンを試す）</pre>
+        <h3>GitHub = クラウド保管庫</h3>
+        <div class="diagram">
+          <img src="../assets/diagrams/github-flow.svg" alt="GitHubでの共有フロー: push と pull">
+        </div>
+        <p>自分のPCにしかないセーブデータを、クラウドに上げて共有する。URLを伝えるだけで相手が取得できる。</p>
+        <div class="info-box info-box-green">
+          <div class="info-box-label">ポイント</div>
+          <p>CLAUDE.mdもGitHubで共有される。チーム全員が同じルールでAIを使える。新しく入った人もリポジトリをダウンロードすれば即座に同じ環境が手に入る。</p>
+        </div>
+      </section>
+
+      <section id="rules-list" class="content-section">
+        <div class="section-header">
+          <span class="section-number">4-3</span>
+          <h2>社内ルール確認</h2>
+          <span class="section-time">5分</span>
+        </div>
+        <p>6つのルール。困ったらこのリストに戻ればいい。</p>
+        <ol>
+          <li>専用の作業フォルダで作業する</li>
+          <li>APIキーをコードに書かない</li>
+          <li>顧客データはAIに読ませない</li>
+          <li>AIの実行許可は内容を確認してから</li>
+          <li>MCPの追加は管理者に相談</li>
+          <li>ルールファイルを勝手に消さない</li>
+        </ol>
+      </section>
+
+      <section id="workshop" class="content-section">
+        <div class="section-header">
+          <span class="section-number">4-4</span>
+          <h2>ワーク: 自分のチェックリストを作る</h2>
+          <span class="section-time">10分</span>
+        </div>
+        <p>参加者が自分の業務に合わせたチェックリストを作る。</p>
+        <pre class="code-block code-block-light">■ 作業開始前
+  □ 専用フォルダを作った / 確認した
+  □ そのフォルダに機密情報がないか確認した
+  □ ルールファイルの中身を確認した
+  □ __________________________（自分で追加）
+
+■ 作業中
+  □ 実行許可は内容を読んでからOKしている
+  □ APIキーやパスワードをコードに書いていない
+  □ __________________________（自分で追加）
+
+■ 作業後
+  □ Gitでコミット（セーブ）した
+  □ 成果物を確認してからチームに共有した
+  □ __________________________（自分で追加）</pre>
+      </section>
+
+      <section id="summary" class="content-section">
+        <div class="section-header">
+          <span class="section-number">4-5</span>
+          <h2>全4回のまとめ</h2>
+          <span class="section-time">5分</span>
+        </div>
+        <pre class="code-block code-block-light">第1回: AIエージェントは「自分で手を動かすAI」。便利だが範囲管理が必要。
+第2回: ターミナルはただの文字版Finder。作業フォルダが最初の安全策。
+第3回: ルールは「テキストファイルのマニュアル」。MCPは「1つずつ追加する道具」。
+第4回: 5つのリスクと対策。Gitは保険。GitHubで共有。6つの社内ルール。</pre>
+        <div class="info-box info-box-green">
+          <div class="info-box-label">心得</div>
+          <p>AIエージェントは「優秀だけど事情を知らない外注さん」。マニュアル（ルール）を渡して、作業範囲（フォルダ）を決めて、成果物を確認して、安全に共有する（GitHub）。この流れさえ押さえれば、怖がらずに使える。</p>
+        </div>
+      </section>
+
+      <section id="graduation" class="homework-section">
+        <h2>卒業課題</h2>
+        <div class="homework-item">
+          <h3>Claude Codeで簡単なページを1つ作ってみよう</h3>
+          <ol>
+            <li>デスクトップに「graduation-work」フォルダを作る</li>
+            <li>そのフォルダでClaude Code（またはCursor）を起動する</li>
+            <li>CLAUDE.md にルールを最低3つ書く</li>
+            <li>AIに「自己紹介ページを作って」と指示する</li>
+            <li>AIが許可を求めてきたら、内容を確認してからOKする</li>
+            <li>完成したら Gitでコミットする</li>
+            <li>うまくいったこと・困ったことをメモする</li>
+          </ol>
+          <h3>提出物</h3>
+          <ul>
+            <li>作ったページのスクリーンショット</li>
+            <li>CLAUDE.mdの中身のスクリーンショット</li>
+            <li>困ったことのメモ（あれば）</li>
+          </ul>
+          <p><strong>期限: 次の1on1ミーティングまで</strong></p>
+        </div>
+      </section>
+
+      <nav class="session-nav-footer">
+        <a href="session-3.html" class="session-nav-link">
+          <span class="session-nav-link-label">前の講座</span>
+          <span class="session-nav-link-title">第3回: AIをカスタマイズする</span>
+        </a>
+        <span></span>
+      </nav>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    Crocos AI Training
+  </footer>
+</body>
+</html>
