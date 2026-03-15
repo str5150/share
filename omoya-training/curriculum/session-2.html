@@ -131,7 +131,25 @@ PATH = 道具の探し方リスト
         </div>
         <p>第2回の核心パート。</p>
         <div class="diagram">
-          <img src="../assets/diagrams/architecture.svg" alt="Claude Codeのアーキテクチャ: PCとAnthropicサーバーの関係">
+          <svg viewBox="0 0 600 420" fill="none" style="width:100%;height:auto;">
+            <rect x="40" y="30" width="520" height="200" stroke="#ccc" fill="#fff"/>
+            <text x="60" y="56" font-size="10" fill="#999" font-weight="600" letter-spacing="0.1em">YOUR PC</text>
+            <rect x="80" y="80" width="160" height="50" fill="#f5f5f5" stroke="#e0e0e0"/>
+            <text x="160" y="110" font-size="13" fill="#1a1a1a" font-weight="500" text-anchor="middle">Claude Code</text>
+            <line x1="240" y1="105" x2="320" y2="105" stroke="#ccc" stroke-width="1.5"/>
+            <polygon points="320,101 328,105 320,109" fill="#ccc"/>
+            <rect x="330" y="80" width="200" height="50" fill="#f5f5f5" stroke="#e0e0e0"/>
+            <text x="430" y="102" font-size="13" fill="#1a1a1a" font-weight="500" text-anchor="middle">作業フォルダ</text>
+            <text x="430" y="118" font-size="11" fill="#999" text-anchor="middle">ファイル読み書き</text>
+            <text x="160" y="164" font-size="11" fill="#999" font-style="italic" text-anchor="middle">AIの頭脳はここにはない</text>
+            <line x1="160" y1="130" x2="160" y2="150" stroke="#ccc" stroke-dasharray="4,3"/>
+            <line x1="160" y1="230" x2="160" y2="290" stroke="#ccc" stroke-width="1.5"/>
+            <polygon points="156,290 160,298 164,290" fill="#ccc"/>
+            <text x="180" y="266" font-size="11" fill="#999">インターネット経由</text>
+            <rect x="40" y="310" width="520" height="80" fill="#1a1a1a" stroke="#1a1a1a" stroke-width="1.5"/>
+            <text x="300" y="346" text-anchor="middle" font-size="10" fill="#999" font-weight="600" letter-spacing="0.1em">ANTHROPIC SERVER</text>
+            <text x="300" y="368" text-anchor="middle" font-size="11" fill="#666">ここで「考えている」</text>
+          </svg>
         </div>
         <h3>3つのポイント</h3>
         <ol>
@@ -141,7 +159,21 @@ PATH = 道具の探し方リスト
         </ol>
         <h3>作業フォルダ</h3>
         <div class="diagram">
-          <img src="../assets/diagrams/folder-safety.svg" alt="フォルダの安全ゾーン: AIを起動していい場所">
+          <svg viewBox="0 0 480 280" fill="none" style="width:100%;height:auto;">
+            <text x="30" y="22" font-size="10" fill="#999" font-weight="600" letter-spacing="0.1em">YOUR PC</text>
+            <rect x="30" y="32" width="420" height="232" stroke="#ccc" fill="#fff"/>
+            <rect x="55" y="58" width="370" height="42" fill="#f5f5f5" stroke="#e0e0e0" stroke-dasharray="4,3"/>
+            <text x="75" y="82" font-size="12" fill="#1a1a1a" font-weight="500">顧客データ/</text>
+            <text x="280" y="82" font-size="11" fill="#999">← AIを入れたら危険</text>
+            <rect x="55" y="112" width="370" height="42" fill="#f5f5f5" stroke="#e0e0e0" stroke-dasharray="4,3"/>
+            <text x="75" y="136" font-size="12" fill="#1a1a1a" font-weight="500">社外秘資料/</text>
+            <text x="280" y="136" font-size="11" fill="#999">← ここも危険</text>
+            <rect x="55" y="170" width="370" height="76" fill="#fff" stroke="#1a1a1a" stroke-width="1.5"/>
+            <text x="75" y="194" font-size="12" fill="#1a1a1a" font-weight="500">projects/</text>
+            <rect x="85" y="205" width="160" height="28" fill="#f5f5f5" stroke="#e0e0e0"/>
+            <text x="100" y="224" font-size="10" fill="#1bcca9" font-weight="500">my-lp/</text>
+            <text x="265" y="224" font-size="10" fill="#1bcca9" font-weight="500">← ここで起動する</text>
+          </svg>
         </div>
         <div class="info-box info-box-red">
           <div class="info-box-label">重要</div>
