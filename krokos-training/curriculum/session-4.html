@@ -21,11 +21,10 @@
       <ul class="sidebar-nav">
         <li><a href="#security">5つのリスク</a></li>
         <li><a href="#case-study">実例: 個人情報の扱い</a></li>
-        <li><a href="#git">Git</a></li>
-        <li><a href="#design-work">実践: 業務設計</a></li>
-        <li><a href="#rules-list">社内ルール</a></li>
-        <li><a href="#summary">まとめ</a></li>
-        <li><a href="#graduation">卒業課題</a></li>
+        <li><a href="#git">Gitで保険をかける</a></li>
+        <li><a href="#design-work">実践: AI化業務の設計</a></li>
+        <li><a href="#rules-summary">社内ルール確認</a></li>
+        <li><a href="#wrap-up">全4回のまとめ</a></li>
       </ul>
       <ul class="sidebar-sessions">
         <li><a href="session-1.html">第1回: AIエージェントを知る</a></li>
@@ -54,31 +53,28 @@
           <span class="section-time">15分</span>
         </div>
         <p>怖がるためではなく「何がどう危ないか」を知るためのパート。分かれば安全に使える。</p>
-        <table class="content-table">
-          <thead>
-            <tr><th>レベル</th><th>操作</th><th>危険度</th><th>メモ</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>1</td><td>ファイルを読む</td><td>★☆☆☆☆</td><td>ほぼ安全</td></tr>
-            <tr><td>2</td><td>ファイルを編集</td><td>★★☆☆☆</td><td>Gitで戻せる</td></tr>
-            <tr><td>3</td><td>コマンド実行</td><td>★★★☆☆</td><td>確認画面を読む</td></tr>
-            <tr><td>4</td><td>外部API連携（MCP）</td><td>★★★★☆</td><td>管理者が判断</td></tr>
-            <tr><td>5</td><td>ブラウザ操作（MCP）</td><td>★★★★★</td><td>本当に必要か検討</td></tr>
-          </tbody>
-        </table>
+
+        <h3>危険度レベル表</h3>
+        <pre class="code-block">レベル1  ファイルを読む       ★☆☆☆☆  ほぼ安全
+レベル2  ファイルを編集       ★★☆☆☆  Gitで戻せる
+レベル3  コマンド実行         ★★★☆☆  確認画面を読む
+レベル4  外部API連携(MCP)     ★★★★☆  管理者が判断
+レベル5  ブラウザ操作(MCP)    ★★★★★  本当に必要か検討</pre>
         <p>普段の業務はレベル1〜3で十分。レベル4以上は必要になってから考えればいい。</p>
+
         <h3>5つのリスク</h3>
+
         <div class="info-box">
           <div class="info-box-label">① ファイルの誤編集</div>
           <p>Gitで「セーブ」しておけばいつでも戻せる。Gitが保険になる。</p>
         </div>
         <div class="info-box">
           <div class="info-box-label">② 機密情報の送信</div>
-          <p>AIに見せたファイルはAnthropicに送られる。顧客名簿や個人情報を作業フォルダに置かない。</p>
+          <p>AIに見せたファイルはAI提供元のサーバーに送られる。顧客名簿や個人情報を作業フォルダに置かない。</p>
         </div>
         <div class="info-box">
           <div class="info-box-label">③ 危険なコマンドの実行</div>
-          <p>AIが npm install 〇〇 を実行しようとしたとき、その〇〇が安全か確認する。知らないパッケージ名は一度止めて調べる。</p>
+          <p>AIが <code>npm install 〇〇</code> を実行しようとしたとき、その〇〇が安全か確認する。知らないパッケージ名は一度止めて調べる。</p>
         </div>
         <div class="info-box">
           <div class="info-box-label">④ MCPで範囲が広がる</div>
@@ -96,36 +92,33 @@
           <h2>実例で考える: D2Cブランドでの個人情報の扱い</h2>
           <span class="section-time">10分</span>
         </div>
-        <p>60社の会計データをClaude Codeで毎晩自動処理している税理士がいる。「会計データをAIに？」と感じるかもしれないが、実際のデータの流れはこうなっている。</p>
+        <p>実際にAIエージェントで業務を自動化している税理士の事例を使って、データの流れを考える。</p>
+        <div class="info-box">
+          <div class="info-box-label">事例</div>
+          <p>60社の会計データをAIエージェントで毎晩自動処理している税理士がいる。「会計データをAIに？個人情報じゃないか？」と感じるかもしれない。</p>
+        </div>
+
+        <h3>実際のデータの流れ</h3>
         <div class="diagram">
-          <svg viewBox="0 0 560 260" fill="none" style="width:100%;height:auto;">
-            <rect x="30" y="58" width="120" height="52" fill="#f5f5f5" stroke="#e0e0e0"/>
-            <text x="90" y="82" font-size="12" fill="#1a1a1a" font-weight="500" text-anchor="middle">freee</text>
-            <text x="90" y="98" font-size="10" fill="#999" text-anchor="middle">会計データ</text>
-            <line x1="150" y1="78" x2="200" y2="78" stroke="#ccc" stroke-width="1.5"/>
-            <polygon points="200,74 208,78 200,82" fill="#ccc"/>
-            <rect x="210" y="38" width="160" height="92" fill="#fff" stroke="#1a1a1a" stroke-width="1.5"/>
-            <text x="218" y="56" font-size="9" fill="#999" font-weight="600" letter-spacing="0.08em">YOUR PC</text>
-            <text x="290" y="80" font-size="12" fill="#1a1a1a" font-weight="500" text-anchor="middle">キーワード辞書</text>
-            <text x="290" y="96" font-size="10" fill="#999" text-anchor="middle">で自動分類</text>
-            <text x="290" y="116" font-size="10" fill="#999" text-anchor="middle">（ローカル処理）</text>
-            <line x1="200" y1="92" x2="150" y2="92" stroke="#ccc" stroke-width="1.5"/>
-            <polygon points="150,88 142,92 150,96" fill="#ccc"/>
-            <line x1="290" y1="130" x2="290" y2="170" stroke="#ccc" stroke-width="1.5"/>
-            <polygon points="286,170 290,178 294,170" fill="#ccc"/>
-            <rect x="210" y="180" width="160" height="52" fill="#1a1a1a"/>
-            <text x="290" y="206" font-size="12" fill="#e0e0e0" font-weight="500" text-anchor="middle">Anthropic</text>
-            <text x="290" y="222" font-size="10" fill="#666" text-anchor="middle">判定できなかった分だけ</text>
-            <line x1="250" y1="180" x2="250" y2="130" stroke="#ccc" stroke-width="1.5" stroke-dasharray="4,3"/>
-            <rect x="420" y="44" width="120" height="52" fill="#f5f5f5"/>
-            <text x="480" y="68" font-size="20" fill="#1a1a1a" font-weight="600" text-anchor="middle">80%</text>
-            <text x="480" y="86" font-size="10" fill="#999" text-anchor="middle">PC内で完結</text>
-            <rect x="420" y="184" width="120" height="52" fill="#f5f5f5"/>
-            <text x="480" y="208" font-size="20" fill="#1a1a1a" font-weight="600" text-anchor="middle">20%</text>
-            <text x="480" y="226" font-size="10" fill="#999" text-anchor="middle">APIに送信</text>
+          <svg viewBox="0 0 600 160" width="600" height="160" fill="none" style="width:100%;height:auto;">
+            <rect x="40" y="20" width="140" height="44" fill="#f5f5f5" stroke="#e0e0e0"/>
+            <text x="110" y="47" font-size="11" fill="#1a1a1a" font-weight="500" text-anchor="middle">freee（会計ソフト）</text>
+            <line x1="180" y1="42" x2="240" y2="42" stroke="#ccc" stroke-width="1.5"/>
+            <polygon points="240,38 248,42 240,46" fill="#ccc"/>
+            <rect x="250" y="20" width="120" height="44" fill="#f5f5f5" stroke="#e0e0e0"/>
+            <text x="310" y="47" font-size="11" fill="#1a1a1a" font-weight="500" text-anchor="middle">自分のPC</text>
+            <line x1="370" y1="42" x2="430" y2="42" stroke="#ccc" stroke-width="1.5"/>
+            <polygon points="430,38 438,42 430,46" fill="#ccc"/>
+            <rect x="440" y="20" width="120" height="44" fill="#f5f5f5" stroke="#e0e0e0"/>
+            <text x="500" y="47" font-size="11" fill="#1a1a1a" font-weight="500" text-anchor="middle">freeeに戻す</text>
+            <line x1="310" y1="64" x2="310" y2="100" stroke="#ccc" stroke-width="1.5" stroke-dasharray="6,3"/>
+            <polygon points="306,100 310,108 314,100" fill="#ccc"/>
+            <rect x="220" y="110" width="180" height="40" fill="#1a1a1a"/>
+            <text x="310" y="135" font-size="11" fill="#e0e0e0" font-weight="500" text-anchor="middle">AIのサーバー（一部の取引だけ）</text>
           </svg>
         </div>
-        <p>全データがAIに送られているわけではない。8割はPC内のキーワード辞書で処理。Anthropicに送るのは判定できなかった2割だけ。しかもAPIで送ったデータはモデルの学習には使われない。</p>
+        <p>全データがAIに送られているわけではない。8割はPC内のキーワード辞書で処理。AIのサーバーに送るのは辞書で判定できなかった2割だけ。しかもAPIで送ったデータはモデルの学習には使われない。ブラウザのチャットAIにコピペするのとは全く違う。</p>
+
         <h3>D2Cブランドの業務に置き換えると</h3>
         <table class="content-table">
           <thead>
@@ -140,7 +133,7 @@
         </table>
         <div class="info-box">
           <div class="info-box-label">覚えること</div>
-          <p>「AIで処理 ＝ 全データがAI会社に行く」ではない。データの流れを設計して送る範囲を最小限にできる。個人情報を扱う場合は匿名化してから渡す。</p>
+          <p>「AIで処理 ＝ 全データがAI会社に行く」ではない。データの流れを設計して、送る範囲を最小限にできる。APIとチャットではデータの扱いが違う。個人情報を扱う場合は匿名化してから渡す。</p>
         </div>
       </section>
 
@@ -150,34 +143,30 @@
           <h2>Git ― 保険をかける</h2>
           <span class="section-time">10分</span>
         </div>
-        <pre class="code-block code-block-light">セーブする = git commit（今の状態を記録）
+        <h3>Gitは「セーブポイント」</h3>
+        <pre class="code-block">セーブする = git commit（今の状態を記録）
 戻す      = git checkout（過去の状態に戻る）
 分岐する  = git branch（別パターンを試す）</pre>
         <p>ゲームのセーブと同じ。こまめにセーブしておけば、AIが何か壊しても戻せる。</p>
+
         <h3>GitHub = クラウド保管庫</h3>
         <div class="diagram">
-          <svg viewBox="0 0 560 200" fill="none" style="width:100%;height:auto;">
-            <rect x="30" y="48" width="140" height="68" fill="#fff" stroke="#ccc"/>
-            <text x="100" y="78" font-size="12" fill="#1a1a1a" font-weight="500" text-anchor="middle">自分のPC</text>
-            <text x="100" y="96" font-size="10" fill="#999" text-anchor="middle">ローカルのファイル</text>
-            <line x1="170" y1="76" x2="218" y2="76" stroke="#1a1a1a" stroke-width="1.5"/>
-            <polygon points="218,72 226,76 218,80" fill="#1a1a1a"/>
-            <text x="195" y="66" font-size="10" fill="#1bcca9" font-weight="600" text-anchor="middle" letter-spacing="0.04em">PUSH</text>
-            <rect x="228" y="34" width="124" height="96" fill="#1a1a1a"/>
-            <text x="290" y="64" font-size="12" fill="#e0e0e0" font-weight="500" text-anchor="middle">GitHub</text>
-            <text x="290" y="82" font-size="10" fill="#666" text-anchor="middle">クラウド保管庫</text>
-            <text x="290" y="100" font-size="10" fill="#666" text-anchor="middle">URLで共有可能</text>
-            <line x1="352" y1="88" x2="398" y2="88" stroke="#1a1a1a" stroke-width="1.5"/>
-            <polygon points="398,84 406,88 398,92" fill="#1a1a1a"/>
-            <text x="376" y="78" font-size="10" fill="#1bcca9" font-weight="600" text-anchor="middle" letter-spacing="0.04em">PULL</text>
-            <rect x="408" y="48" width="140" height="68" fill="#fff" stroke="#ccc"/>
-            <text x="478" y="78" font-size="12" fill="#1a1a1a" font-weight="500" text-anchor="middle">同僚のPC</text>
-            <text x="478" y="96" font-size="10" fill="#999" text-anchor="middle">同じファイルを取得</text>
-            <text x="290" y="166" font-size="10" fill="#999" text-anchor="middle">CLAUDE.mdもルールファイルも一緒に共有される</text>
-            <line x1="120" y1="176" x2="460" y2="176" stroke="#e0e0e0"/>
+          <svg viewBox="0 0 600 100" width="600" height="100" fill="none" style="width:100%;height:auto;">
+            <rect x="40" y="20" width="140" height="44" fill="#f5f5f5" stroke="#e0e0e0"/>
+            <text x="110" y="47" font-size="11" fill="#1a1a1a" font-weight="500" text-anchor="middle">自分のPC</text>
+            <line x1="180" y1="36" x2="240" y2="36" stroke="#ccc" stroke-width="1.5"/>
+            <polygon points="240,32 248,36 240,40" fill="#ccc"/>
+            <text x="210" y="28" font-size="9" fill="#999" text-anchor="middle">push</text>
+            <rect x="250" y="20" width="120" height="44" fill="#1a1a1a"/>
+            <text x="310" y="47" font-size="11" fill="#e0e0e0" font-weight="500" text-anchor="middle">GitHub</text>
+            <line x1="370" y1="36" x2="430" y2="36" stroke="#ccc" stroke-width="1.5"/>
+            <polygon points="422,32 430,36 422,40" fill="#ccc"/>
+            <text x="400" y="28" font-size="9" fill="#999" text-anchor="middle">pull</text>
+            <rect x="432" y="20" width="140" height="44" fill="#f5f5f5" stroke="#e0e0e0"/>
+            <text x="502" y="47" font-size="11" fill="#1a1a1a" font-weight="500" text-anchor="middle">同僚のPC</text>
+            <text x="310" y="86" font-size="10" fill="#999" text-anchor="middle">URLを伝えるだけで相手が取得できる。ルールファイルも一緒に共有される。</text>
           </svg>
         </div>
-        <p>自分のPCにしかないセーブデータをクラウドに上げて共有する。URLを伝えるだけで相手が取得できる。CLAUDE.mdもルールファイルも一緒に共有されるから、チーム全員が同じルールでAIを使える。</p>
       </section>
 
       <section id="design-work" class="content-section">
@@ -186,8 +175,10 @@
           <h2>実践: 「次にAI化する業務」を設計する</h2>
           <span class="section-time">20分</span>
         </div>
-        <p>最終回のメインワーク。宿題で考えてきた「AI化したい業務」を実際に設計する。</p>
-        <pre class="code-block code-block-light">■ 業務の概要
+        <p>最終回のメインワーク。宿題で考えてきた「AI化したい業務」を、実際に設計してみる。</p>
+
+        <h3>設計シートを埋める</h3>
+        <pre class="code-block">■ 業務の概要
   何をやる業務か: ____________________
   現在の所要時間: 約____分/回
   頻度: ____回/月
@@ -217,27 +208,28 @@
 ■ まず試すスモールスタート
   全体をいきなりやるのではなく、最初に試す小さな範囲:
   → 例: まず1商品分だけ、まず1通分だけ</pre>
+
         <h3>考え方の例</h3>
-        <p>「毎週の在庫レポートをスプレッドシートからまとめてSlackに投稿している」なら:</p>
-        <pre class="code-block code-block-light">→ Google Sheets MCPで在庫データを読み取る
+        <p>「毎週の在庫レポートをスプレッドシートからまとめてSlackに投稿している」という業務なら:</p>
+        <pre class="code-block">→ Google Sheets MCPで在庫データを読み取る
 → ルールファイルにレポートのフォーマットを定義する
 → Slack MCPで投稿する
 → 権限: スプレッドシートの閲覧権限、SlackのBot権限
 → 個人情報: なし
-→ スモールスタート: まず手動で1回やってみて、出力を確認</pre>
+→ スモールスタート: まず手動で1回やってみて、出力を確認する</pre>
         <div class="info-box">
-          <div class="info-box-label">ゴールのイメージ</div>
+          <div class="info-box-label">ゴール</div>
           <p>この設計ができるようになれば、新しい業務課題が出てきたときに「〇〇とMCP接続して、〇〇の権限をもらえれば自動化できる。あとは要件定義をどう詰めるか」と判断できる。そこまでいければ、AIエージェントの導入は自走できる。</p>
         </div>
       </section>
 
-      <section id="rules-list" class="content-section">
+      <section id="rules-summary" class="content-section">
         <div class="section-header">
           <span class="section-number">4-5</span>
           <h2>社内ルール確認</h2>
           <span class="section-time">5分</span>
         </div>
-        <pre class="code-block code-block-light">ルール1: 専用の作業フォルダで作業する
+        <pre class="code-block">ルール1: 専用の作業フォルダで作業する
 ルール2: APIキーをコードに書かない
 ルール3: 顧客の個人情報はAIに読ませない（匿名化してから）
 ルール4: AIの実行許可は内容を確認してから
@@ -246,7 +238,7 @@
         <p>この6つだけ覚えておく。困ったらこのリストに戻る。</p>
       </section>
 
-      <section id="summary" class="content-section">
+      <section id="wrap-up" class="content-section">
         <div class="section-header">
           <span class="section-number">4-6</span>
           <h2>全4回のまとめ</h2>
@@ -257,29 +249,28 @@
           </thead>
           <tbody>
             <tr><td>第1回</td><td>AIエージェントは「自分で手を動かすAI」。便利だが範囲管理が必要。</td></tr>
-            <tr><td>第2回</td><td>ターミナルは文字版Finder。Claude CodeはPC上で動き、頭脳はAnthropicにある。作業フォルダが最初の安全策。</td></tr>
+            <tr><td>第2回</td><td>ターミナルは文字版Finder。AIエージェントはPC上で動き、頭脳はAI提供元のサーバーにある。作業フォルダが最初の安全策。</td></tr>
             <tr><td>第3回</td><td>ルールファイルでブランドのトンマナをAIに教えられる。MCPで外部ツールと接続できるが、1つずつ管理する。</td></tr>
-            <tr><td>第4回</td><td>5つのリスクと対策。個人情報の扱い方。Gitは保険。「何をAI化するか」を自分で設計する力。</td></tr>
+            <tr><td>第4回</td><td>5つのリスクと対策。個人情報の扱い方。Gitは保険。「何をAI化するか」「何が必要か」を自分で設計する力。</td></tr>
           </tbody>
         </table>
         <p>AIエージェントは「優秀だけど事情を知らない外注さん」。ブランドマニュアル（ルールファイル）を渡して、作業範囲（フォルダ）を決めて、成果物を確認して、安全に共有する（GitHub）。この流れさえ押さえれば、どんな業務にも応用できる。</p>
       </section>
 
-      <section id="graduation" class="homework-section">
+      <section class="homework-section">
         <h2>卒業課題</h2>
         <div class="homework-item">
           <h3>自分の担当業務を1つ、AIエージェントで改善してみる</h3>
           <pre class="code-block">手順:
   ① 第4回で作った設計シートをもとに作業フォルダを準備する
-  ② CLAUDE.md にブランドルールと業務ルールを書く
-  ③ 業務に必要なデータを作業フォルダに入れる
-    （個人情報は除外 or 匿名化）
+  ② ルールファイルにブランドルールと業務ルールを書く
+  ③ 業務に必要なデータを作業フォルダに入れる（個人情報は除外 or 匿名化）
   ④ AIに指示を出して、業務の一部を実行させる
   ⑤ 出力を確認し、ルールを修正・追記する
   ⑥ 改善前と改善後の比較をまとめる</pre>
-          <h3>提出するもの</h3>
+          <p>提出するもの:</p>
           <ul>
-            <li>CLAUDE.md の中身</li>
+            <li>ルールファイルの中身</li>
             <li>AIの出力結果（スクショまたはファイル）</li>
             <li>「うまくいったこと」「うまくいかなかったこと」のメモ</li>
             <li>次にやりたいこと（あれば）</li>
@@ -288,7 +279,7 @@
       </section>
 
       <nav class="session-nav-footer">
-        <a href="session-3.html" class="session-nav-link">
+        <a href="session-3.html" class="session-nav-link prev">
           <span class="session-nav-link-label">前の講座</span>
           <span class="session-nav-link-title">第3回: ブランド業務に適用する</span>
         </a>
