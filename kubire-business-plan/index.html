@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>クビレアーティスト 事業計画たたき台</title>
+  <style>
+    :root {
+      --bg: #f5f1e8;
+      --paper: rgba(255, 253, 248, 0.96);
+      --ink: #221b17;
+      --muted: #6a6159;
+      --line: #ddd2c7;
+      --accent: #b85f41;
+      --accent-deep: #7e3e29;
+      --soft: #efe1d4;
+      --good: #306c57;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Hiragino Sans", "Noto Sans JP", sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(184, 95, 65, 0.14), transparent 28%),
+        linear-gradient(180deg, #f8f4ec 0%, #efe6db 100%);
+      color: var(--ink);
+      line-height: 1.75;
+    }
+
+    a { color: inherit; }
+
+    .shell {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 40px 20px 88px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, rgba(255, 253, 248, 0.98), rgba(245, 234, 224, 0.95));
+      border: 1px solid rgba(126, 62, 41, 0.08);
+      border-radius: 32px;
+      padding: 44px;
+      box-shadow: 0 24px 60px rgba(61, 40, 30, 0.08);
+      margin-bottom: 28px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(184, 95, 65, 0.1);
+      color: var(--accent-deep);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: clamp(34px, 5vw, 60px);
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      margin: 18px 0 16px;
+      color: #2d1d17;
+    }
+
+    .lead {
+      font-size: 18px;
+      max-width: 760px;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .summary-grid,
+    .grid-2,
+    .grid-3 {
+      display: grid;
+      gap: 18px;
+    }
+
+    .summary-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 28px; }
+    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+    .card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: 0 16px 36px rgba(70, 44, 31, 0.05);
+    }
+
+    .metric {
+      font-size: 34px;
+      font-weight: 800;
+      line-height: 1;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      font-size: 30px;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin: 42px 0 18px;
+      color: #32231d;
+    }
+
+    h3 {
+      font-size: 19px;
+      margin: 0 0 10px;
+      color: #3b2a22;
+    }
+
+    p { margin: 0 0 12px; }
+
+    ul, ol {
+      margin: 0;
+      padding-left: 1.15em;
+    }
+
+    li + li { margin-top: 8px; }
+
+    .muted { color: var(--muted); }
+
+    .highlight {
+      background: linear-gradient(180deg, rgba(184, 95, 65, 0.1), rgba(184, 95, 65, 0.02));
+      border-left: 4px solid var(--accent);
+      padding: 18px 20px;
+      border-radius: 18px;
+      margin-top: 16px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 16px 36px rgba(70, 44, 31, 0.05);
+    }
+
+    th, td {
+      text-align: left;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+
+    th {
+      font-size: 14px;
+      color: var(--accent-deep);
+      background: rgba(239, 225, 212, 0.72);
+    }
+
+    tr:last-child td { border-bottom: 0; }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .pill {
+      border: 1px solid rgba(184, 95, 65, 0.2);
+      background: rgba(184, 95, 65, 0.08);
+      color: var(--accent-deep);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .footer {
+      margin-top: 36px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    @media (max-width: 920px) {
+      .summary-grid,
+      .grid-2,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 28px;
+      }
+
+      .card {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <span class="badge">Kubire Artist Business Plan</span>
+      <h1>クビレアーティスト<br>事業計画たたき台</h1>
+      <p class="lead">M&amp;A取得後の第一フェーズでは、まず既存売上水準の再現を目指しつつ、広告で再現できる収益構造へ移行する。既存モデルのままでは広告採算が崩れやすいため、商品階段と導線を再設計する。</p>
+
+      <div class="summary-grid">
+        <article class="card">
+          <div class="eyebrow">Priority</div>
+          <div class="metric">Phase 1</div>
+          <p>既存売上水準の再現</p>
+        </article>
+        <article class="card">
+          <div class="eyebrow">Price Ladder</div>
+          <div class="metric">0 → 7.78 → 25 → 50</div>
+          <p>無料、3Days、本講座、マスターコンサル</p>
+        </article>
+        <article class="card">
+          <div class="eyebrow">Monthly Ad</div>
+          <div class="metric">100万</div>
+          <p>フロントCPA 2,750円前提</p>
+        </article>
+        <article class="card">
+          <div class="eyebrow">Profit View</div>
+          <div class="metric">1,000万〜1,200万</div>
+          <p>立ち上がり補正込みの年間営業利益相当額</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>1. なぜ既存モデルのままだと収益性が弱いのか</h2>
+      <div class="grid-2">
+        <article class="card">
+          <h3>既存モデルの強み</h3>
+          <ul>
+            <li>久保氏個人アカウントの発信力が強い</li>
+            <li>くびれ特化の資格講座として独自性がある</li>
+            <li>講座後フォローと実績型資格という差別化要素がある</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>収益性が弱くなりやすい背景</h3>
+          <ul>
+            <li>対面 <strong>110,000円</strong>、オンライン <strong>77,800円</strong> は広告運用だと薄利化しやすい</li>
+            <li>集客が久保氏個人に依存し、事業資産としての再現性が弱い</li>
+            <li>いきなり本講座を売る形では教育コストが高い</li>
+            <li>上位商品が弱く、LTVを伸ばしきれていない</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="highlight">
+        集客量そのものより、<strong>収益構造</strong> が課題。広告を回すには、単価設計と導線設計を同時に変える必要がある。
+      </div>
+    </section>
+
+    <section>
+      <h2>2. 再設計後の事業モデル</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>区分</th>
+            <th>商品</th>
+            <th>価格</th>
+            <th>役割</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>フロント</td>
+            <td>無料動画講座</td>
+            <td>0円</td>
+            <td>オプトイン、LINE追加、教育開始</td>
+          </tr>
+          <tr>
+            <td>ミドル</td>
+            <td>オンライン3Days講座</td>
+            <td>77,800円</td>
+            <td>本気度の高い見込み客の選別</td>
+          </tr>
+          <tr>
+            <td>バックエンド</td>
+            <td>クビレアーティスト本講座</td>
+            <td>250,000円</td>
+            <td>資格取得、中核売上</td>
+          </tr>
+          <tr>
+            <td>ハイバック</td>
+            <td>マスターコンサル</td>
+            <td>500,000円</td>
+            <td>独立支援、FC支援、LTV向上</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="grid-2" style="margin-top:18px;">
+        <article class="card">
+          <h3>販売導線</h3>
+          <ol>
+            <li>広告またはSNSから無料動画講座へ誘導</li>
+            <li>メールアドレス取得、LINE追加</li>
+            <li>LINEシナリオと動画ステップ配信で教育</li>
+            <li>オンライン3Days講座へ案内</li>
+            <li>本講座25万円へ案内</li>
+            <li>一部受講生へマスターコンサルを提案</li>
+          </ol>
+        </article>
+        <article class="card">
+          <h3>この形にする理由</h3>
+          <ul>
+            <li>無料オファーで広告からのリード獲得をしやすくする</li>
+            <li>3Days講座で教育と選別を挟み、本講座の成約率を高める</li>
+            <li>本講座を25万円へ改定し、広告採算を確保しやすくする</li>
+            <li>久保氏の価値は高粗利のハイバックに集中させる</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>3. 売上シミュレーション前提</h2>
+      <div class="grid-3">
+        <article class="card">
+          <div class="eyebrow">Acquisition</div>
+          <h3>広告前提</h3>
+          <ul>
+            <li>月間広告費 100万円</li>
+            <li>フロントCPA 2,750円</li>
+            <li>オプトイン数 約364件</li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="eyebrow">Conversion</div>
+          <h3>ファネル前提</h3>
+          <ul>
+            <li>オプトイン → 3Days申込み率 8%</li>
+            <li>3Days実受講率 54.35%</li>
+            <li>実受講者 → 本講座成約率 24.0%</li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="eyebrow">Upsell</div>
+          <h3>上位商品前提</h3>
+          <ul>
+            <li>ハイバック成約率 1%</li>
+            <li>ハイバックは上振れ要素として扱う</li>
+            <li>なくても成立する構造を目指す</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="pill-list">
+        <span class="pill">成功事例ベンチマークよりやや保守的</span>
+        <span class="pill">最重要KPIは 3Days申込み率</span>
+        <span class="pill">単価改善で広告耐性を確保</span>
+      </div>
+    </section>
+
+    <section>
+      <h2>4. 月次売上とP/Lイメージ</h2>
+      <div class="grid-2">
+        <article class="card">
+          <h3>月次売上イメージ</h3>
+          <table>
+            <tbody>
+              <tr><th>オプトイン数</th><td>363.6件</td></tr>
+              <tr><th>3Days講座申込み数</th><td>29.1件</td></tr>
+              <tr><th>3Days講座実受講数</th><td>15.8件</td></tr>
+              <tr><th>本講座成約数</th><td>3.8件</td></tr>
+              <tr><th>ハイバック成約数</th><td>0.16件</td></tr>
+              <tr><th>月次売上</th><td><strong>3,291,060円</strong></td></tr>
+            </tbody>
+          </table>
+        </article>
+        <article class="card">
+          <h3>月次P/Lイメージ</h3>
+          <table>
+            <tbody>
+              <tr><th>売上高</th><td>3,291,060円</td></tr>
+              <tr><th>決済、セールスフィー等</th><td>329,106円</td></tr>
+              <tr><th>本講座講師報酬</th><td>191,022円</td></tr>
+              <tr><th>広告費</th><td>1,000,000円</td></tr>
+              <tr><th>システム費</th><td>50,000円</td></tr>
+              <tr><th>制作、編集費</th><td>200,000円</td></tr>
+              <tr><th>運営雑費</th><td>100,000円</td></tr>
+              <tr><th>営業利益相当額</th><td><strong>1,420,932円</strong></td></tr>
+            </tbody>
+          </table>
+        </article>
+      </div>
+
+      <div class="highlight">
+        立ち上がり補正を入れた現実ケースでは、年間営業利益相当額は <strong>1,000万円〜1,200万円前後</strong> を見込む。
+      </div>
+    </section>
+
+    <section>
+      <h2>5. 月次P/Lの考え方</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>月</th>
+            <th>位置づけ</th>
+            <th>収支イメージ</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1か月目</td>
+            <td>導線構築期間</td>
+            <td>無料動画、LP、LINE、UTAGE、広告素材の初期構築で赤字</td>
+          </tr>
+          <tr>
+            <td>2か月目</td>
+            <td>テスト前準備</td>
+            <td>3Days導線とオファー設計を詰める。引き続き先行投資フェーズ</td>
+          </tr>
+          <tr>
+            <td>3か月目以降</td>
+            <td>広告運用開始</td>
+            <td>CPAと申込み率を見ながら回し、黒字化を目指す</td>
+          </tr>
+          <tr>
+            <td>5か月目以降</td>
+            <td>最適化フェーズ</td>
+            <td>LP、LINE、オファー改善により利益率を高める</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>6. 実行Todo</h2>
+      <div class="grid-3">
+        <article class="card">
+          <div class="eyebrow">0〜2か月目</div>
+          <h3>立ち上げ</h3>
+          <ul>
+            <li>無料動画講座の構成、台本、撮影、編集</li>
+            <li>オプトインLP制作</li>
+            <li>LINEシナリオ設計</li>
+            <li>UTAGE導入と配信設定</li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="eyebrow">3〜4か月目</div>
+          <h3>検証と改善</h3>
+          <ul>
+            <li>広告運用開始</li>
+            <li>CPAの週次確認とクリエイティブ差し替え</li>
+            <li>LP訴求のABテスト</li>
+            <li>3Days申込み率の改善</li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="eyebrow">5か月目以降</div>
+          <h3>拡張</h3>
+          <ul>
+            <li>本講座成約率最適化</li>
+            <li>成果事例を広告とLPへ反映</li>
+            <li>マスターコンサル募集導線整備</li>
+            <li>地方開催、講師追加を検討</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>7. 重要KPIと意味合い</h2>
+      <div class="grid-2">
+        <article class="card">
+          <h3>追うべきKPI</h3>
+          <ul>
+            <li>フロントCPA</li>
+            <li>オプトイン率</li>
+            <li>オプトインから3Days講座申込み率</li>
+            <li>3Days実受講率</li>
+            <li>本講座成約率</li>
+            <li>成果事例数</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>この計画の意味</h3>
+          <ul>
+            <li>久保氏依存の集客から、広告で再現できる事業構造へ移行する</li>
+            <li>単価改善により、集客を増やしても利益が残る構造をつくる</li>
+            <li>本講座は仕組みで回し、久保氏の価値はマスターコンサルに集中させる</li>
+            <li>将来的には独立支援、FC展開まで見据える</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <p class="footer">Source draft: 事業計画たたき台.md / 事業計画_説明資料たたき台.md</p>
+  </main>
+</body>
+</html>
