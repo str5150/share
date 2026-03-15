@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>第3回: AIをカスタマイズする | クロコス AI トレーニング</title>
+  <title>第3回: ブランド業務に適用する | Krokos AI Training</title>
   <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
@@ -19,57 +19,52 @@
   <main class="session-layout">
     <aside class="session-sidebar">
       <ul class="sidebar-nav">
-        <li><a href="#internal">AIの内部動作</a></li>
-        <li><a href="#rules">ルールとメモリ</a></li>
+        <li><a href="#internal">AIエージェントの内部動作</a></li>
+        <li><a href="#rules">ルールファイル</a></li>
+        <li><a href="#practice-newsletter">実践: メルマガのトンマナ</a></li>
         <li><a href="#mcp">MCP</a></li>
-        <li><a href="#case-study">実例で理解する</a></li>
-        <li><a href="#quiz">振り返りクイズ</a></li>
-        <li><a href="#homework">宿題</a></li>
+        <li><a href="#practice-dm">実践: DMチラシ制作</a></li>
+        <li><a href="#review">振り返り</a></li>
       </ul>
       <ul class="sidebar-sessions">
-        <li><a href="session-1.html">第1回: AIエージェントって何？</a></li>
-        <li><a href="session-2.html">第2回: PCの裏側を知ろう</a></li>
-        <li><a href="session-3.html" class="current">第3回: AIをカスタマイズする</a></li>
-        <li><a href="session-4.html">第4回: 安全に使って共有する</a></li>
+        <li><a href="session-1.html">第1回: AIエージェントを知る</a></li>
+        <li><a href="session-2.html">第2回: PCの仕組みを理解する</a></li>
+        <li><a href="session-3.html" class="current">第3回: ブランド業務に適用する</a></li>
+        <li><a href="session-4.html">第4回: セキュリティと応用設計</a></li>
       </ul>
     </aside>
 
     <article class="session-content">
       <header class="session-header">
         <div class="session-header-number">SESSION 03</div>
-        <h1>AIをカスタマイズする</h1>
-        <div class="session-header-meta">60分 ｜ 座学 + デモ</div>
+        <h1>ブランド業務に適用する</h1>
+        <div class="session-header-meta">60分 ｜ 座学 + 実践ワーク</div>
       </header>
 
       <div class="goal-box">
         <div class="goal-box-label">今日のゴール</div>
-        <p>「ルールの仕組み」と「MCPの仕組み」を理解して、AIを自分好みに育てるイメージを持つ</p>
-      </div>
-
-      <div class="info-box info-box-blue">
-        <div class="info-box-label">前回の宿題確認（5分）</div>
-        <p>ターミナル触ってみてどうだった？ エラー出た人いる？</p>
+        <p>ルールファイルとMCPを使って、自社ブランドのトンマナや業務データをAIに活かす方法を身につける</p>
       </div>
 
       <section id="internal" class="content-section">
         <div class="section-header">
           <span class="section-number">3-1</span>
           <h2>AIエージェントの内部動作</h2>
-          <span class="section-time">15分</span>
+          <span class="section-time">10分</span>
         </div>
-        <p>「LPを作って」と指示したら、裏で何が起きるのかを6ステップで説明する。</p>
+        <p>「商品LPを作って」と指示したら、裏でこういうことが起きている。</p>
         <div class="diagram">
           <svg viewBox="0 0 600 500" fill="none" style="width:100%;height:auto;">
             <rect x="40" y="20" width="520" height="52" fill="#f5f5f5" stroke="#e0e0e0"/>
             <text x="60" y="42" font-size="9" fill="#999" font-weight="600" letter-spacing="0.1em">STEP 1</text>
             <text x="130" y="42" font-size="12" fill="#1a1a1a" font-weight="500">あなたが指示を出す</text>
-            <text x="60" y="58" font-size="11" fill="#999">「会社紹介のLPを作って。青基調で。フォーム付き」</text>
+            <text x="60" y="58" font-size="11" fill="#999">「新商品のLPを作って。成分と価格を入れて」</text>
             <line x1="300" y1="72" x2="300" y2="92" stroke="#ccc" stroke-width="1.5"/>
             <polygon points="296,92 300,100 304,92" fill="#ccc"/>
             <rect x="40" y="102" width="520" height="52" fill="#1a1a1a"/>
             <text x="60" y="124" font-size="9" fill="#666" font-weight="600" letter-spacing="0.1em">STEP 2</text>
             <text x="130" y="124" font-size="12" fill="#e0e0e0" font-weight="500">AIが計画を立てる</text>
-            <text x="60" y="142" font-size="11" fill="#666">「HTML、CSS、JSが必要だな…」</text>
+            <text x="60" y="142" font-size="11" fill="#666">「HTML、CSS、画像配置が必要だな…」</text>
             <text x="510" y="142" font-size="9" fill="#666" font-weight="500" text-anchor="end" letter-spacing="0.06em">SERVER</text>
             <line x1="300" y1="154" x2="300" y2="174" stroke="#ccc" stroke-width="1.5"/>
             <polygon points="296,174 300,182 304,174" fill="#ccc"/>
@@ -85,14 +80,14 @@
             <rect x="40" y="266" width="520" height="52" fill="#fff" stroke="#e0e0e0"/>
             <text x="60" y="288" font-size="9" fill="#999" font-weight="600" letter-spacing="0.1em">STEP 4</text>
             <text x="130" y="288" font-size="12" fill="#1a1a1a" font-weight="500">ファイルを作成・編集</text>
-            <text x="60" y="306" font-size="11" fill="#999">index.html、style.css、script.jsを作成</text>
+            <text x="60" y="306" font-size="11" fill="#999">index.html、style.cssを作成</text>
             <text x="510" y="306" font-size="9" fill="#ccc" font-weight="500" text-anchor="end" letter-spacing="0.06em">YOUR PC</text>
             <line x1="300" y1="318" x2="300" y2="338" stroke="#ccc" stroke-width="1.5"/>
             <polygon points="296,338 300,346 304,338" fill="#ccc"/>
             <rect x="40" y="348" width="520" height="52" fill="#fff" stroke="#e0e0e0"/>
             <text x="60" y="370" font-size="9" fill="#999" font-weight="600" letter-spacing="0.1em">STEP 5</text>
             <text x="130" y="370" font-size="12" fill="#1a1a1a" font-weight="500">動作確認・修正</text>
-            <text x="60" y="388" font-size="11" fill="#999">サーバー起動 → エラー確認 → 自分で修正 → 再確認…</text>
+            <text x="60" y="388" font-size="11" fill="#999">プレビュー → エラーがあれば自分で修正 → 再確認…</text>
             <text x="510" y="388" font-size="9" fill="#ccc" font-weight="500" text-anchor="end" letter-spacing="0.06em">YOUR PC</text>
             <line x1="300" y1="400" x2="300" y2="420" stroke="#ccc" stroke-width="1.5"/>
             <polygon points="296,420 300,428 304,420" fill="#ccc"/>
@@ -102,190 +97,168 @@
             <text x="280" y="452" font-size="11" fill="#999">「できました。プレビューはここで見えます」</text>
           </svg>
         </div>
-        <div class="info-box info-box-yellow">
+        <div class="info-box">
           <div class="info-box-label">核心</div>
-          <p>STEP 2〜5がぐるぐるループしている。サーバーで考えて、PCで実行して、結果を見て、また考えて…これが数十回〜数百回繰り返される。チャットAIは1往復。エージェントはこのループを自動で回す。</p>
+          <p>STEP 2〜5がループしている。サーバーで考えて、PCで実行して、結果を見て、また考えて…これが数十回〜数百回繰り返される。チャットAIは1往復。エージェントはこのループを自動で回す。</p>
         </div>
-        <h3>許可を求めてくるタイミング</h3>
-        <pre class="code-block code-block-light">勝手にやること → ファイルの読み書き
+        <h3>「許可」のタイミング</h3>
+        <pre class="code-block code-block-light">勝手にやること   → ファイルの読み書き
 確認してくること → コマンド実行、ファイル削除</pre>
         <div class="info-box info-box-red">
           <div class="info-box-label">重要</div>
-          <p>この確認画面を読まずにOK連打すると、セキュリティラインが無くなる。</p>
+          <p>確認画面を読まずにOK連打すると、セキュリティラインがなくなる。内容を確認してからOKする癖をつける。</p>
         </div>
       </section>
 
       <section id="rules" class="content-section">
         <div class="section-header">
           <span class="section-number">3-2</span>
-          <h2>ルールとメモリ ― AIに「やり方」を教える</h2>
-          <span class="section-time">20分</span>
+          <h2>ルールファイル ― AIに「うちのやり方」を教える</h2>
+          <span class="section-time">15分</span>
         </div>
-        <p>チャットAIで毎回同じことを説明するの、面倒じゃないですか？ AIエージェントにはこれを解決する仕組みがある。</p>
-        <h3>実態を見せる</h3>
+        <p>チャットAIでは毎回「フォントはこれ」「色はこれ」「日本語で書いて」と指示し直す必要がある。AIエージェントにはこれを一発で解決する仕組みがある。</p>
         <pre class="code-block code-block-light">my-project/
 ├── index.html
 ├── style.css
-└── CLAUDE.md    ← これ！ ただのテキストファイル</pre>
-        <p>CLAUDE.mdを実際に開いて中身を見せる。</p>
-        <pre class="code-block code-block-light"># プロジェクトルール
+└── CLAUDE.md    ← ただのテキストファイル</pre>
+        <p>CLAUDE.mdの中身はこういうもの。</p>
+        <pre class="code-block"># ブランドルール
+- ブランド名は「〇〇」表記で統一
+- メインカラーは#1a73e8、サブカラーは#f5f5f5
 - フォントはNoto Sans JPを使う
-- メインカラーは#1a73e8
-- ボタンは角丸8px</pre>
-        <div class="info-box info-box-green">
-          <div class="info-box-label">デモ（5分）</div>
-          <p>1. ルールなしで「ボタンを作って」→ 適当なスタイル / 2. CLAUDE.mdにルール追加 / 3. もう一度「ボタンを作って」→ ルール通りのスタイル</p>
-        </div>
-        <h3>「学習」ではなく「マニュアル」</h3>
+- トーンは「親しみやすく、でも安っぽくない」
+- 価格は税込表記
+- 「お客様」ではなく「あなた」で呼びかける</pre>
+        <p>魔法ではない。テキストファイルにルールを書いて、AIに毎回読ませているだけ。新人にマニュアルを渡すのと同じ仕組み。</p>
         <table class="content-table">
           <thead>
-            <tr>
-              <th></th>
-              <th>チャットAI</th>
-              <th>AIエージェントのルール</th>
-            </tr>
+            <tr><th></th><th>チャットAI</th><th>AIエージェントのルール</th></tr>
           </thead>
           <tbody>
-            <tr>
-              <td>仕組み</td>
-              <td>会話の中で覚えている</td>
-              <td>テキストファイルに書いてある</td>
-            </tr>
-            <tr>
-              <td>次の会話</td>
-              <td>忘れている</td>
-              <td>ファイルがある限り有効</td>
-            </tr>
-            <tr>
-              <td>チームで共有</td>
-              <td>できない</td>
-              <td>ファイルを渡すだけ</td>
-            </tr>
-            <tr>
-              <td>中身の確認</td>
-              <td>難しい</td>
-              <td>ファイルを開けば全部見える</td>
-            </tr>
+            <tr><td>仕組み</td><td>会話の中で覚えている</td><td>テキストファイルに書いてある</td></tr>
+            <tr><td>次の会話</td><td>忘れている</td><td>ファイルがある限り有効</td></tr>
+            <tr><td>チームで共有</td><td>できない</td><td>ファイルを渡すだけ</td></tr>
+            <tr><td>中身の確認</td><td>難しい</td><td>ファイルを開けば全部見える</td></tr>
           </tbody>
         </table>
-        <h3>ルールの範囲（スコープ）</h3>
-        <pre class="code-block code-block-light">グローバルルール（PC全体に適用）
-  └─ プロジェクトルール（このフォルダだけ）
-       └─ 会話中の指示（今の会話だけ）</pre>
+        <p>AIが賢くなったのではなく、毎回マニュアルを読んでから仕事している。だから中身は誰でも確認できるし、書き換えられる。</p>
+      </section>
+
+      <section id="practice-newsletter" class="content-section">
+        <div class="section-header">
+          <span class="section-number">3-3</span>
+          <h2>実践①: メルマガのトンマナをルール化する</h2>
+          <span class="section-time">15分</span>
+        </div>
+        <p>ここから手を動かす。自社で過去に配信したメルマガを使って、ブランドのトンマナをAIに覚えさせる。</p>
+        <pre class="code-block">ステップ:
+
+1. 作業フォルダを作る
+   mkdir newsletter-rules && cd newsletter-rules
+
+2. 過去のメルマガを2〜3本、テキストファイルとして保存する
+   → sample-1.txt, sample-2.txt, sample-3.txt
+
+3. Claude Codeに指示する:
+   「このフォルダにあるメルマガのサンプルを読んで、
+    文体・トンマナ・よく使う表現・NGワードを分析して、
+    CLAUDE.md にブランドガイドラインとしてまとめて」
+
+4. AIが生成したCLAUDE.mdを確認する
+   → 「この表現は違うな」「この部分は合ってる」を自分で判断
+
+5. CLAUDE.mdを修正・追記する
+   → 自分で直してもいいし、AIに「〇〇を追加して」と指示してもいい
+
+6. ルールが入った状態で、新しいメルマガの下書きを依頼する
+   → 「来月の新商品キャンペーンのメルマガ本文を書いて」
+   → ルールなしの出力と比較してみる</pre>
+        <h3>確認ポイント</h3>
+        <ul>
+          <li>ルールなしの出力 → 汎用的でどのブランドにも当てはまる文面</li>
+          <li>ルールありの出力 → 自社のトンマナに沿った文面</li>
+        </ul>
+        <p>この差が「ルールファイルの効果」。第1回で作ったページのスクショと今回の出力を比べると、精度の違いが実感できる。</p>
       </section>
 
       <section id="mcp" class="content-section">
         <div class="section-header">
-          <span class="section-number">3-3</span>
+          <span class="section-number">3-4</span>
           <h2>MCP ― AIの道具箱を1つずつ組み立てる</h2>
-          <span class="section-time">15分</span>
+          <span class="section-time">10分</span>
         </div>
-        <h3>素のClaude Code</h3>
         <pre class="code-block code-block-light">素のClaude Code:
-  - ファイルを読む
-  - ファイルを書く
-  - コマンドを実行する
+  ファイルを読む / ファイルを書く / コマンドを実行する
   → これだけ。外部サービスとの連携はゼロ。</pre>
-        <p>今の状態だと、AIはPCの中のファイルしか触れない。外の世界と繋がっていない。</p>
-        <h3>MCPで道具を追加する</h3>
+        <p>今の状態だと、AIはPCの中のファイルしか触れない。外部サービスと繋げるのがMCP。</p>
         <pre class="code-block code-block-light">Google Sheets MCPを追加 → スプレッドシートを読み書きできるようになる
 Web Search MCPを追加   → Web検索ができるようになる
 Slack MCPを追加        → Slackに投稿できるようになる</pre>
-        <div class="info-box info-box-yellow">
-          <div class="info-box-label">ポイント</div>
-          <p>App Storeで1つずつアプリを入れるのと同じ。MCPを1個入れたら全機能が使えるわけじゃない。1つずつ。だからリスクも1つずつコントロールできる。</p>
-        </div>
+        <p>App Storeで1つずつアプリを入れるのと同じ。全部最初から入っているわけではない。</p>
+        <h3>道具ごとに「できること」が決まっている</h3>
+        <pre class="code-block code-block-light">Google Sheets MCP:
+  ✅ スプレッドシートの読み書き
+  ❌ Gmailの送信（これは別のMCP）
+  ❌ Googleドキュメント（これも別）</pre>
+        <p>MCPを1個入れたら全機能が使えるわけではない。1つずつ追加する。だからリスクも1つずつコントロールできる。</p>
       </section>
 
-      <section id="case-study" class="content-section">
-        <div class="section-header">
-          <span class="section-number">3-4</span>
-          <h2>実例で理解する：60社の会計データ処理</h2>
-          <span class="section-time">10分</span>
-        </div>
-        <p>ある税理士がClaude Codeで60社の仕訳を毎晩自動処理している話。</p>
-        <div class="info-box info-box-blue">
-          <div class="info-box-label">参加者に聞く</div>
-          <p>「60社の会計データをAIで処理…これ、個人情報的に大丈夫だと思いますか？」</p>
-        </div>
-        <h3>データの流れ</h3>
-        <div class="diagram">
-          <svg viewBox="0 0 560 260" fill="none" style="width:100%;height:auto;">
-            <rect x="30" y="58" width="120" height="52" fill="#f5f5f5" stroke="#e0e0e0"/>
-            <text x="90" y="82" font-size="12" fill="#1a1a1a" font-weight="500" text-anchor="middle">freee</text>
-            <text x="90" y="98" font-size="10" fill="#999" text-anchor="middle">会計データ</text>
-            <line x1="150" y1="78" x2="200" y2="78" stroke="#ccc" stroke-width="1.5"/>
-            <polygon points="200,74 208,78 200,82" fill="#ccc"/>
-            <rect x="210" y="38" width="160" height="92" fill="#fff" stroke="#1a1a1a" stroke-width="1.5"/>
-            <text x="218" y="56" font-size="9" fill="#999" font-weight="600" letter-spacing="0.08em">YOUR PC</text>
-            <text x="290" y="80" font-size="12" fill="#1a1a1a" font-weight="500" text-anchor="middle">キーワード辞書</text>
-            <text x="290" y="96" font-size="10" fill="#999" text-anchor="middle">で自動分類</text>
-            <text x="290" y="116" font-size="10" fill="#999" text-anchor="middle">（ローカル処理）</text>
-            <line x1="200" y1="92" x2="150" y2="92" stroke="#ccc" stroke-width="1.5"/>
-            <polygon points="150,88 142,92 150,96" fill="#ccc"/>
-            <line x1="290" y1="130" x2="290" y2="170" stroke="#ccc" stroke-width="1.5"/>
-            <polygon points="286,170 290,178 294,170" fill="#ccc"/>
-            <rect x="210" y="180" width="160" height="52" fill="#1a1a1a"/>
-            <text x="290" y="206" font-size="12" fill="#e0e0e0" font-weight="500" text-anchor="middle">Anthropic</text>
-            <text x="290" y="222" font-size="10" fill="#666" text-anchor="middle">判定できなかった分だけ</text>
-            <line x1="250" y1="180" x2="250" y2="130" stroke="#ccc" stroke-width="1.5" stroke-dasharray="4,3"/>
-            <rect x="420" y="44" width="120" height="52" fill="#f5f5f5"/>
-            <text x="480" y="68" font-size="20" fill="#1a1a1a" font-weight="600" text-anchor="middle">80%</text>
-            <text x="480" y="86" font-size="10" fill="#999" text-anchor="middle">PC内で完結</text>
-            <rect x="420" y="184" width="120" height="52" fill="#f5f5f5"/>
-            <text x="480" y="208" font-size="20" fill="#1a1a1a" font-weight="600" text-anchor="middle">20%</text>
-            <text x="480" y="226" font-size="10" fill="#999" text-anchor="middle">APIに送信</text>
-          </svg>
-        </div>
-        <p>全部のデータがAIに行っているわけじゃない。8割はPC内のキーワード辞書で処理。Anthropicに送るのは判定できなかった2割だけ。しかもAPIで送ったデータはモデルの学習には使われない。</p>
-        <h3>覚えてほしいこと</h3>
-        <ul>
-          <li>「AIで処理 ＝ 全データがAI会社に行く」ではない</li>
-          <li>データの流れを設計して、送る範囲を最小限にできる</li>
-          <li>APIとチャットではデータの扱いが違う</li>
-        </ul>
-      </section>
-
-      <section id="quiz" class="content-section">
+      <section id="practice-dm" class="content-section">
         <div class="section-header">
           <span class="section-number">3-5</span>
-          <h2>振り返りクイズ</h2>
-          <span class="section-time">5分</span>
+          <h2>実践②: DMチラシの素材を作ってみる</h2>
+          <span class="section-time">10分</span>
+        </div>
+        <p>学んだルールファイルを活用して、もう1つ実務寄りのワークに取り組む。</p>
+        <pre class="code-block">ステップ:
+
+1. 先ほどのフォルダにDM用の素材情報を追加する
+   → product-info.txt に商品名、特徴、価格、ターゲット層を書く
+
+2. Claude Codeに指示する:
+   「product-info.txt の情報を使って、
+    DMチラシに使うキャッチコピー3案と、
+    本文テキスト（200文字以内）を作って。
+    CLAUDE.md のブランドガイドラインに従って。」
+
+3. 出力を確認する
+   → トンマナがブランドに合っているか
+   → 商品情報が正確に反映されているか
+
+4. 修正指示を出す
+   → 「2案目のコピーをもう少しカジュアルにして」
+   → 「価格の表記を税込に変えて」</pre>
+        <p>ルールファイルがあるから、毎回ゼロから説明しなくていい。修正指示も「もう少しカジュアルに」程度で伝わる。</p>
+      </section>
+
+      <section id="review" class="content-section">
+        <div class="section-header">
+          <span class="section-number">3-6</span>
+          <h2>振り返り</h2>
         </div>
         <div class="quiz-item">
           <div class="quiz-question">Q1: CLAUDE.mdの正体は？</div>
-          <div class="quiz-answer">A: ただのテキストファイル。AIに毎回読ませる「業務マニュアル」。</div>
+          <div class="quiz-answer">テキストファイル。AIに毎回読ませる「ブランドマニュアル」。</div>
         </div>
         <div class="quiz-item">
           <div class="quiz-question">Q2: MCPを追加するとどうなる？</div>
-          <div class="quiz-answer">A: AIの道具箱に新しい道具が1つ追加される。できることが増えるが、アクセス範囲も広がる。</div>
-        </div>
-        <div class="quiz-item">
-          <div class="quiz-question">Q3: APIで送信したデータはAIの学習に使われる？</div>
-          <div class="quiz-answer">A: 使われない（各社の利用規約に明記）。ブラウザのチャットとは別。</div>
+          <div class="quiz-answer">AIの道具箱に新しい道具が1つ増える。できることが広がるが、アクセス範囲も広がる。</div>
         </div>
       </section>
 
-      <section id="homework" class="homework-section">
-        <h2>次回までの宿題</h2>
+      <section class="homework-section">
+        <h2>宿題</h2>
         <div class="homework-item">
-          <h3>宿題① ルールファイルを書いてみよう（紙でOK）</h3>
-          <p>自分の業務で「AIに伝えたいルール」を5つ書き出してください。</p>
-          <ul>
-            <li>社名は「株式会社○○」で統一</li>
-            <li>資料のフォントはメイリオ</li>
-            <li>金額は税込表記</li>
-            <li>顧客名はダミーに置き換えて使う</li>
-            <li>敬語は「です/ます」調</li>
-          </ul>
+          <h3>CLAUDE.mdのルールを見返して「足りない項目」を3つ以上追加する</h3>
+          <p>今日作ったルールファイルを改善する。使い続けてこそ精度が上がる。</p>
         </div>
         <div class="homework-item">
-          <h3>宿題② MCPの必要度を考えよう</h3>
-          <p>第1回の宿題で書いた「AIにやらせたい業務」を見返して、以下のどれに当てはまるか考えてください。</p>
+          <h3>「AIで自動化したい業務」を1つ具体的に決めてくる</h3>
+          <p>以下の情報を整理しておく:</p>
           <ul>
-            <li>A. PCの中のファイル操作だけでできそう → MCP不要</li>
-            <li>B. 外部サービスが必要 → MCPが必要</li>
-            <li>C. よく分からない → 第4回で一緒に考えましょう</li>
+            <li>何をやる業務か</li>
+            <li>今どんなツール（スプレッドシート、メール、EC管理画面…）を使っているか</li>
+            <li>その業務で扱うデータに個人情報は含まれるか</li>
           </ul>
         </div>
       </section>
@@ -293,11 +266,11 @@ Slack MCPを追加        → Slackに投稿できるようになる</pre>
       <nav class="session-nav-footer">
         <a href="session-2.html" class="session-nav-link">
           <span class="session-nav-link-label">前の講座</span>
-          <span class="session-nav-link-title">第2回: PCの裏側を知ろう</span>
+          <span class="session-nav-link-title">第2回: PCの仕組みを理解する</span>
         </a>
         <a href="session-4.html" class="session-nav-link next">
           <span class="session-nav-link-label">次の講座</span>
-          <span class="session-nav-link-title">第4回: 安全に使って共有する</span>
+          <span class="session-nav-link-title">第4回: セキュリティと応用設計</span>
         </a>
       </nav>
     </article>

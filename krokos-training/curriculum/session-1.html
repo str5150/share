@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>第1回: AIエージェントって何？ | クロコス AI トレーニング</title>
+  <title>第1回: AIエージェントを知る | Krokos AI Training</title>
   <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
@@ -19,72 +19,59 @@
   <main class="session-layout">
     <aside class="session-sidebar">
       <ul class="sidebar-nav">
-        <li><a href="#icebreak">アイスブレイク</a></li>
-        <li><a href="#ai-types">生成AIの種類</a></li>
+        <li><a href="#ai-types">生成AIの整理</a></li>
         <li><a href="#chat-vs-agent">チャットAI vs エージェント</a></li>
         <li><a href="#tools">ツールの種類</a></li>
-        <li><a href="#quiz">振り返りクイズ</a></li>
-        <li><a href="#homework">宿題</a></li>
+        <li><a href="#hands-on">実践: 最初の指示</a></li>
+        <li><a href="#review">振り返り</a></li>
       </ul>
       <ul class="sidebar-sessions">
-        <li><a href="session-1.html" class="current">第1回: AIエージェントって何？</a></li>
-        <li><a href="session-2.html">第2回: PCの裏側を知ろう</a></li>
-        <li><a href="session-3.html">第3回: AIをカスタマイズする</a></li>
-        <li><a href="session-4.html">第4回: 安全に使って共有する</a></li>
+        <li><a href="session-1.html" class="current">第1回: AIエージェントを知る</a></li>
+        <li><a href="session-2.html">第2回: PCの仕組みを理解する</a></li>
+        <li><a href="session-3.html">第3回: ブランド業務に適用する</a></li>
+        <li><a href="session-4.html">第4回: セキュリティと応用設計</a></li>
       </ul>
     </aside>
 
     <article class="session-content">
       <header class="session-header">
         <div class="session-header-number">SESSION 01</div>
-        <h1>AIエージェントって何？</h1>
-        <div class="session-header-meta">60分 ｜ 座学 + デモ</div>
+        <h1>AIエージェントを知る</h1>
+        <div class="session-header-meta">60分 ｜ 座学 + 実践</div>
       </header>
 
       <div class="goal-box">
         <div class="goal-box-label">今日のゴール</div>
-        <p>「チャットAIとAIエージェントの違い」を自分の言葉で説明できるようになる</p>
+        <p>チャットAIとAIエージェントの違いを体感し、実際に1つ指示を出してみる</p>
       </div>
-
-      <section id="icebreak" class="content-section">
-        <div class="section-header">
-          <span class="section-number">1-1</span>
-          <h2>アイスブレイク</h2>
-          <span class="section-time">5分</span>
-        </div>
-        <p>参加者に聞いてみる。</p>
-        <ul>
-          <li>普段どんなAIを使っている？（ChatGPT? Claude? Copilot?）</li>
-          <li>AIに何をお願いしている？（メール下書き？ リサーチ？ 翻訳？）</li>
-          <li>AIに「これできたらいいのに」と思ったことは？</li>
-        </ul>
-      </section>
 
       <section id="ai-types" class="content-section">
         <div class="section-header">
-          <span class="section-number">1-2</span>
-          <h2>生成AIの種類をざっくり知る</h2>
+          <span class="section-number">1-1</span>
+          <h2>生成AIの整理</h2>
           <span class="section-time">10分</span>
         </div>
-        <h3>伝えるポイント</h3>
-        <ul>
-          <li>GPT / Claude / Gemini / Llama ― 開発元が違うだけで、全部「めっちゃ賢い新人」</li>
-          <li>性格が違う。GPTは器用、Claudeは慎重、Geminiは検索が得意</li>
-          <li>「どのAIを使うか」より「どう使うか」の方がずっと大事</li>
-        </ul>
-        <div class="info-box info-box-blue">
-          <div class="info-box-label">参加者に聞いてみる</div>
-          <p>「みなさんが使ったことあるAI、何かありますか？ 使い心地の違い、感じたことあります？」</p>
-        </div>
+        <p>AIの種類が多すぎて混乱しがちだが、違いはシンプル。</p>
+        <table class="content-table">
+          <thead>
+            <tr><th>AI</th><th>開発元</th><th>ひとことで言うと</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>GPT</td><td>OpenAI</td><td>万能型。何でもそこそこやる</td></tr>
+            <tr><td>Claude</td><td>Anthropic</td><td>慎重で丁寧。長文に強い</td></tr>
+            <tr><td>Gemini</td><td>Google</td><td>検索との連携が強い</td></tr>
+            <tr><td>Llama</td><td>Meta</td><td>オープンソース。自社サーバーで動かせる</td></tr>
+          </tbody>
+        </table>
+        <p>覚えることは1つだけ。「どのAIを使うか」より「どう使うか」が重要。この講座ではClaude（Anthropic）を使うが、考え方はどのAIにも応用できる。</p>
       </section>
 
       <section id="chat-vs-agent" class="content-section">
         <div class="section-header">
-          <span class="section-number">1-3</span>
+          <span class="section-number">1-2</span>
           <h2>チャットAI vs AIエージェント</h2>
-          <span class="section-time">20分</span>
+          <span class="section-time">15分</span>
         </div>
-        <p>ここが第1回の核心。</p>
         <div class="diagram">
           <svg viewBox="0 0 600 340" fill="none" style="width:100%;height:auto;">
             <text x="40" y="28" font-size="10" fill="#999" font-weight="600" letter-spacing="0.1em">CHAT AI</text>
@@ -111,10 +98,10 @@
             <text x="90" y="232" font-size="12" fill="#1a1a1a" font-weight="500" text-anchor="middle">あなた</text>
             <line x1="140" y1="227" x2="178" y2="227" stroke="#ccc" stroke-width="1.5"/>
             <polygon points="178,223 186,227 178,231" fill="#ccc"/>
-            <rect x="188" y="202" width="120" height="50" fill="#f5f5f5" stroke="#e0e0e0"/>
-            <text x="248" y="224" font-size="12" fill="#1a1a1a" font-weight="500" text-anchor="middle">「LPを作って」</text>
-            <text x="248" y="240" font-size="11" fill="#999" text-anchor="middle">日本語で指示</text>
-            <line x1="308" y1="227" x2="346" y2="227" stroke="#ccc" stroke-width="1.5"/>
+            <rect x="188" y="202" width="140" height="50" fill="#f5f5f5" stroke="#e0e0e0"/>
+            <text x="258" y="224" font-size="12" fill="#1a1a1a" font-weight="500" text-anchor="middle">「商品LP作って」</text>
+            <text x="258" y="240" font-size="11" fill="#999" text-anchor="middle">日本語で指示</text>
+            <line x1="328" y1="227" x2="346" y2="227" stroke="#ccc" stroke-width="1.5"/>
             <polygon points="346,223 354,227 346,231" fill="#ccc"/>
             <rect x="356" y="196" width="204" height="108" fill="#1a1a1a"/>
             <text x="458" y="222" text-anchor="middle" font-size="11" fill="#e0e0e0" font-weight="500">AIが自動で作業</text>
@@ -125,118 +112,96 @@
             <text x="40" y="330" font-size="11" fill="#999">AIが「手を動かす」。ファイル作成からデバッグまで自動。</text>
           </svg>
         </div>
-        <div class="info-box info-box-green">
-          <div class="info-box-label">デモ（画面共有）5分</div>
-          <p>実際にClaude Codeで「簡単な自己紹介ページを作って」と指示。AIがリアルタイムでファイルを作っていく様子を見せる。</p>
-        </div>
         <h3>RPAとの比較</h3>
         <table class="content-table">
           <thead>
-            <tr>
-              <th></th>
-              <th>RPA</th>
-              <th>AIエージェント</th>
-            </tr>
+            <tr><th></th><th>RPA</th><th>AIエージェント</th></tr>
           </thead>
           <tbody>
-            <tr>
-              <td>たとえると</td>
-              <td>レールの上の電車</td>
-              <td>自分で道を決めるタクシー</td>
-            </tr>
-            <tr>
-              <td>決めたとおりに動く</td>
-              <td>得意</td>
-              <td>そもそも決めなくていい</td>
-            </tr>
-            <tr>
-              <td>想定外のこと</td>
-              <td>止まる</td>
-              <td>自分で考える（たまに間違う）</td>
-            </tr>
-            <tr>
-              <td>指示の出し方</td>
-              <td>フロー図</td>
-              <td>日本語でOK</td>
-            </tr>
+            <tr><td>たとえると</td><td>レールの上の電車</td><td>自分で道を決めるタクシー</td></tr>
+            <tr><td>想定外のこと</td><td>止まる</td><td>自分で考える（たまに間違う）</td></tr>
+            <tr><td>指示の出し方</td><td>フロー図を組む</td><td>日本語で伝える</td></tr>
           </tbody>
         </table>
-        <div class="info-box info-box-yellow">
+        <div class="info-box">
           <div class="info-box-label">ポイント</div>
-          <p>RPAは安心だけど融通が利かない。AIエージェントは融通が利くけど、どこまで走っていいか決めてあげないと危ない。この「範囲を決める」が今後の講座で学ぶこと。</p>
+          <p>RPAは安心だけど融通が利かない。AIエージェントは融通が利くけど、どこまで走っていいか決めてあげないと暴走する可能性がある。「範囲を決める」が今後の講座で学ぶ核心。</p>
         </div>
       </section>
 
       <section id="tools" class="content-section">
         <div class="section-header">
-          <span class="section-number">1-4</span>
+          <span class="section-number">1-3</span>
           <h2>AIエージェントツールの種類</h2>
-          <span class="section-time">10分</span>
+          <span class="section-time">5分</span>
         </div>
-        <p>全部を覚える必要はない。「こういう道具があるんだ」で十分。</p>
         <table class="content-table">
           <thead>
-            <tr>
-              <th>ツール</th>
-              <th>ひとこと</th>
-              <th>たとえると</th>
-            </tr>
+            <tr><th>ツール</th><th>ひとこと</th></tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Claude Code</td>
-              <td>黒い画面で動く。速い</td>
-              <td>腕利きの職人</td>
-            </tr>
-            <tr>
-              <td>Cursor</td>
-              <td>画面付き。変更が見える</td>
-              <td>隣に座る助手</td>
-            </tr>
-            <tr>
-              <td>Devin / Antigravity</td>
-              <td>クラウドで全部やる</td>
-              <td>リモートの外注チーム</td>
-            </tr>
+            <tr><td>Claude Code</td><td>ターミナルで動く。速い。腕利きの職人</td></tr>
+            <tr><td>Cursor</td><td>画面付きエディタ。変更が目に見える。隣に座る助手</td></tr>
+            <tr><td>Devin / Antigravity</td><td>クラウド上で完結。リモートの外注チーム</td></tr>
           </tbody>
         </table>
-        <ul>
-          <li>見た目は違うけど、裏でやっていることは全部同じ（ファイルの読み書き + コマンド実行）</li>
-          <li>この講座で学ぶ考え方は、どのツールにも使える</li>
-        </ul>
+        <p>見た目は違うが、裏でやっていることは全部同じ（ファイルの読み書き + コマンド実行）。この講座で学ぶ考え方は、どのツールにも使える。</p>
       </section>
 
-      <section id="quiz" class="content-section">
+      <section id="hands-on" class="content-section">
+        <div class="section-header">
+          <span class="section-number">1-4</span>
+          <h2>実践: 最初の指示を出してみる</h2>
+          <span class="section-time">20分</span>
+        </div>
+        <p>ここからは実際にClaude Codeを触る。自社ブランドの簡単な商品紹介ページを作ってみる。</p>
+        <pre class="code-block">手順:
+  1. デスクトップに「test-page」フォルダを作る
+  2. Claude Code（またはCursor）をそのフォルダで起動する
+  3. 以下のように指示を出す
+
+指示の例:
+  「シンプルな商品紹介ページを1枚作って。
+   商品名は〇〇（自社の商品名）。
+   特徴を3つ並べて、購入ボタンを置いて。」</pre>
+        <h3>観察ポイント</h3>
+        <ul>
+          <li>AIがファイルを勝手に作成している</li>
+          <li>エラーがあれば自分で直している</li>
+          <li>「許可していいですか？」と聞いてくるタイミングがある</li>
+        </ul>
+        <p>チャットAIなら「こういうHTMLを書いてください」とテキストが返ってくるだけ。エージェントはファイルそのものを作る。この違いを体で覚える。</p>
+      </section>
+
+      <section id="review" class="content-section">
         <div class="section-header">
           <span class="section-number">1-5</span>
-          <h2>振り返りクイズ</h2>
+          <h2>振り返り</h2>
           <span class="section-time">10分</span>
         </div>
         <div class="quiz-item">
-          <div class="quiz-question">Q1: チャットAIとAIエージェントの一番大きな違いは何でしょう？</div>
-          <div class="quiz-answer">A: AIが「自分で手を動かす」こと。ファイルを作ったり、コマンドを実行したりする。</div>
+          <div class="quiz-question">Q1: チャットAIとAIエージェントの一番大きな違いは？</div>
+          <div class="quiz-answer">AIが自分でファイルを作り、コマンドを実行する。「口だけ」ではなく「手を動かす」。</div>
         </div>
         <div class="quiz-item">
-          <div class="quiz-question">Q2: RPAとAIエージェント、どっちが「想定外の対応」に強い？</div>
-          <div class="quiz-answer">A: AIエージェント。ただし、想定外の行動をする可能性があるのでリスク管理が大事。</div>
+          <div class="quiz-question">Q2: RPAとAIエージェント、想定外の対応に強いのは？</div>
+          <div class="quiz-answer">AIエージェント。ただし想定外の行動をする可能性があるのでリスク管理が必要。</div>
         </div>
         <div class="quiz-item">
           <div class="quiz-question">Q3: Claude Code、Cursor、Devinで共通していることは？</div>
-          <div class="quiz-answer">A: 裏ではどれも「ファイルの読み書き + コマンドの実行」をしている。</div>
+          <div class="quiz-answer">裏ではどれも「ファイルの読み書き + コマンドの実行」をしている。</div>
         </div>
       </section>
 
-      <section id="homework" class="homework-section">
-        <h2>次回までの宿題</h2>
+      <section class="homework-section">
+        <h2>宿題</h2>
         <div class="homework-item">
-          <h3>宿題① チャットAIで聞いてみよう</h3>
-          <p>ChatGPTかClaude（ブラウザ版）に「AIエージェントとチャットAIの違いを、小学生にも分かるように教えて」と聞いてみてください。</p>
-          <p>AIの説明を読んで、今日の講座と合っているか確認する。「自分の言葉で説明できるか」が目安。</p>
+          <h3>今日作ったページをスクショで保存する</h3>
+          <p>第3回で比較に使う。ルールなしで作った結果がどう変わるかを確認するため。</p>
         </div>
         <div class="homework-item">
-          <h3>宿題② 自分の業務を1つ思い浮かべよう</h3>
-          <p>「この作業、AIエージェントにやらせたら楽になりそう」と思う業務を1つだけ書き出してください。</p>
-          <p>第3回で「それを実現するには何が必要か」を考えます。大きな業務じゃなくてOK。</p>
+          <h3>「毎回やっている定型作業」を3つ書き出す</h3>
+          <p>メルマガ作成、商品説明文の更新、DM制作、SNS投稿文…など。第3回以降でAI化する対象を選ぶ材料になる。</p>
         </div>
       </section>
 
@@ -244,7 +209,7 @@
         <span></span>
         <a href="session-2.html" class="session-nav-link next">
           <span class="session-nav-link-label">次の講座</span>
-          <span class="session-nav-link-title">第2回: PCの裏側を知ろう</span>
+          <span class="session-nav-link-title">第2回: PCの仕組みを理解する</span>
         </a>
       </nav>
     </article>

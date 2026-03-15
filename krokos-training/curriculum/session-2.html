@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>第2回: PCの裏側を知ろう | クロコス AI トレーニング</title>
+  <title>第2回: PCの仕組みを理解する | Krokos AI Training</title>
   <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
@@ -20,36 +20,30 @@
     <aside class="session-sidebar">
       <ul class="sidebar-nav">
         <li><a href="#terminal">ターミナルとは</a></li>
-        <li><a href="#run">実行と停止</a></li>
+        <li><a href="#run-stop">実行と停止</a></li>
         <li><a href="#homebrew">Homebrew・PATH・bin</a></li>
-        <li><a href="#claude-code">Claude Codeの動作</a></li>
+        <li><a href="#architecture">Claude Codeの仕組み</a></li>
         <li><a href="#api">APIとは</a></li>
-        <li><a href="#quiz">振り返りクイズ</a></li>
-        <li><a href="#homework">宿題</a></li>
+        <li><a href="#review">振り返り</a></li>
       </ul>
       <ul class="sidebar-sessions">
-        <li><a href="session-1.html">第1回: AIエージェントって何？</a></li>
-        <li><a href="session-2.html" class="current">第2回: PCの裏側を知ろう</a></li>
-        <li><a href="session-3.html">第3回: AIをカスタマイズする</a></li>
-        <li><a href="session-4.html">第4回: 安全に使って共有する</a></li>
+        <li><a href="session-1.html">第1回: AIエージェントを知る</a></li>
+        <li><a href="session-2.html" class="current">第2回: PCの仕組みを理解する</a></li>
+        <li><a href="session-3.html">第3回: ブランド業務に適用する</a></li>
+        <li><a href="session-4.html">第4回: セキュリティと応用設計</a></li>
       </ul>
     </aside>
 
     <article class="session-content">
       <header class="session-header">
         <div class="session-header-number">SESSION 02</div>
-        <h1>PCの裏側を知ろう</h1>
+        <h1>PCの仕組みを理解する</h1>
         <div class="session-header-meta">60分 ｜ 座学 + ハンズオン</div>
       </header>
 
       <div class="goal-box">
         <div class="goal-box-label">今日のゴール</div>
-        <p>「ターミナルが何をする場所か」「Claude Codeが自分のPC上で何をしているか」を理解する</p>
-      </div>
-
-      <div class="info-box info-box-blue">
-        <div class="info-box-label">前回の宿題確認（5分）</div>
-        <p>チャットAIに聞いてみた結果を2〜3人にシェアしてもらう</p>
+        <p>ターミナルが何をする場所か、Claude Codeが自分のPC上で何をしているかを理解する</p>
       </div>
 
       <section id="terminal" class="content-section">
@@ -58,35 +52,29 @@
           <h2>ターミナルとは</h2>
           <span class="section-time">15分</span>
         </div>
-        <p>ターミナルを開いて、参加者に「これ、見たことあります？」と聞く。</p>
-        <h3>GUIとの対比</h3>
+        <p>普段はマウスでフォルダを開いたりファイルを削除したりしている。ターミナルは同じことを「文字」でやる場所。</p>
         <pre class="code-block code-block-light">【普段のやり方】                【ターミナルで同じこと】
 フォルダをダブルクリック   →  cd my-project
 ファイル一覧を見る         →  ls
 新しいフォルダを作る       →  mkdir new-folder
 ファイルを削除             →  rm file.txt</pre>
         <p>やっていることは同じ。マウスの代わりに文字で命令するだけ。</p>
-        <div class="info-box info-box-green">
-          <div class="info-box-label">ハンズオン（5分）</div>
-          <pre class="code-block">1. ターミナルを開く（Macなら「ターミナル」アプリ）
+        <h3>ハンズオン: ターミナルを開いて一緒にやってみる</h3>
+        <pre class="code-block">1. ターミナルを開く（Macなら「ターミナル」アプリ）
 2. pwd と打つ → 今いる場所が表示される
 3. ls と打つ  → ファイル一覧が表示される
 4. mkdir test-folder と打つ → フォルダが作られる
-5. ls でもう一度確認 → test-folder が増えている！</pre>
-        </div>
-        <h3>意外と知られていないこと</h3>
-        <pre class="code-block code-block-light">ターミナルでできること:
-  - ファイルのダウンロード（curl）
-  - ソフトのインストール（brew install）
-  - サーバーの起動（npx serve）
-  - GitHubへのアップロード（git push）</pre>
-        <div class="info-box info-box-yellow">
-          <div class="info-box-label">ポイント</div>
-          <p>ターミナルはほぼ何でもできる。AIエージェントがターミナルを使うということは、AIがこれら全部できるということ。だから「何をしていいか」を管理する必要がある。</p>
-        </div>
+5. ls でもう一度確認 → test-folder が増えている</pre>
+        <p>Finderで確認すると、ちゃんとフォルダができている。ターミナルはただの「文字版Finder」。</p>
+        <h3>ターミナルでできること（意外と多い）</h3>
+        <pre class="code-block code-block-light">ファイルのダウンロード（curl）
+ソフトのインストール（brew install）
+サーバーの起動（npx serve）
+GitHubへのアップロード（git push）</pre>
+        <p>AIエージェントがターミナルを使うということは、AIがこれら全部できるということ。だから「何をしていいか」を管理する必要がある。</p>
       </section>
 
-      <section id="run" class="content-section">
+      <section id="run-stop" class="content-section">
         <div class="section-header">
           <span class="section-number">2-2</span>
           <h2>「実行する（Run）」と「止める」</h2>
@@ -96,9 +84,9 @@
   node app.js  ← これで app.js が動く
 
 止める = Ctrl + C
-  サーバーを起動したとき、画面が止まって見える。
-  それは動き続けているだけ。Ctrl + C で止められる。</pre>
-        <p>「実行したけど画面が固まった！」はよくある質問。壊れたのではなく、動き続けているだけ。</p>
+  サーバーを起動したとき、画面が止まって見えることがある。
+  壊れたのではなく、動き続けているだけ。Ctrl + C で止められる。</pre>
+        <p>「実行したけど画面が固まった」はよくあること。フリーズではなく、プログラムが動き続けている状態。</p>
       </section>
 
       <section id="homebrew" class="content-section">
@@ -107,29 +95,29 @@
           <h2>Homebrew・PATH・bin</h2>
           <span class="section-time">10分</span>
         </div>
-        <p>深入りしすぎず、「こういう仕組みがある」と知っておくレベルでOK。</p>
+        <p>深入りは不要。「こういう仕組みがある」と知っておくだけでいい。</p>
         <pre class="code-block code-block-light">Homebrew = ターミナル版のApp Store
-  → brew install node で道具をインストールできる
+  → brew install node でツールをインストールできる
 
-bin = 道具置き場
-  → インストールした道具は /usr/local/bin/ に置かれる
+bin = ツール置き場
+  → インストールしたツールは /usr/local/bin/ などに置かれる
 
-PATH = 道具の探し方リスト
-  → ターミナルで claude と打つと、PATHの場所を順番に探す
+PATH = ツールの探し方リスト
+  → ターミナルで claude と打つと、PATHに書かれた場所を順番に探す
   → 見つからないと「command not found」エラーになる</pre>
-        <div class="info-box info-box-yellow">
-          <div class="info-box-label">覚えなくてOK</div>
-          <p>でもトラブルが起きたとき「あ、PATHの問題かも」と思えるだけで対応が変わる。</p>
+        <div class="info-box">
+          <div class="info-box-label">覚えておくこと</div>
+          <p>「command not found」が出たらPCが壊れたわけではない。ツールが置いてある場所をPCが知らないだけ。トラブル時に「PATHの問題かも」と思えるだけで対応が変わる。</p>
         </div>
       </section>
 
-      <section id="claude-code" class="content-section">
+      <section id="architecture" class="content-section">
         <div class="section-header">
           <span class="section-number">2-4</span>
           <h2>Claude Codeはどこで何をしているのか</h2>
           <span class="section-time">15分</span>
         </div>
-        <p>第2回の核心パート。</p>
+        <p>第2回の核心。</p>
         <div class="diagram">
           <svg viewBox="0 0 600 420" fill="none" style="width:100%;height:auto;">
             <rect x="40" y="30" width="520" height="200" stroke="#ccc" fill="#fff"/>
@@ -153,7 +141,7 @@ PATH = 道具の探し方リスト
         </div>
         <h3>3つのポイント</h3>
         <ol>
-          <li>AIが触るファイルは、あなたのPCの中にある</li>
+          <li>AIが触るファイルは自分のPCの中にある</li>
           <li>AIの頭脳はAnthropicのサーバーにある</li>
           <li>AIに見せた情報はインターネット経由で送信される</li>
         </ol>
@@ -184,65 +172,63 @@ PATH = 道具の探し方リスト
       <section id="api" class="content-section">
         <div class="section-header">
           <span class="section-number">2-5</span>
-          <h2>APIとは？</h2>
+          <h2>APIとは</h2>
           <span class="section-time">5分</span>
         </div>
         <pre class="code-block code-block-light">チャットAI = レストランで食事
-  → お店に行って、注文して、その場で食べる
+  → ブラウザという店に行って、その場で質問して回答をもらう
 
 Claude Code = 出前
-  → キッチン（PC）から電話（API）して料理（回答）を届けてもらう
-  → 届いた料理を自分で好きにアレンジできる</pre>
-        <p><strong>APIキー = 出前の会員番号。漏れたら他人に使われて課金される。パスワードと同じ扱い。</strong></p>
+  → 自分のPC（キッチン）からAPI（電話）で回答（料理）を届けてもらう
+  → 届いた結果を自分のPCで好きに使える</pre>
+        <p>APIキーは出前の会員番号。漏れたら他人に使われて課金が発生する。パスワードと同じ扱い。</p>
       </section>
 
-      <section id="quiz" class="content-section">
+      <section id="review" class="content-section">
         <div class="section-header">
           <span class="section-number">2-6</span>
-          <h2>振り返りクイズ</h2>
-          <span class="section-time">5分</span>
+          <h2>振り返り</h2>
+          <span class="section-time">10分</span>
         </div>
         <div class="quiz-item">
           <div class="quiz-question">Q1: ターミナルの ls コマンドは何をする？</div>
-          <div class="quiz-answer">A: ファイルの一覧を表示する（FinderやExplorerで中身を見るのと同じ）</div>
+          <div class="quiz-answer">ファイルの一覧を表示する。FinderやExplorerで中身を見るのと同じ。</div>
         </div>
         <div class="quiz-item">
-          <div class="quiz-question">Q2: Claude Codeを起動するとき、なぜ「作業フォルダ」が重要？</div>
-          <div class="quiz-answer">A: AIが触れるファイルの範囲が決まるから。顧客データが入ったフォルダで起動すると危険。</div>
+          <div class="quiz-question">Q2: Claude Codeを起動するとき「作業フォルダ」が重要な理由は？</div>
+          <div class="quiz-answer">AIが触れるファイルの範囲が決まるから。顧客データが入ったフォルダで起動すると危険。</div>
         </div>
         <div class="quiz-item">
-          <div class="quiz-question">Q3: 「command not found」エラーが出たら何が起きている？</div>
-          <div class="quiz-answer">A: PATHに登録された場所にプログラムがない。PCが壊れたわけではない。</div>
+          <div class="quiz-question">Q3: 「command not found」エラーの意味は？</div>
+          <div class="quiz-answer">PATHに登録された場所にプログラムがない。PCが壊れたわけではない。</div>
         </div>
       </section>
 
-      <section id="homework" class="homework-section">
-        <h2>次回までの宿題</h2>
+      <section class="homework-section">
+        <h2>宿題</h2>
         <div class="homework-item">
-          <h3>宿題① ターミナルで遊んでみよう</h3>
+          <h3>ターミナルでコマンドを打ってみる</h3>
           <pre class="code-block">pwd           ← 今いる場所を表示
 ls            ← ファイル一覧
 cd Desktop    ← デスクトップに移動
-ls            ← デスクトップの中身を確認
-mkdir ai-test ← 「ai-test」フォルダを作る
-cd ai-test    ← そのフォルダに入る
+mkdir ai-work ← 「ai-work」フォルダを作る
+cd ai-work    ← そのフォルダに入る
 pwd           ← 場所が変わったことを確認</pre>
-          <p>怖くない！ただの文字版Finder。うまくいかなくても大丈夫。エラーメッセージをスクショして持ってきて。</p>
         </div>
         <div class="homework-item">
-          <h3>宿題② 「自分のPCのどこにAIを入れていいか」を考えよう</h3>
-          <p>自分のPCのフォルダ構成を眺めて、「このフォルダならAIに触らせても安全だな」「このフォルダは絶対ダメだな」を1つずつ書き出してください。</p>
+          <h3>「AIに触らせても安全なフォルダ」と「絶対ダメなフォルダ」を書き出す</h3>
+          <p>自分のPCのフォルダ構成を見て、それぞれ1つずつ書き出す。これが「作業フォルダを分ける」の実践になる。</p>
         </div>
       </section>
 
       <nav class="session-nav-footer">
         <a href="session-1.html" class="session-nav-link">
           <span class="session-nav-link-label">前の講座</span>
-          <span class="session-nav-link-title">第1回: AIエージェントって何？</span>
+          <span class="session-nav-link-title">第1回: AIエージェントを知る</span>
         </a>
         <a href="session-3.html" class="session-nav-link next">
           <span class="session-nav-link-label">次の講座</span>
-          <span class="session-nav-link-title">第3回: AIをカスタマイズする</span>
+          <span class="session-nav-link-title">第3回: ブランド業務に適用する</span>
         </a>
       </nav>
     </article>
