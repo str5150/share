@@ -53,25 +53,43 @@
           <span class="section-time">15分</span>
         </div>
         <p>普段はマウスでフォルダを開いたりファイルを削除したりしている。ターミナルは同じことを「文字」でやる場所。</p>
-        <pre class="code-block code-block-light">【普段のやり方】                【ターミナルで同じこと】
-フォルダをダブルクリック   →  cd my-project
-ファイル一覧を見る         →  ls
-新しいフォルダを作る       →  mkdir new-folder
-ファイルを削除             →  rm file.txt</pre>
-        <p>やっていることは同じ。マウスの代わりに文字で命令するだけ。</p>
-        <h3>ハンズオン: ターミナルを開いて一緒にやってみる</h3>
+        <pre class="code-block code-block-light">【Finderでやっていること】            【ターミナルで同じこと】
+フォルダをダブルクリックして開く  →  cd my-project
+フォルダの中身を見る              →  ls
+右クリック→「新規フォルダ」      →  mkdir new-folder
+ファイルをゴミ箱にドラッグ        →  rm file.txt</pre>
+        <p>やっていることは全く同じ。違いは「マウスで操作するか、文字で命令するか」だけ。</p>
+        <h3>ハンズオン: ターミナルとFinderを並べて確認する</h3>
+        <p>ターミナルとFinderを横に並べて、両方で同じ場所を見ながらやるとわかりやすい。</p>
         <pre class="code-block">1. ターミナルを開く（Macなら「ターミナル」アプリ）
-2. pwd と打つ → 今いる場所が表示される
-3. ls と打つ  → ファイル一覧が表示される
-4. mkdir test-folder と打つ → フォルダが作られる
-5. ls でもう一度確認 → test-folder が増えている</pre>
-        <p>Finderで確認すると、ちゃんとフォルダができている。ターミナルはただの「文字版Finder」。</p>
-        <h3>ターミナルでできること（意外と多い）</h3>
-        <pre class="code-block code-block-light">ファイルのダウンロード（curl）
-ソフトのインストール（brew install）
-サーバーの起動（npx serve）
-GitHubへのアップロード（git push）</pre>
-        <p>AIエージェントがターミナルを使うということは、AIがこれら全部できるということ。だから「何をしていいか」を管理する必要がある。</p>
+
+2. pwd と打つ
+   → 「/Users/自分の名前」と表示される
+   → これはFinderの「ホーム」フォルダと同じ場所
+
+3. ls と打つ
+   → Desktop, Documents, Downloads... と表示される
+   → Finderのホームフォルダを開くと、同じフォルダが並んでいる
+
+4. cd Desktop と打つ
+   → デスクトップに移動した
+   （Finderでデスクトップフォルダを開いたのと同じ）
+
+5. mkdir ai-test と打つ
+   → Finderのデスクトップを見ると「ai-test」フォルダが出現している
+
+6. ls と打つ
+   → ai-test が一覧に入っている</pre>
+        <p>ターミナルで打ったコマンドの結果が、そのままFinderに反映されている。逆もそうで、Finderでフォルダを作ればターミナルの <code>ls</code> にも出る。同じPCの同じファイルを、別の窓から操作しているだけ。</p>
+        <div class="info-box">
+          <div class="info-box-label">ポイント</div>
+          <p>AIエージェントは、このターミナルを使って作業する。<code>mkdir</code> でフォルダを作り、ファイルを書き込み、コマンドを実行する。AIがターミナルを使うということは、Finderでできることを全部自動でやれるということ。だから「何をしていいか」を管理する必要がある。</p>
+        </div>
+        <h3>ターミナルでできること（Finder以上のことも）</h3>
+        <pre class="code-block code-block-light">ファイルのダウンロード（curl）    ← ブラウザを開かなくてもDLできる
+ソフトのインストール（brew install）← App Storeを開かなくてもインストール
+サーバーの起動（npx serve）       ← 作ったページをブラウザで確認
+GitHubへのアップロード（git push） ← ファイルをクラウドに送信</pre>
       </section>
 
       <section id="run-stop" class="content-section">
