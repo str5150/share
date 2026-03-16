@@ -4,983 +4,653 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
-  <title>クビレアーティスト | 事業計画たたき台</title>
+  <title>クビレアーティスト 事業計画整理</title>
   <style>
     :root {
-      --bg: #f7f1e8;
-      --surface: rgba(255, 252, 247, 0.92);
-      --surface-strong: rgba(255, 252, 247, 0.98);
-      --ink: #211814;
-      --muted: #6f6259;
-      --line: #dccfc2;
-      --accent: #bb613f;
-      --accent-deep: #7b3e29;
-      --accent-soft: #eed6ca;
-      --gold: #c79a46;
-      --green: #295e4f;
-      --shadow: 0 24px 60px rgba(70, 43, 29, 0.08);
-      --radius: 28px;
+      --bg: #f6f3ee;
+      --paper: #ffffff;
+      --ink: #1f1a17;
+      --muted: #6d655e;
+      --line: #e4ddd5;
+      --soft: #f8f5f0;
+      --accent: #9c4f34;
+      --accent-soft: #f3ebe6;
+      --warn: #7a3f2b;
+      --good: #245848;
     }
 
     * { box-sizing: border-box; }
 
-    html { scroll-behavior: smooth; }
-
     body {
       margin: 0;
+      background: var(--bg);
       color: var(--ink);
-      background:
-        radial-gradient(circle at 10% 0%, rgba(199, 154, 70, 0.16), transparent 24%),
-        radial-gradient(circle at 100% 0%, rgba(187, 97, 63, 0.16), transparent 28%),
-        linear-gradient(180deg, #fbf7f1 0%, #efe2d5 100%);
       font-family: "Hiragino Sans", "Noto Sans JP", sans-serif;
-      line-height: 1.7;
+      line-height: 1.65;
     }
-
-    a { color: inherit; text-decoration: none; }
 
     .page {
-      width: min(1180px, calc(100% - 32px));
+      width: min(1100px, calc(100% - 24px));
       margin: 0 auto;
-      padding: 24px 0 96px;
+      padding: 24px 0 64px;
     }
 
-    .topbar {
-      position: sticky;
-      top: 12px;
-      z-index: 30;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      padding: 14px 18px;
-      margin-bottom: 20px;
-      border: 1px solid rgba(123, 62, 41, 0.1);
-      background: rgba(255, 252, 247, 0.82);
-      backdrop-filter: blur(16px);
-      border-radius: 22px;
-      box-shadow: 0 12px 32px rgba(59, 37, 26, 0.08);
+    .sheet {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(40, 28, 22, 0.05);
+      overflow: hidden;
     }
 
-    .brand {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
+    .header {
+      padding: 28px 32px 22px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, #fffefe 0%, #faf7f3 100%);
     }
 
-    .brand-tag {
-      font-size: 12px;
-      font-weight: 800;
+    .kicker {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
       color: var(--accent);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    .brand-title {
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--ink);
-    }
-
-    .nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      justify-content: flex-end;
-    }
-
-    .nav a {
-      padding: 8px 12px;
-      border-radius: 999px;
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--accent-deep);
-      background: rgba(187, 97, 63, 0.08);
-      border: 1px solid rgba(187, 97, 63, 0.1);
-    }
-
-    .hero {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 24px;
-      margin-bottom: 22px;
-    }
-
-    .panel {
-      background: var(--surface);
-      border: 1px solid rgba(123, 62, 41, 0.08);
-      border-radius: 32px;
-      box-shadow: var(--shadow);
-    }
-
-    .hero-copy {
-      padding: 44px 42px;
-      background:
-        radial-gradient(circle at top right, rgba(199, 154, 70, 0.16), transparent 24%),
-        linear-gradient(145deg, rgba(255, 252, 247, 0.98), rgba(246, 235, 226, 0.95));
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 14px;
-      border-radius: 999px;
-      color: var(--accent-deep);
-      background: rgba(187, 97, 63, 0.1);
-      border: 1px solid rgba(187, 97, 63, 0.12);
       font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 0.12em;
+      font-weight: 700;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
+      margin-bottom: 12px;
     }
 
     h1 {
-      margin: 18px 0 18px;
-      font-size: clamp(38px, 6vw, 72px);
-      line-height: 0.98;
-      letter-spacing: -0.05em;
-      max-width: 10ch;
-      color: #251813;
+      margin: 0 0 10px;
+      font-size: clamp(30px, 4vw, 42px);
+      line-height: 1.12;
+      letter-spacing: -0.03em;
     }
 
     .lead {
-      margin: 0 0 22px;
-      max-width: 58ch;
+      margin: 0;
       color: var(--muted);
-      font-size: 18px;
+      font-size: 15px;
+      max-width: 78ch;
     }
 
-    .hero-points {
+    .meta {
       display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 12px;
-      margin-top: 24px;
+      padding: 18px 32px 0;
     }
 
-    .hero-point {
-      display: flex;
-      gap: 14px;
-      align-items: flex-start;
+    .meta-card {
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 12px;
       padding: 14px 16px;
-      border-radius: 20px;
-      background: rgba(255, 252, 247, 0.8);
-      border: 1px solid rgba(123, 62, 41, 0.08);
     }
 
-    .hero-point strong {
+    .meta-card .label {
       display: block;
-      font-size: 14px;
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 4px;
-    }
-
-    .dot {
-      flex: 0 0 14px;
-      width: 14px;
-      height: 14px;
-      margin-top: 8px;
-      border-radius: 50%;
-      background: linear-gradient(180deg, var(--accent), var(--accent-deep));
-      box-shadow: 0 0 0 6px rgba(187, 97, 63, 0.1);
-    }
-
-    .hero-visual {
-      position: relative;
-      overflow: hidden;
-      padding: 30px;
-      background:
-        radial-gradient(circle at 20% 20%, rgba(199, 154, 70, 0.26), transparent 22%),
-        radial-gradient(circle at 80% 10%, rgba(187, 97, 63, 0.24), transparent 28%),
-        linear-gradient(160deg, #f5eadf 0%, #ead9cb 100%);
-    }
-
-    .shape {
-      position: absolute;
-      border-radius: 999px;
-      filter: blur(4px);
-      opacity: 0.5;
-    }
-
-    .shape.one {
-      top: 30px;
-      right: 40px;
-      width: 200px;
-      height: 200px;
-      background: rgba(187, 97, 63, 0.18);
-    }
-
-    .shape.two {
-      left: 10px;
-      bottom: 30px;
-      width: 180px;
-      height: 180px;
-      background: rgba(199, 154, 70, 0.16);
-    }
-
-    .hero-card-stack {
-      position: relative;
-      display: grid;
-      gap: 14px;
-      z-index: 1;
-      margin-top: 80px;
-    }
-
-    .floating-card {
-      padding: 18px 18px 16px;
-      border-radius: 24px;
-      background: rgba(255, 252, 247, 0.88);
-      border: 1px solid rgba(123, 62, 41, 0.08);
-      box-shadow: 0 18px 40px rgba(65, 42, 31, 0.08);
-    }
-
-    .floating-card .label {
-      display: block;
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--accent);
       margin-bottom: 6px;
     }
 
-    .floating-card .big {
-      font-size: 32px;
-      line-height: 1;
+    .meta-card .value {
+      font-size: 22px;
       font-weight: 800;
-      color: #2a1c16;
+      line-height: 1.1;
+      margin-bottom: 6px;
     }
 
-    .floating-card p {
-      margin: 8px 0 0;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.6;
-    }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 16px;
-      margin-bottom: 28px;
-    }
-
-    .stat {
-      padding: 22px 20px;
-      border-radius: 24px;
-      background: var(--surface);
-      border: 1px solid rgba(123, 62, 41, 0.08);
-      box-shadow: var(--shadow);
-    }
-
-    .stat .k {
-      display: block;
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--accent);
-      font-weight: 800;
-      margin-bottom: 8px;
-    }
-
-    .stat .v {
-      font-size: 34px;
-      line-height: 1;
-      font-weight: 800;
-      color: #241915;
-      margin-bottom: 8px;
-    }
-
-    .stat p {
+    .meta-card p {
       margin: 0;
       color: var(--muted);
-      font-size: 14px;
-      line-height: 1.6;
+      font-size: 13px;
     }
 
-    section.block {
-      margin-bottom: 28px;
+    .body {
+      padding: 28px 32px 36px;
     }
 
-    .block-head {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      align-items: end;
+    .section + .section {
+      margin-top: 34px;
+      padding-top: 28px;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 24px;
+      align-items: start;
       margin-bottom: 16px;
     }
 
-    .block-head h2 {
-      margin: 0;
-      font-size: clamp(28px, 3.4vw, 42px);
-      line-height: 1.05;
-      letter-spacing: -0.04em;
-      color: #281a15;
+    .section-no {
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
     }
 
-    .block-head p {
+    h2 {
       margin: 0;
-      max-width: 52ch;
+      font-size: 28px;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    .section-head p {
+      margin: 0;
       color: var(--muted);
-      font-size: 15px;
+      font-size: 14px;
     }
 
-    .grid-2 {
+    .grid-2,
+    .grid-3,
+    .grid-4 {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
+      gap: 14px;
     }
 
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-    }
+    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 
     .card {
-      background: var(--surface-strong);
-      border: 1px solid rgba(123, 62, 41, 0.08);
-      border-radius: var(--radius);
-      padding: 24px;
-      box-shadow: var(--shadow);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fff;
+      padding: 16px 18px;
     }
 
     .card h3 {
       margin: 0 0 10px;
-      font-size: 22px;
-      line-height: 1.2;
-      color: #2d1e18;
+      font-size: 17px;
+      line-height: 1.3;
     }
 
     .card p {
-      margin: 0 0 12px;
-      color: var(--muted);
-      font-size: 15px;
-    }
-
-    .list {
       margin: 0;
-      padding-left: 1.1em;
+      color: var(--muted);
+      font-size: 14px;
     }
 
-    .list li + li {
+    .key-points {
+      margin: 0;
+      padding-left: 1.15em;
+    }
+
+    .key-points li + li {
       margin-top: 8px;
     }
 
-    .compare {
+    .decision {
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 18px 20px;
+    }
+
+    .decision strong {
+      color: var(--warn);
+    }
+
+    .flow {
       display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      gap: 18px;
-      align-items: stretch;
+      gap: 10px;
     }
 
-    .compare-card {
-      padding: 26px;
-      border-radius: 28px;
-      background: var(--surface-strong);
-      border: 1px solid rgba(123, 62, 41, 0.08);
-      box-shadow: var(--shadow);
-    }
-
-    .compare-card.bad {
-      background: linear-gradient(180deg, rgba(255, 248, 244, 0.98), rgba(250, 237, 231, 0.96));
-    }
-
-    .compare-card.good {
-      background: linear-gradient(180deg, rgba(251, 251, 247, 0.98), rgba(239, 244, 237, 0.96));
-    }
-
-    .tag {
-      display: inline-flex;
+    .flow-item {
+      display: grid;
+      grid-template-columns: 110px 1fr 140px;
+      gap: 14px;
       align-items: center;
-      gap: 8px;
-      border-radius: 999px;
-      padding: 6px 12px;
-      font-size: 12px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 14px 16px;
+      background: #fff;
+    }
+
+    .flow-item .stage {
+      color: var(--accent);
+      font-size: 11px;
       font-weight: 800;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      margin-bottom: 14px;
     }
 
-    .tag.bad {
-      background: rgba(187, 97, 63, 0.12);
-      color: var(--accent-deep);
-    }
-
-    .tag.good {
-      background: rgba(41, 94, 79, 0.12);
-      color: var(--green);
-    }
-
-    .arrow {
-      display: grid;
-      place-items: center;
-      min-width: 78px;
-      color: var(--accent);
-      font-size: 42px;
+    .flow-item .name {
+      font-size: 18px;
       font-weight: 800;
+      margin-top: 2px;
     }
 
-    .problem-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 16px;
-    }
-
-    .problem-card {
-      position: relative;
-      padding: 22px;
-      border-radius: 24px;
-      background: var(--surface-strong);
-      border: 1px solid rgba(123, 62, 41, 0.08);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-    }
-
-    .problem-card::after {
-      content: "";
-      position: absolute;
-      inset: auto -20px -20px auto;
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      background: rgba(187, 97, 63, 0.06);
-    }
-
-    .icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 16px;
-      display: grid;
-      place-items: center;
-      font-size: 22px;
-      margin-bottom: 16px;
-      background: linear-gradient(180deg, rgba(187, 97, 63, 0.16), rgba(187, 97, 63, 0.08));
-      color: var(--accent-deep);
-      font-weight: 800;
-    }
-
-    .funnel {
-      padding: 28px;
-      border-radius: 30px;
-      background:
-        linear-gradient(180deg, rgba(255, 252, 247, 0.98), rgba(245, 236, 228, 0.96));
-      border: 1px solid rgba(123, 62, 41, 0.08);
-      box-shadow: var(--shadow);
-    }
-
-    .steps {
-      display: grid;
-      gap: 16px;
-    }
-
-    .step {
-      display: grid;
-      grid-template-columns: 130px 1fr auto;
-      gap: 18px;
-      align-items: center;
-      padding: 18px 20px;
-      border-radius: 22px;
-      background: rgba(255, 252, 247, 0.9);
-      border: 1px solid rgba(123, 62, 41, 0.08);
-    }
-
-    .step .stage {
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent);
-    }
-
-    .step .name {
-      font-size: 22px;
-      font-weight: 800;
-      color: #291b15;
-    }
-
-    .step .desc {
+    .flow-item .desc {
       color: var(--muted);
       font-size: 14px;
     }
 
-    .price {
-      font-size: 28px;
-      font-weight: 800;
-      color: #251a15;
+    .flow-item .price {
       text-align: right;
+      font-size: 26px;
+      font-weight: 800;
       white-space: nowrap;
-    }
-
-    .mini-note {
-      margin-top: 14px;
-      color: var(--muted);
-      font-size: 14px;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
+      font-size: 14px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 12px;
       overflow: hidden;
-      border-radius: 24px;
-      background: var(--surface-strong);
-      border: 1px solid rgba(123, 62, 41, 0.08);
-      box-shadow: var(--shadow);
     }
 
     th, td {
-      padding: 15px 16px;
+      padding: 12px 14px;
       border-bottom: 1px solid var(--line);
-      text-align: left;
       vertical-align: top;
+      text-align: left;
     }
 
     th {
-      color: var(--accent-deep);
-      font-size: 13px;
-      font-weight: 800;
+      background: var(--soft);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 700;
       letter-spacing: 0.06em;
       text-transform: uppercase;
-      background: rgba(238, 214, 202, 0.5);
     }
 
     tr:last-child td { border-bottom: 0; }
 
-    .money {
-      font-weight: 800;
-      color: #251a15;
-      white-space: nowrap;
-    }
-
-    .callout {
-      margin-top: 16px;
-      padding: 18px 20px;
-      border-radius: 22px;
-      background: linear-gradient(180deg, rgba(199, 154, 70, 0.12), rgba(199, 154, 70, 0.04));
-      border: 1px solid rgba(199, 154, 70, 0.18);
-      color: #4a3821;
-    }
-
-    .roadmap {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .phase {
-      padding: 26px 24px;
-      border-radius: 28px;
-      background: var(--surface-strong);
-      border: 1px solid rgba(123, 62, 41, 0.08);
-      box-shadow: var(--shadow);
-    }
-
-    .phase .phase-no {
+    .note {
+      margin-top: 10px;
+      color: var(--muted);
       font-size: 13px;
-      font-weight: 800;
-      color: var(--accent);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 10px;
     }
 
-    .phase h3 {
-      margin: 0 0 10px;
-      font-size: 24px;
-      line-height: 1.15;
+    .highlight-box {
+      background: #fffaf6;
+      border: 1px solid #ead7ca;
+      border-radius: 12px;
+      padding: 16px 18px;
     }
 
-    .kpi-strip {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 16px;
+    .highlight-box strong {
+      color: var(--warn);
     }
 
-    .kpi {
-      padding: 10px 14px;
-      border-radius: 999px;
-      background: rgba(187, 97, 63, 0.08);
-      border: 1px solid rgba(187, 97, 63, 0.12);
-      color: var(--accent-deep);
-      font-size: 13px;
-      font-weight: 700;
+    .checklist {
+      margin: 0;
+      padding-left: 1.15em;
+    }
+
+    .checklist li + li {
+      margin-top: 6px;
     }
 
     .footer {
       margin-top: 24px;
       color: var(--muted);
-      font-size: 13px;
+      font-size: 12px;
     }
 
-    @media (max-width: 1080px) {
-      .hero,
-      .stats,
-      .problem-grid,
-      .roadmap,
-      .grid-3 {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .compare {
-        grid-template-columns: 1fr;
-      }
-
-      .arrow {
-        min-width: 0;
-        min-height: 48px;
-        transform: rotate(90deg);
-      }
-    }
-
-    @media (max-width: 860px) {
-      .topbar {
-        position: static;
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      .hero,
-      .stats,
+    @media (max-width: 900px) {
+      .meta,
       .grid-2,
       .grid-3,
-      .problem-grid,
-      .roadmap {
+      .grid-4 {
         grid-template-columns: 1fr;
       }
 
-      .step {
+      .section-head {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .flow-item {
         grid-template-columns: 1fr;
       }
 
-      .price {
+      .flow-item .price {
         text-align: left;
-      }
-
-      .hero-copy,
-      .hero-visual {
-        padding: 28px;
       }
     }
   </style>
 </head>
 <body>
   <main class="page">
-    <header class="topbar">
-      <div class="brand">
-        <span class="brand-tag">Kubire Artist</span>
-        <span class="brand-title">事業計画たたき台 / share version</span>
-      </div>
-      <nav class="nav">
-        <a href="#problem">背景</a>
-        <a href="#model">再設計案</a>
-        <a href="#numbers">数字</a>
-        <a href="#roadmap">実行</a>
-      </nav>
-    </header>
+    <article class="sheet">
+      <header class="header">
+        <span class="kicker">Kubire Artist / Business Plan Memo</span>
+        <h1>クビレアーティスト 事業計画整理</h1>
+        <p class="lead">この資料は、M&amp;A取得後の初期方針を判断しやすく整理したメモです。主眼は「既存水準の売上再現」と「広告投資に耐える収益構造への再設計」にあります。あわせて、PMI観点から久保さんの意向と合意形成が重要である前提も織り込みます。</p>
+      </header>
 
-    <section class="hero">
-      <article class="panel hero-copy">
-        <span class="eyebrow">M&amp;A post-acquisition plan</span>
-        <h1>まず売上を守る。<br>そのうえで、<br>広告で伸ばせる形へ。</h1>
-        <p class="lead">クビレアーティストは、オーガニック中心なら成立しやすい一方で、既存モデルのまま広告投資を強めると利益が薄くなりやすい。今回の計画では、まず同水準の収益再現を狙いながら、商品階段と教育導線を再設計して、再現性のある収益構造へ移行する。</p>
-
-        <div class="hero-points">
-          <div class="hero-point">
-            <span class="dot"></span>
-            <div>
-              <strong>What changes</strong>
-              単発講座販売から、無料動画講座を入口にした教育型ファネルへ変える。
-            </div>
-          </div>
-          <div class="hero-point">
-            <span class="dot"></span>
-            <div>
-              <strong>Why now</strong>
-              M&amp;A後に同じ売上を再現するには、久保氏依存のままでは資産性が弱い。
-            </div>
-          </div>
-          <div class="hero-point">
-            <span class="dot"></span>
-            <div>
-              <strong>How to win</strong>
-              本講座を25万円化し、上位に50万円のマスターコンサルを置いて広告耐性を持たせる。
-            </div>
-          </div>
+      <section class="meta">
+        <div class="meta-card">
+          <span class="label">Priority</span>
+          <div class="value">売上再現</div>
+          <p>取得後の第一フェーズで最優先。</p>
         </div>
-      </article>
-
-      <aside class="panel hero-visual">
-        <div class="shape one"></div>
-        <div class="shape two"></div>
-        <div class="hero-card-stack">
-          <div class="floating-card">
-            <span class="label">Current problem</span>
-            <div class="big">単価が低く、広告に弱い</div>
-            <p>対面11万円、オンライン7.78万円のまま広告を入れると、CPAと固定費で利益が急速に薄くなる。</p>
-          </div>
-          <div class="floating-card">
-            <span class="label">New structure</span>
-            <div class="big">0円 → 7.78万 → 25万 → 50万</div>
-            <p>教育と選別を挟みながら、本講座と上位商品でLTVを引き上げる。</p>
-          </div>
-          <div class="floating-card">
-            <span class="label">Expected outcome</span>
-            <div class="big">年1,000万〜1,200万</div>
-            <p>立ち上がり補正込みの年間営業利益相当額イメージ。まずは売上再現、その後に最適化。</p>
-          </div>
+        <div class="meta-card">
+          <span class="label">Main Issue</span>
+          <div class="value">低単価 × 広告耐性不足</div>
+          <p>既存単価のままでは広告投資時の利益が薄い。</p>
         </div>
-      </aside>
-    </section>
-
-    <section class="stats">
-      <article class="stat">
-        <span class="k">Phase 1</span>
-        <div class="v">売上再現</div>
-        <p>取得直後は既存水準を落とさないことが最優先。</p>
-      </article>
-      <article class="stat">
-        <span class="k">Price Ladder</span>
-        <div class="v">4階層</div>
-        <p>無料、3Days、本講座、マスターコンサルの順で設計。</p>
-      </article>
-      <article class="stat">
-        <span class="k">Media Spend</span>
-        <div class="v">100万/月</div>
-        <p>フロントCPA 2,750円を基準に試算。</p>
-      </article>
-      <article class="stat">
-        <span class="k">Profit View</span>
-        <div class="v">1,000万+</div>
-        <p>立ち上がり補正込みの年間営業利益相当額。</p>
-      </article>
-    </section>
-
-    <section class="block" id="problem">
-      <div class="block-head">
-        <h2>なぜ、既存モデルのままだと弱いのか</h2>
-        <p>問題は「集客量」よりも「構造」。オーガニックでは成立していても、広告を入れた瞬間に薄利化しやすい設計になっている。</p>
-      </div>
-
-      <div class="compare">
-        <div class="compare-card bad">
-          <span class="tag bad">Current</span>
-          <h3>既存モデル</h3>
-          <ul class="list">
-            <li>Instagram中心で認知獲得</li>
-            <li>DMまたはLINEで相談</li>
-            <li>単発講座へ直接誘導</li>
-            <li>受講後フォローで価値提供</li>
-          </ul>
+        <div class="meta-card">
+          <span class="label">New Model</span>
+          <div class="value">商品階段化</div>
+          <p>無料 → 3Days → 本講座 → ハイバック。</p>
         </div>
-        <div class="arrow">→</div>
-        <div class="compare-card good">
-          <span class="tag good">Issue</span>
-          <h3>広告を入れると起きること</h3>
-          <ul class="list">
-            <li>広告費、決済費、制作費、システム費が追加</li>
-            <li>低単価のままだとCPA次第で利益が溶けやすい</li>
-            <li>教育不足で高額商品の成約率が安定しない</li>
-            <li>久保氏依存が高く、再現性が資産化しにくい</li>
-          </ul>
+        <div class="meta-card">
+          <span class="label">PMI Key</span>
+          <div class="value">久保さんとの合意</div>
+          <p>役割分担、講座品質、ブランド運用の合意が前提。</p>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="block">
-      <div class="problem-grid">
-        <article class="problem-card">
-          <div class="icon">01</div>
-          <h3>単価が広告運用に対して低い</h3>
-          <p>対面 <strong>110,000円</strong>、オンライン <strong>77,800円</strong> の価格帯は、オーガニックなら成立しやすいが、広告費と運用費を乗せると利益が薄くなりやすい。</p>
-        </article>
-        <article class="problem-card">
-          <div class="icon">02</div>
-          <h3>久保氏個人への依存が高い</h3>
-          <p>個人アカウントの発信力が強みである一方、M&amp;A後の事業資産としては集客再現性が弱く、ブランド導線が育っていない。</p>
-        </article>
-        <article class="problem-card">
-          <div class="icon">03</div>
-          <h3>教育を挟まず本講座を売っている</h3>
-          <p>くびれ技術の価値理解には教育が必要。興味層をそのまま受けると、成約率も受講後成果も安定しづらい。</p>
-        </article>
-        <article class="problem-card">
-          <div class="icon">04</div>
-          <h3>LTVが取り切れていない</h3>
-          <p>独立支援、上位認定、FC的支援などの上位商品が弱く、1顧客あたり売上が伸び切っていない。</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="block" id="model">
-      <div class="block-head">
-        <h2>解決策は、商品階段の再設計</h2>
-        <p>入口は広く、教育で熱量を高め、本気度の高い人を上位商品へ引き上げる。久保氏の価値は高粗利領域へ寄せる。</p>
-      </div>
-
-      <div class="funnel">
-        <div class="steps">
-          <div class="step">
+      <div class="body">
+        <section class="section">
+          <div class="section-head">
             <div>
-              <div class="stage">Front</div>
-              <div class="name">無料動画講座</div>
+              <div class="section-no">01 / 結論</div>
+              <h2>まず何を判断すべきか</h2>
             </div>
-            <div class="desc">広告またはSNSから流入。オプトインとLINE追加を獲得し、動画ステップ配信で教育開始。</div>
-            <div class="price">0円</div>
+            <p>現時点では「この事業をどう伸ばすか」よりも先に、「取得後に同水準の収益を再現できる設計になっているか」を判断する必要があります。</p>
           </div>
-          <div class="step">
-            <div>
-              <div class="stage">Middle</div>
-              <div class="name">オンライン3Days講座</div>
-            </div>
-            <div class="desc">既存オンライン講座価格を維持しながら、本講座前の教育と選別を行う有料商品。</div>
-            <div class="price">77,800円</div>
-          </div>
-          <div class="step">
-            <div>
-              <div class="stage">Back-end</div>
-              <div class="name">クビレアーティスト本講座</div>
-            </div>
-            <div class="desc">オフライン中心で提供する中核商品。技術習得と資格取得を担い、業務委託講師でも運営できる構造に寄せる。</div>
-            <div class="price">250,000円</div>
-          </div>
-          <div class="step">
-            <div>
-              <div class="stage">High-back</div>
-              <div class="name">マスターコンサル</div>
-            </div>
-            <div class="desc">久保氏が担う独立支援、集客支援、FC的支援。個人依存はこの高付加価値商品へ集中させる。</div>
-            <div class="price">500,000円</div>
-          </div>
-        </div>
-        <p class="mini-note">ポイント: いきなり25万円を売るのではなく、無料動画と3Days講座で教育を挟むことで、広告で集めた見込み客を自然に選別する。</p>
-      </div>
-    </section>
 
-    <section class="block" id="numbers">
-      <div class="block-head">
-        <h2>数字の前提と、成立ライン</h2>
-        <p>成功事例のファネルを参考にしつつ、オプトインから3Days申込み率はやや保守的な <strong>8%</strong> で試算している。</p>
-      </div>
+          <div class="decision">
+            <ul class="key-points">
+              <li><strong>既存モデルのまま広告投資を強めるのは危険</strong>。単価が低く、CPA次第で利益が薄くなる可能性が高い。</li>
+              <li><strong>解決策は集客量の増加ではなく、収益構造の再設計</strong>。商品階段と教育導線を作る必要がある。</li>
+              <li><strong>ただし、PMIの観点では久保さんの意向と合意形成が前提</strong>。やり方を急に変えるより、どこを久保さんが担い、どこを仕組み化するかを明確にする必要がある。</li>
+            </ul>
+          </div>
+        </section>
 
-      <div class="grid-3">
-        <article class="card">
-          <h3>集客前提</h3>
-          <ul class="list">
-            <li>月間広告費 100万円</li>
-            <li>フロントCPA 2,750円</li>
-            <li>オプトイン数 約364件</li>
-          </ul>
-        </article>
-        <article class="card">
-          <h3>成約前提</h3>
-          <ul class="list">
-            <li>オプトイン → 3Days申込み率 8%</li>
-            <li>3Days実受講率 54.35%</li>
-            <li>実受講者 → 本講座成約率 24.0%</li>
-          </ul>
-        </article>
-        <article class="card">
-          <h3>上位商品前提</h3>
-          <ul class="list">
-            <li>マスターコンサル成約率 1%</li>
-            <li>上位商品は上振れとして扱う</li>
-            <li>なくても成立する設計を基本に置く</li>
-          </ul>
-        </article>
-      </div>
+        <section class="section">
+          <div class="section-head">
+            <div>
+              <div class="section-no">02 / 背景</div>
+              <h2>なぜ既存モデルのままだと収益性が弱いのか</h2>
+            </div>
+            <p>既存モデルはオーガニック中心で回す限り成立しやすい一方、M&amp;A後に再現性高く伸ばすには構造的な弱さがあります。</p>
+          </div>
 
-      <div class="grid-2" style="margin-top: 18px;">
-        <article class="card">
-          <h3>月次売上イメージ</h3>
+          <div class="grid-4">
+            <div class="card">
+              <h3>1. 単価が広告運用に対して低い</h3>
+              <p>対面 <strong>110,000円</strong>、オンライン <strong>77,800円</strong> は、広告費、決済費、制作費、講師報酬を考えると利益が薄くなりやすい水準。</p>
+            </div>
+            <div class="card">
+              <h3>2. 久保さん依存が高い</h3>
+              <p>集客の主軸が久保さん個人アカウント。強みではあるが、事業資産としての再現性は弱い。</p>
+            </div>
+            <div class="card">
+              <h3>3. 教育導線が弱い</h3>
+              <p>いきなり本講座を売る形だと、価値理解の浅い層も混ざりやすく、成約率と受講後成果が不安定になる。</p>
+            </div>
+            <div class="card">
+              <h3>4. LTVを取り切れていない</h3>
+              <p>講座販売で売上が完結しやすく、独立支援やFC的展開など上位収益がまだ整理されていない。</p>
+            </div>
+          </div>
+
+          <div class="highlight-box" style="margin-top:14px;">
+            <strong>整理すると:</strong> 既存モデルの課題は「集客が足りない」ではなく、<strong>広告を入れたときに利益が残る構造になっていない</strong>ことです。
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-head">
+            <div>
+              <div class="section-no">03 / 再設計案</div>
+              <h2>どう変えるか</h2>
+            </div>
+            <p>無料コンテンツで入口を広く取り、有料ミドルで教育と選別を行い、本講座とハイバックで利益を作る構造へ移行します。</p>
+          </div>
+
+          <div class="flow">
+            <div class="flow-item">
+              <div>
+                <div class="stage">Front</div>
+                <div class="name">無料動画講座</div>
+              </div>
+              <div class="desc">広告またはSNSから流入。メアド取得とLINE追加を行い、動画ステップ配信で教育。</div>
+              <div class="price">0円</div>
+            </div>
+            <div class="flow-item">
+              <div>
+                <div class="stage">Middle</div>
+                <div class="name">オンライン3Days講座</div>
+              </div>
+              <div class="desc">既存オンライン単価を維持した有料導線。本講座前の理解醸成と本気度の選別。</div>
+              <div class="price">77,800円</div>
+            </div>
+            <div class="flow-item">
+              <div>
+                <div class="stage">Back-end</div>
+                <div class="name">クビレアーティスト本講座</div>
+              </div>
+              <div class="desc">中核商品。価格を25万円へ引き上げ、広告投資後でも採算が成立しやすい形へ調整。</div>
+              <div class="price">250,000円</div>
+            </div>
+            <div class="flow-item">
+              <div>
+                <div class="stage">High-back</div>
+                <div class="name">マスターコンサル</div>
+              </div>
+              <div class="desc">久保さんが担う独立支援、集客支援、FC的支援。個人依存はここに集中させる。</div>
+              <div class="price">500,000円</div>
+            </div>
+          </div>
+
+          <div class="note">ポイントは、久保さん依存をゼロにすることではなく、<strong>高付加価値領域に限定すること</strong>です。本講座は仕組みで回し、久保さんの価値は上位商品に集約します。</div>
+        </section>
+
+        <section class="section">
+          <div class="section-head">
+            <div>
+              <div class="section-no">04 / PMI観点</div>
+              <h2>この計画で重要なPMI論点</h2>
+            </div>
+            <p>事業計画は数字だけでなく、取得後に久保さんとどう合意形成するかで実行可否が変わります。</p>
+          </div>
+
+          <div class="grid-2">
+            <div class="card">
+              <h3>先に合意が必要なこと</h3>
+              <ul class="checklist">
+                <li>久保さんが今後も担いたい役割はどこか</li>
+                <li>本講座を業務委託講師でどこまで再現できるか</li>
+                <li>価格改定に対する認識が一致しているか</li>
+                <li>ブランド運用を個人発信からどう移すか</li>
+                <li>ハイバック商品をどこまで久保さん名義で出すか</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h3>PMI上のリスク</h3>
+              <ul class="checklist">
+                <li>売上維持を優先するあまり、久保さん依存が固定化する</li>
+                <li>講座品質が講師によってぶれる</li>
+                <li>価格改定への心理的抵抗で実行が遅れる</li>
+                <li>集客の主体移行に対して認識差が出る</li>
+                <li>独立支援やFC的支援の定義が曖昧なまま走る</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="highlight-box" style="margin-top:14px;">
+            <strong>実務上の前提:</strong> この計画は「仕組み化を進める」ことが目的ですが、PMI初期はむしろ<strong>久保さんの意向を尊重しながら徐々に再設計する</strong>方が成功確率は高いです。
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-head">
+            <div>
+              <div class="section-no">05 / 数字</div>
+              <h2>売上とP/Lの前提</h2>
+            </div>
+            <p>成功事例のベンチマークを参考にしつつ、初期はやや保守的な前提で試算しています。</p>
+          </div>
+
+          <div class="grid-3">
+            <div class="card">
+              <h3>集客前提</h3>
+              <ul class="checklist">
+                <li>月間広告費: 100万円</li>
+                <li>フロントCPA: 2,750円</li>
+                <li>オプトイン数: 約364件</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h3>成約前提</h3>
+              <ul class="checklist">
+                <li>オプトイン → 3Days申込み率: 8%</li>
+                <li>3Days実受講率: 54.35%</li>
+                <li>実受講者 → 本講座成約率: 24.0%</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h3>上位商品前提</h3>
+              <ul class="checklist">
+                <li>ハイバック成約率: 1%</li>
+                <li>上位商品は上振れ要素として扱う</li>
+                <li>なくても成立する設計を基本とする</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="grid-2" style="margin-top:14px;">
+            <div>
+              <table>
+                <thead>
+                  <tr>
+                    <th colspan="2">月次売上イメージ</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>オプトイン数</td><td>363.6件</td></tr>
+                  <tr><td>3Days講座申込み数</td><td>29.1件</td></tr>
+                  <tr><td>3Days講座実受講数</td><td>15.8件</td></tr>
+                  <tr><td>本講座成約数</td><td>3.8件</td></tr>
+                  <tr><td>マスターコンサル成約数</td><td>0.16件</td></tr>
+                  <tr><td>月次売上</td><td><strong>3,291,060円</strong></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div>
+              <table>
+                <thead>
+                  <tr>
+                    <th colspan="2">月次P/Lイメージ</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>売上高</td><td>3,291,060円</td></tr>
+                  <tr><td>決済、セールスフィー等</td><td>329,106円</td></tr>
+                  <tr><td>本講座講師報酬</td><td>191,022円</td></tr>
+                  <tr><td>広告費</td><td>1,000,000円</td></tr>
+                  <tr><td>システム費</td><td>50,000円</td></tr>
+                  <tr><td>制作、編集費</td><td>200,000円</td></tr>
+                  <tr><td>運営雑費</td><td>100,000円</td></tr>
+                  <tr><td>営業利益相当額</td><td><strong>1,420,932円</strong></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="highlight-box" style="margin-top:14px;">
+            <strong>解釈:</strong> この数字が成立するための最重要KPIは、<strong>オプトイン → 3Days申込み率</strong> です。ここが崩れると利益は急速に薄くなるため、広告運用より先に導線設計の質が重要です。
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-head">
+            <div>
+              <div class="section-no">06 / 実行順</div>
+              <h2>どの順番で進めるか</h2>
+            </div>
+            <p>立ち上げの順番を明確にしておくことで、PMIと実行タスクの両方をコントロールしやすくなります。</p>
+          </div>
+
           <table>
+            <thead>
+              <tr>
+                <th>期間</th>
+                <th>テーマ</th>
+                <th>やること</th>
+                <th>確認ポイント</th>
+              </tr>
+            </thead>
             <tbody>
-              <tr><th>オプトイン数</th><td>363.6件</td></tr>
-              <tr><th>3Days講座申込み数</th><td>29.1件</td></tr>
-              <tr><th>3Days講座実受講数</th><td>15.8件</td></tr>
-              <tr><th>本講座成約数</th><td>3.8件</td></tr>
-              <tr><th>マスターコンサル成約数</th><td>0.16件</td></tr>
-              <tr><th>月次売上</th><td class="money">3,291,060円</td></tr>
+              <tr>
+                <td>0〜2か月目</td>
+                <td>導線構築</td>
+                <td>無料動画、LP、LINE、UTAGE、3Days講座、オファー設計</td>
+                <td>久保さんと役割分担、講座内容、価格改定方針をすり合わせる</td>
+              </tr>
+              <tr>
+                <td>3〜4か月目</td>
+                <td>広告を小さく回す</td>
+                <td>広告配信、CPA確認、クリエイティブ差し替え、LP改善、LINE改善</td>
+                <td>3Days申込み率と本講座成約率が成立ラインに乗るか確認する</td>
+              </tr>
+              <tr>
+                <td>5か月目以降</td>
+                <td>利益を厚くする</td>
+                <td>本講座最適化、事例反映、マスターコンサル導線整備、講師拡張</td>
+                <td>久保さん依存を下げつつ、高単価領域では価値を残せているか確認する</td>
+              </tr>
             </tbody>
           </table>
-        </article>
+        </section>
 
-        <article class="card">
-          <h3>月次P/Lイメージ</h3>
-          <table>
-            <tbody>
-              <tr><th>売上高</th><td class="money">3,291,060円</td></tr>
-              <tr><th>決済、セールスフィー等</th><td>329,106円</td></tr>
-              <tr><th>本講座講師報酬</th><td>191,022円</td></tr>
-              <tr><th>広告費</th><td>1,000,000円</td></tr>
-              <tr><th>システム費</th><td>50,000円</td></tr>
-              <tr><th>制作、編集費</th><td>200,000円</td></tr>
-              <tr><th>運営雑費</th><td>100,000円</td></tr>
-              <tr><th>営業利益相当額</th><td class="money">1,420,932円</td></tr>
-            </tbody>
-          </table>
-        </article>
+        <section class="section">
+          <div class="section-head">
+            <div>
+              <div class="section-no">07 / 現時点の論点</div>
+              <h2>まだ詰める必要があること</h2>
+            </div>
+            <p>ここが固まると、より実務に近い事業計画になります。</p>
+          </div>
+
+          <div class="grid-2">
+            <div class="card">
+              <h3>数字面</h3>
+              <ul class="checklist">
+                <li>CPAの現実的な初期値</li>
+                <li>オプトインLPの訴求軸</li>
+                <li>3Days講座の実受講率の作り方</li>
+                <li>本講座25万円への受容性</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h3>PMI面</h3>
+              <ul class="checklist">
+                <li>久保さんが継続して担いたい領域の定義</li>
+                <li>認定講師による再現性の確認</li>
+                <li>ブランド運用の主体移行</li>
+                <li>独立支援、FC支援の定義と提供範囲</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <p class="footer">Based on: 事業計画たたき台.md / 事業計画_説明資料たたき台.md</p>
       </div>
-
-      <div class="callout">
-        <strong>示唆:</strong> 既存モデルのまま広告を入れるのではなく、単価を引き上げたうえで教育導線を挟めば、広告費を使っても利益が残る可能性が高い。反対に、最重要KPIである <strong>オプトイン → 3Days申込み率</strong> が崩れると全体の利益は急速に薄くなる。
-      </div>
-    </section>
-
-    <section class="block" id="roadmap">
-      <div class="block-head">
-        <h2>実行順は、こうしたほうがわかりやすい</h2>
-        <p>いきなり大きく回すのではなく、まず導線を作り、次に小さく検証し、数字が見えたら拡張する。</p>
-      </div>
-
-      <div class="roadmap">
-        <article class="phase">
-          <div class="phase-no">Phase 01</div>
-          <h3>0〜2か月目<br>導線を作る</h3>
-          <ul class="list">
-            <li>無料動画講座の構成、台本、収録</li>
-            <li>オプトインLP制作</li>
-            <li>LINEシナリオ設計</li>
-            <li>UTAGE導入</li>
-            <li>3Days講座の内容とオファー設計</li>
-          </ul>
-        </article>
-        <article class="phase">
-          <div class="phase-no">Phase 02</div>
-          <h3>3〜4か月目<br>広告を小さく回す</h3>
-          <ul class="list">
-            <li>広告運用を開始</li>
-            <li>CPAを週次で確認</li>
-            <li>クリエイティブ差し替え</li>
-            <li>LP訴求とLINEの改善</li>
-            <li>3Days申込み率の改善</li>
-          </ul>
-        </article>
-        <article class="phase">
-          <div class="phase-no">Phase 03</div>
-          <h3>5か月目以降<br>利益を厚くする</h3>
-          <ul class="list">
-            <li>本講座成約率を最適化</li>
-            <li>成果事例を広告とLPへ反映</li>
-            <li>マスターコンサル募集導線を整備</li>
-            <li>地方開催、講師追加を検討</li>
-          </ul>
-        </article>
-      </div>
-
-      <div class="kpi-strip">
-        <span class="kpi">フロントCPA</span>
-        <span class="kpi">オプトイン率</span>
-        <span class="kpi">3Days申込み率</span>
-        <span class="kpi">3Days実受講率</span>
-        <span class="kpi">本講座成約率</span>
-        <span class="kpi">成果事例数</span>
-      </div>
-    </section>
-
-    <p class="footer">Based on: 事業計画たたき台.md / 事業計画_説明資料たたき台.md</p>
+    </article>
   </main>
 </body>
 </html>
