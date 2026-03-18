@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>クビレアーティスト 市場規模リサーチ</title>
+  <style>
+    :root {
+      --bg: #f4f1ec;
+      --paper: #fff;
+      --ink: #1f1a17;
+      --muted: #6d655e;
+      --line: #e5ddd3;
+      --soft: #f8f5f1;
+      --accent: #9d5136;
+      --accent-soft: #f3e9e2;
+      --warn: #7f3e2b;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Hiragino Sans", "Noto Sans JP", sans-serif;
+      line-height: 1.68;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 24px));
+      margin: 0 auto;
+      padding: 24px 0 72px;
+    }
+
+    .sheet {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(39, 29, 23, 0.05);
+      overflow: hidden;
+    }
+
+    .header {
+      padding: 28px 32px 22px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, #fffefe 0%, #faf7f3 100%);
+    }
+
+    .kicker {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(30px, 4vw, 42px);
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+    }
+
+    .lead {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      max-width: 84ch;
+    }
+
+    .meta {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      padding: 18px 32px 0;
+    }
+
+    .meta-card {
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 14px 16px;
+    }
+
+    .meta-card .label {
+      display: block;
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .meta-card .value {
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 6px;
+    }
+
+    .meta-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .body {
+      padding: 28px 32px 36px;
+    }
+
+    .section + .section {
+      margin-top: 34px;
+      padding-top: 28px;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 24px;
+      align-items: start;
+      margin-bottom: 16px;
+    }
+
+    .section-no {
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 28px;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .grid-2,
+    .grid-3,
+    .grid-4 {
+      display: grid;
+      gap: 14px;
+    }
+
+    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fff;
+      padding: 16px 18px;
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 17px;
+      line-height: 1.3;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .decision,
+    .highlight-box {
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 18px 20px;
+    }
+
+    .decision strong,
+    .highlight-box strong {
+      color: var(--warn);
+    }
+
+    .list,
+    .checklist {
+      margin: 0;
+      padding-left: 1.15em;
+    }
+
+    .list li + li,
+    .checklist li + li {
+      margin-top: 6px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+      text-align: left;
+    }
+
+    th {
+      background: var(--soft);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    tr:last-child td { border-bottom: 0; }
+
+    .note {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer {
+      margin-top: 24px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    @media (max-width: 980px) {
+      .meta,
+      .grid-2,
+      .grid-3,
+      .grid-4 {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <article class="sheet">
+      <header class="header">
+        <span class="kicker">Kubire Artist / Market Research</span>
+        <h1>クビレアーティスト 市場規模リサーチ</h1>
+        <p class="lead">このページは、シミュレーションの前提として「どれくらいの対象母数がありそうか」を整理したものです。対象は一般消費者ではなく、既に顧客を持ち、メニュー追加や差別化を考えるトレーナー、施術者、美容事業者です。</p>
+      </header>
+
+      <section class="meta">
+        <div class="meta-card">
+          <span class="label">Target</span>
+          <div class="value">ToCではなくトレーナー向け</div>
+          <p>女性向け施術、運動指導、ボディメイクを行う事業者。</p>
+        </div>
+        <div class="meta-card">
+          <span class="label">Conservative TAM</span>
+          <div class="value">1.7万〜4万人</div>
+          <p>かなり保守的に見た実行可能市場の目安。</p>
+        </div>
+        <div class="meta-card">
+          <span class="label">Annual Fresh Flow</span>
+          <div class="value">6,000〜8,000人</div>
+          <p>国家資格系の年間新規流入の安全な見方。</p>
+        </div>
+        <div class="meta-card">
+          <span class="label">Interpretation</span>
+          <div class="value">高単価ニッチ市場</div>
+          <p>巨大市場ではないが、十分成立余地のある規模。</p>
+        </div>
+      </section>
+
+      <div class="body">
+        <section class="section">
+          <div class="section-head">
+            <div>
+              <div class="section-no">01 / 何を見るか</div>
+              <h2>この市場の見方</h2>
+            </div>
+            <p>クビレアーティストは「女性向けの追加メニューとして売れる技術」をトレーナー向けに販売するモデルです。したがって、市場規模を見るときは一般消費者数ではなく、技術を導入しうる事業者の母数で考える必要があります。</p>
+          </div>
+
+          <div class="decision">
+            <ul class="list">
+              <li>対象は、<strong>パーソナルトレーナー、ピラティス、ヨガ、整体、柔整、鍼灸、エステ</strong> など。</li>
+              <li>ただし全員が見込み客ではなく、<strong>女性向けメニューを追加したい層</strong> に絞る必要がある。</li>
+              <li>したがって、事業計画では <strong>広義TAM</strong> と <strong>実行可能市場</strong> を分けて考えるべき。</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-head">
+            <div>
+              <div class="section-no">02 / ベース母数</div>
+              <h2>公表データで見えるベース市場</h2>
+            </div>
+            <p>まずは、関連職種や施設数として把握できるものを積み上げます。</p>
+          </div>
+
+          <div class="grid-3">
+            <div class="card">
+              <h3>フィットネス施設</h3>
+              <p>矢野経済研究所によると、2024年8月時点の全国フィットネス施設は <strong>12,543施設</strong>。うち、ヨガ型は <strong>1,334施設</strong>、その他は <strong>3,574施設</strong>。</p>
+            </div>
+            <div class="card">
+              <h3>施術所</h3>
+              <p>業界統計上、2024年時点で、あはき系の施術所は <strong>38,595</strong>、柔道整復は <strong>50,924</strong>。合計では <strong>145,280施術所</strong>。</p>
+            </div>
+            <div class="card">
+              <h3>インストラクター教育市場</h3>
+              <p>zen place は <strong>150店舗</strong>、累計 <strong>1万人以上</strong> の指導者育成実績を掲げており、高額な教育商品市場が存在することを示している。</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-head">
+            <div>
+              <div class="section-no">03 / 年間新規流入</div>
+              <h2>毎年どれくらい新しい対象者が入ってくるか</h2>
+            </div>
+            <p>国家資格系は年次の新規合格者数を拾いやすい一方、ピラティスやヨガ、民間資格トレーナーは全国統一の年次統計がほぼありません。</p>
+          </div>
+
+          <div class="grid-2">
+            <div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>国家資格系</th>
+                    <th>2025年新規合格者数</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>柔道整復師</td><td>2,607人</td></tr>
+                  <tr><td>はり師</td><td>3,066人</td></tr>
+                  <tr><td>きゅう師</td><td>3,068人</td></tr>
+                  <tr><td>あん摩マッサージ指圧師</td><td>1,011人</td></tr>
+                </tbody>
+              </table>
+              <p class="note">はり師ときゅう師は重複が多いので、単純合算ではなく、実務上は <strong>年間6,000〜8,000人程度の新規流入</strong> と見るのが安全。</p>
+            </div>
+            <div class="highlight-box">
+              <strong>読み方:</strong> 国家資格系だけでも、毎年数千人単位で新規参入がある。クビレアーティストは、この新規層に対して「最初の差別化メニュー」として提案できる余地がある。
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-head">
+            <div>
+              <div class="section-no">04 / 統計が取りづらい領域</div>
+              <h2>ピラティス、ヨガ、パーソナルトレーナーはどう考えるか</h2>
+            </div>
+            <p>この領域は全国統一の年次取得者数がほぼ取れないため、ストックデータと主要団体の規模で見る必要があります。</p>
+          </div>
+
+          <div class="grid-3">
+            <div class="card">
+              <h3>ピラティス</h3>
+              <p>日本全体の年間新規資格取得者数は取りづらい。ただし、zen place の累計 <strong>1万人以上</strong> の育成実績や、各団体の高額資格講座の存在から、教育市場は十分に大きいと見てよい。</p>
+            </div>
+            <div class="card">
+              <h3>ヨガ</h3>
+              <p>Yoga Alliance などのグローバル登録制度はあるが、日本国内だけの年次新規取得者数は取りづらい。よって、ここも「継続需要がある市場」として補助的に見る。</p>
+            </div>
+            <div class="card">
+              <h3>パーソナルトレーナー</h3>
+              <p>NSCAジャパン会員 <strong>9,336名</strong>、国内CSCS <strong>2,161名</strong>、NSCA-CPT <strong>4,970名</strong>、健康運動指導士 <strong>17,836人</strong> など、ストック母数は十分大きい。</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-head">
+            <div>
+              <div class="section-no">05 / 実行可能市場</div>
+              <h2>では、実際にどれくらいが見込み客か</h2>
+            </div>
+            <p>全国の関連職種すべてが対象ではありません。女性向けのボディメイク追加メニューとして売りやすい層に絞る必要があります。</p>
+          </div>
+
+          <div class="grid-4">
+            <div class="card">
+              <h3>フィットネス系</h3>
+              <p><strong>5,000〜15,000人</strong><br>ヨガ、ピラティス、パーソナル等の施設・オーナー・スタッフを保守的に推定。</p>
+            </div>
+            <div class="card">
+              <h3>施術所系</h3>
+              <p><strong>7,000〜15,000人</strong><br>145,280施術所のうち、女性向け自費メニューと相性がある層を 5%〜10% で推定。</p>
+            </div>
+            <div class="card">
+              <h3>エステ系</h3>
+              <p><strong>5,000〜10,000人</strong><br>公的母数は今回保守的に扱い、補助ターゲットとして加算。</p>
+            </div>
+            <div class="card">
+              <h3>実行可能市場</h3>
+              <p><strong>17,000〜40,000人</strong><br>かなり控えめに見た、クビレアーティストに近い実行可能市場の目安。</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-head">
+            <div>
+              <div class="section-no">06 / どこまで伸ばせるか</div>
+              <h2>事業としての上限イメージ</h2>
+            </div>
+            <p>49.8万円の商品を前提にすると、受講者数と売上の関係は次のように見られます。</p>
+          </div>
+
+          <table>
+            <thead>
+              <tr>
+                <th>ケース</th>
+                <th>年間受講者数</th>
+                <th>資格講座売上</th>
+                <th>見方</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>保守</td>
+                <td>30〜60名</td>
+                <td>1,494万円〜2,988万円</td>
+                <td>ニッチ専門講座として、紹介と広告を組み合わせる段階</td>
+              </tr>
+              <tr>
+                <td>標準</td>
+                <td>80〜150名</td>
+                <td>3,984万円〜7,470万円</td>
+                <td>複数職種へ訴求し、説明会と個別相談導線が安定した状態</td>
+              </tr>
+              <tr>
+                <td>拡張</td>
+                <td>200〜300名</td>
+                <td>9,960万円〜1億4,940万円</td>
+                <td>認定講師体制、地域開催、紹介が回る状態</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="highlight-box" style="margin-top:14px;">
+            <strong>実務的な節目:</strong> 現状フェーズでは、まず <strong>年間100名</strong> が一つの大きな目標ライン。49.8万円なら講座単体で約 <strong>4,980万円</strong> になる。
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-head">
+            <div>
+              <div class="section-no">07 / このリサーチの使い方</div>
+              <h2>シミュレーションの前提としてどう使うか</h2>
+            </div>
+            <p>重要なのは「市場があるか」より、「この市場にどう切り込むか」です。</p>
+          </div>
+
+          <div class="decision">
+            <ul class="list">
+              <li>市場は十分にあるが、<strong>超巨大市場ではなく高単価ニッチ市場</strong> と捉えるべき。</li>
+              <li>大量集客より、<strong>職種別の訴求</strong> を深く作るほうが重要。</li>
+              <li>毎年の新規流入だけでなく、<strong>既存事業者の学び直し市場</strong> も見込み客になる。</li>
+              <li>したがって、シミュレーションでは「広い母数」ではなく、<strong>反応しやすい層に絞ったCVR設計</strong> が大事。</li>
+            </ul>
+          </div>
+        </section>
+
+        <p class="footer">Based on local research memo: 市場規模リサーチ_資格取得講座ターゲット母数.md</p>
+      </div>
+    </article>
+  </main>
+</body>
+</html>
