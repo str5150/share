@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>クビレアーティスト プロジェクト管理シート</title>
+  <style>
+    :root {
+      --bg: #f4f1ec;
+      --paper: #fff;
+      --ink: #1f1a17;
+      --muted: #6d655e;
+      --line: #e5ddd3;
+      --soft: #f8f5f1;
+      --accent: #9d5136;
+      --accent-soft: #f3e9e2;
+      --blue: #4f829d;
+      --green: #2d6a57;
+      --orange: #b86c34;
+      --purple: #6a5a9c;
+      --shadow: 0 10px 30px rgba(39, 29, 23, 0.05);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Hiragino Sans", "Noto Sans JP", sans-serif;
+      line-height: 1.65;
+    }
+
+    .page {
+      width: min(1240px, calc(100% - 24px));
+      margin: 0 auto;
+      padding: 24px 0 72px;
+    }
+
+    .sheet {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .header {
+      padding: 28px 32px 22px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, #fffefe 0%, #faf7f3 100%);
+    }
+
+    .kicker {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(28px, 4vw, 40px);
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+    }
+
+    .lead {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      max-width: 92ch;
+    }
+
+    .meta {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      padding: 18px 32px 0;
+    }
+
+    .meta-card {
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 14px 16px;
+    }
+
+    .meta-card .label {
+      display: block;
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .meta-card .value {
+      font-size: 20px;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 6px;
+    }
+
+    .meta-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .body {
+      padding: 28px 32px 36px;
+    }
+
+    .section + .section {
+      margin-top: 34px;
+      padding-top: 28px;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 24px;
+      align-items: start;
+      margin-bottom: 16px;
+    }
+
+    .section-no {
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 26px;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .grid-2,
+    .grid-3 {
+      display: grid;
+      gap: 14px;
+    }
+
+    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fff;
+      padding: 16px 18px;
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 17px;
+      line-height: 1.3;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .list {
+      margin: 0;
+      padding-left: 1.15em;
+    }
+
+    .list li + li { margin-top: 6px; }
+
+    .tag {
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      margin-bottom: 8px;
+    }
+
+    .tag.blue { background: rgba(79, 130, 157, 0.12); color: var(--blue); }
+    .tag.green { background: rgba(45, 106, 87, 0.12); color: var(--green); }
+    .tag.orange { background: rgba(184, 108, 52, 0.12); color: var(--orange); }
+    .tag.purple { background: rgba(106, 90, 156, 0.12); color: var(--purple); }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+      text-align: left;
+    }
+
+    th {
+      background: var(--soft);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    tr:last-child td { border-bottom: 0; }
+
+    .gantthead, .ganttrow {
+      display: grid;
+      grid-template-columns: 280px repeat(8, minmax(74px, 1fr));
+      gap: 6px;
+      align-items: center;
+    }
+
+    .gantthead {
+      margin-bottom: 8px;
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .gantt {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fff;
+      padding: 14px;
+      overflow-x: auto;
+    }
+
+    .ganttrow + .ganttrow {
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px solid #f0e9e2;
+    }
+
+    .taskname {
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .month {
+      text-align: center;
+      padding: 8px 4px;
+      background: var(--soft);
+      border-radius: 8px;
+    }
+
+    .slot {
+      height: 34px;
+      border-radius: 8px;
+      background: #f7f3ee;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .bar-blue, .bar-green, .bar-orange, .bar-purple {
+      height: 100%;
+      border-radius: 8px;
+    }
+
+    .bar-blue { background: rgba(79, 130, 157, 0.82); }
+    .bar-green { background: rgba(45, 106, 87, 0.82); }
+    .bar-orange { background: rgba(184, 108, 52, 0.82); }
+    .bar-purple { background: rgba(106, 90, 156, 0.82); }
+
+    .note {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .decision {
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 18px 20px;
+    }
+
+    .decision strong { color: var(--accent); }
+
+    .footer {
+      margin-top: 24px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    @media (max-width: 980px) {
+      .meta,
+      .grid-2,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <article class="sheet">
+      <header class="header">
+        <span class="kicker">Kubire Artist / Project Management</span>
+        <h1>クビレアーティスト プロジェクト管理シート</h1>
+        <p class="lead">このページは、既存の本講座運営と、新しいコンテンツマーケ導線の構築を並行管理するためのプロジェクト管理シートです。開催日ベースの運用と、収益構造拡張のための制作プロジェクトを一つの画面で追えるようにしています。</p>
+      </header>
+
+      <section class="meta">
+        <div class="meta-card">
+          <span class="label">Project A</span>
+          <div class="value">既存講座の運用</div>
+          <p>IG主体集客で開催日を埋める。まず売上を維持する。</p>
+        </div>
+        <div class="meta-card">
+          <span class="label">Project B</span>
+          <div class="value">コンテンツマーケ導線</div>
+          <p>動画ステップ、LP、UTAGE、個別相談導線を構築。</p>
+        </div>
+        <div class="meta-card">
+          <span class="label">Operating Principle</span>
+          <div class="value">走りながら追加</div>
+          <p>既存講座を止めずに、新導線を並行で立ち上げる。</p>
+        </div>
+        <div class="meta-card">
+          <span class="label">PMI Note</span>
+          <div class="value">久保さんはコンテンツ側</div>
+          <p>専門性は久保さん、セールス導線は別人材前提。</p>
+        </div>
+      </section>
+
+      <div class="body">
+        <section class="section">
+          <div class="section-head">
+            <div>
+              <div class="section-no">01 / 前提整理</div>
+              <h2>2つのプロジェクトを分けて管理する</h2>
+            </div>
+            <p>今回の実務は、一つのプロジェクトではなく、短期売上を守る運用案件と、中期の収益構造を作る制作案件の2本立てです。</p>
+          </div>
+
+          <div class="grid-2">
+            <div class="card">
+              <span class="tag blue">Project A</span>
+              <h3>既存の仕組み（IG主体の集客）</h3>
+              <ul class="list">
+                <li>今のフォロワー、DM、問い合わせから講座を埋める</li>
+                <li>過去にどの訴求でどれだけ集まったかを定量化する</li>
+                <li>価格で止まった人、断った人の理由も整理する</li>
+                <li>質を落とさず、利益率を下げずに埋める設計が必要</li>
+              </ul>
+            </div>
+            <div class="card">
+              <span class="tag green">Project B</span>
+              <h3>コンテンツマーケの仕組み</h3>
+              <ul class="list">
+                <li>無料動画や説明会で教育してからセールスする導線</li>
+                <li>久保さん自身はコンテンツホルダーに寄せる</li>
+                <li>司会、個別相談、セールスは別人材前提</li>
+                <li>セールスフィーを払う座組も設計対象に入れる</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-head">
+            <div>
+              <div class="section-no">02 / 開催日</div>
+              <h2>久保さんの講座開催候補日</h2>
+            </div>
+            <p>添付画像をもとに、まず 2026年の開催候補日を一覧化しています。実務上はこの日程から逆算して集客、会場確保、クリエイティブ出稿を組みます。</p>
+          </div>
+
+          <table>
+            <thead>
+              <tr>
+                <th>月</th>
+                <th>開催候補日</th>
+                <th>備考</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>6月</td><td>6/7（日）、6/28（日）</td><td>最初の重要月。ここを起点に運用設計を作る</td></tr>
+              <tr><td>7月</td><td>7/5（日）、7/20（月・祝）</td><td>6月の集客結果を受けて訴求修正</td></tr>
+              <tr><td>8月</td><td>8/23（日）、8/30（日）</td><td>夏場の訴求と事例活用が重要</td></tr>
+              <tr><td>9月</td><td>9/13（日）、9/21（月・祝）</td><td>秋に向けて導線を安定化</td></tr>
+              <tr><td>10月</td><td>10/11（日）、10/25（日）</td><td>コンテンツ導線の接続も視野</td></tr>
+              <tr><td>11月</td><td>11/3（火・祝）、11/22（日）</td><td>年末前の強化月</td></tr>
+              <tr><td>12月</td><td>12/4（金）、12/16（水）</td><td>平日開催の検証余地あり</td></tr>
+            </tbody>
+          </table>
+
+          <p class="note">2027年の日程も画像上では確認できていますが、この管理表ではまず 2026年6月〜12月を重点期間として設計しています。</p>
+        </section>
+
+        <section class="section">
+          <div class="section-head">
+            <div>
+              <div class="section-no">03 / ガント風</div>
+              <h2>全体スケジュール</h2>
+            </div>
+            <p>青は既存講座運用、緑はコンテンツマーケ構築、オレンジはセールス体制構築、紫は検証フェーズです。</p>
+          </div>
+
+          <div class="gantt">
+            <div class="gantthead">
+              <div>タスク</div>
+              <div class="month">5月</div>
+              <div class="month">6月</div>
+              <div class="month">7月</div>
+              <div class="month">8月</div>
+              <div class="month">9月</div>
+              <div class="month">10月</div>
+              <div class="month">11月</div>
+              <div class="month">12月</div>
+            </div>
+
+            <div class="ganttrow">
+              <div class="taskname">既存講座集客の現状分析</div>
+              <div class="slot"><div class="bar-blue"></div></div>
+              <div class="slot"></div>
+              <div class="slot"></div>
+              <div class="slot"></div>
+              <div class="slot"></div>
+              <div class="slot"></div>
+              <div class="slot"></div>
+              <div class="slot"></div>
+            </div>
+
+            <div class="ganttrow">
+              <div class="taskname">6〜8月既存講座の集客運用</div>
+              <div class="slot"></div>
+              <div class="slot"><div class="bar-blue"></div></div>
+              <div class="slot"><div class="bar-blue"></div></div>
+              <div class="slot"><div class="bar-blue"></div></div>
+              <div class="slot"></div>
+              <div class="slot"></div>
+              <div class="slot"></div>
+              <div class="slot"></div>
+            </div>
+
+            <div class="ganttrow">
+              <div class="taskname">無料動画、説明会、導線の大枠設計</div>
+              <div class="slot"><div class="bar-green"></div></div>
+              <div class="slot"><div class="bar-green"></div></div>
+              <div class="slot"></div>
+              <div class="slot"></div>
+              <div class="slot"></div>
+              <div class="slot"></div>
+              <div class="slot"></div>
+              <div class="slot"></div>
+            </div>
+
+            <div class="ganttrow">
+              <div class="taskname">UTAGE構築、ステップLINE/メール</div>
+              <div class="slot"></div>
+              <div class="slot"><div class="bar-green"></div></div>
+              <div class="slot"><div class="bar-green"></div></div>
+              <div class="slot"></div>
+              <div class="slot"></div>
+              <div class="slot"></div>
+              <div class="slot"></div>
+              <div class="slot"></div>
+            </div>
+
+            <div class="ganttrow">
+              <div class="taskname">オプトLP、セールスLP制作</div>
+              <div class="slot"></div>
+              <div class="slot"><div class="bar-green"></div></div>
+              <div class="slot"><div class="bar-green"></div></div>
+              <div class="slot"><div class="bar-green"></div></div>
+              <div class="slot"></div>
+              <div class="slot"></div>
+              <div class="slot"></div>
+              <div class="slot"></div>
+            </div>
+
+            <div class="ganttrow">
+              <div class="taskname">動画撮影、編集、収録環境整備</div>
+              <div class="slot"></div>
+              <div class="slot"><div class="bar-green"></div></div>
+              <div class="slot"><div class="bar-green"></div></div>
+              <div class="slot"><div class="bar-green"></div></div>
+              <div class="slot"></div>
+              <div class="slot"></div>
+              <div class="slot"></div>
+              <div class="slot"></div>
+            </div>
+
+            <div class="ganttrow">
+              <div class="taskname">個別相談担当、司会、セールス体制の整備</div>
+              <div class="slot"><div class="bar-orange"></div></div>
+              <div class="slot"><div class="bar-orange"></div></div>
+              <div class="slot"><div class="bar-orange"></div></div>
+              <div class="slot"></div>
+              <div class="slot"></div>
+              <div class="slot"></div>
+              <div class="slot"></div>
+              <div class="slot"></div>
+            </div>
+
+            <div class="ganttrow">
+              <div class="taskname">説明会導線の小規模テスト</div>
+              <div class="slot"></div>
+              <div class="slot"></div>
+              <div class="slot"><div class="bar-purple"></div></div>
+              <div class="slot"><div class="bar-purple"></div></div>
+              <div class="slot"></div>
+              <div class="slot"></div>
+              <div class="slot"></div>
+              <div class="slot"></div>
+            </div>
+
+            <div class="ganttrow">
+              <div class="taskname">説明会→個別相談→講座販売の本格運用</div>
+              <div class="slot"></div>
+              <div class="slot"></div>
+              <div class="slot"></div>
+              <div class="slot"></div>
+              <div class="slot"><div class="bar-purple"></div></div>
+              <div class="slot"><div class="bar-purple"></div></div>
+              <div class="slot"><div class="bar-purple"></div></div>
+              <div class="slot"><div class="bar-purple"></div></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-head">
+            <div>
+              <div class="section-no">04 / 6月開催逆算</div>
+              <h2>6月開催に合わせたスケジュール</h2>
+            </div>
+            <p>まずは 6/7 と 6/28 の講座開催を軸に、既存運用を回しつつ、次の仕組みへつなげる動きにします。</p>
+          </div>
+
+          <table>
+            <thead>
+              <tr>
+                <th>時期</th>
+                <th>既存講座運用</th>
+                <th>コンテンツマーケ構築</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>4月後半〜5月前半</td>
+                <td>6/7開催に向けたSNS訴求、過去見込み客掘り起こし、DM整理</td>
+                <td>商品構造と導線全体設計、必要人材洗い出し</td>
+              </tr>
+              <tr>
+                <td>5月前半〜中旬</td>
+                <td>6/7の申込状況確認、価格で離脱した見込み客の理由収集</td>
+                <td>UTAGE担当候補、LP制作担当、司会、相談担当の選定</td>
+              </tr>
+              <tr>
+                <td>5月中旬〜下旬</td>
+                <td>6/28開催の案内準備、会場確保、講座ページ更新</td>
+                <td>無料動画の設計、説明会の構成、ステップ配信草案作成</td>
+              </tr>
+              <tr>
+                <td>6月前半</td>
+                <td>6/7開催実施、反応率と申込率をレビュー</td>
+                <td>LPワイヤー、動画台本、相談フロー草案を作る</td>
+              </tr>
+              <tr>
+                <td>6月後半</td>
+                <td>6/28開催実施、7月開催へ向けて改善点を反映</td>
+                <td>収録、導線構築、個別相談トークの初版作成</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="section">
+          <div class="section-head">
+            <div>
+              <div class="section-no">05 / 必要リソース</div>
+              <h2>プロジェクト別に必要なもの</h2>
+            </div>
+            <p>「誰がやるか」と「何が必要か」を分けておくと、採用、外注、業務委託の判断がしやすくなります。</p>
+          </div>
+
+          <div class="grid-3">
+            <div class="card">
+              <span class="tag blue">企画 / コンテンツ</span>
+              <h3>コンテンツ設計</h3>
+              <ul class="list">
+                <li>大枠設計: 名川 × 久保さん</li>
+                <li>無料動画の構成設計</li>
+                <li>説明会の構成設計</li>
+                <li>資格講座との接続設計</li>
+              </ul>
+            </div>
+            <div class="card">
+              <span class="tag green">制作 / 構築</span>
+              <h3>システムと制作</h3>
+              <ul class="list">
+                <li>UTAGE構築担当</li>
+                <li>ステップメール、ステップLINE設計</li>
+                <li>オプトLP、セールスLP制作</li>
+                <li>動画撮影、編集、撮影スタジオ</li>
+              </ul>
+            </div>
+            <div class="card">
+              <span class="tag orange">営業 / 運用</span>
+              <h3>セールス体制</h3>
+              <ul class="list">
+                <li>司会、インタビューアー</li>
+                <li>個別相談対応者</li>
+                <li>セールストーク作成担当</li>
+                <li>セールスフィーの設計</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-head">
+            <div>
+              <div class="section-no">06 / タスク管理表</div>
+              <h2>実務タスク一覧</h2>
+            </div>
+            <p>まずは今すぐ着手すべきものをタスク化した一覧です。</p>
+          </div>
+
+          <table>
+            <thead>
+              <tr>
+                <th>カテゴリ</th>
+                <th>タスク</th>
+                <th>担当候補</th>
+                <th>優先度</th>
+                <th>期限目安</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>既存運用</td><td>今までのIG集客実績、申込率、断り理由の整理</td><td>名川、久保さん</td><td>高</td><td>5月前半</td></tr>
+              <tr><td>既存運用</td><td>6月開催分の会場、集客、告知スケジュール確定</td><td>久保さん</td><td>高</td><td>5月前半</td></tr>
+              <tr><td>導線設計</td><td>無料動画 → 説明会 → 個別相談 → 講座の全体設計</td><td>名川、久保さん</td><td>高</td><td>5月中旬</td></tr>
+              <tr><td>導線設計</td><td>49.8万円の講座オファー設計</td><td>名川</td><td>高</td><td>5月中旬</td></tr>
+              <tr><td>制作</td><td>UTAGE構築担当の選定</td><td>名川</td><td>高</td><td>5月中旬</td></tr>
+              <tr><td>制作</td><td>ステップLINE、メールの草案作成</td><td>名川</td><td>中</td><td>6月前半</td></tr>
+              <tr><td>制作</td><td>オプトLP、セールスLPの制作着手</td><td>外注候補</td><td>中</td><td>6月前半</td></tr>
+              <tr><td>撮影</td><td>動画撮影の台本、スタジオ、撮影日確定</td><td>名川、久保さん、外注</td><td>中</td><td>6月後半</td></tr>
+              <tr><td>営業</td><td>司会兼インタビューアー候補の選定</td><td>名川</td><td>中</td><td>6月後半</td></tr>
+              <tr><td>営業</td><td>個別相談担当とセールストーク設計</td><td>名川、外部セールス</td><td>高</td><td>7月前半</td></tr>
+              <tr><td>検証</td><td>説明会導線の小規模テスト</td><td>名川</td><td>中</td><td>7月〜8月</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="section">
+          <div class="section-head">
+            <div>
+              <div class="section-no">07 / 見るべきKPI</div>
+              <h2>運用で追うべき数字</h2>
+            </div>
+            <p>既存運用と新導線で追う数字は分けておいた方が判断しやすいです。</p>
+          </div>
+
+          <div class="grid-2">
+            <div class="card">
+              <h3>既存講座運用KPI</h3>
+              <ul class="list">
+                <li>フォロワー増加数</li>
+                <li>DM数、問い合わせ数</li>
+                <li>申込率</li>
+                <li>価格で離脱した件数</li>
+                <li>開催日ごとの申込人数</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h3>コンテンツ導線KPI</h3>
+              <ul class="list">
+                <li>オプトイン数</li>
+                <li>動画視聴完了率</li>
+                <li>説明会申込率 / 購入率</li>
+                <li>個別相談予約率</li>
+                <li>個別相談成約率</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="decision" style="margin-top:14px;">
+            <strong>管理のコツ:</strong> まずは Project A で現状の数字を定量化しながら、Project B を制作進行するのがよいです。いきなり新導線だけに振るより、既存講座の集客実績がそのまま設計のヒントになります。
+          </div>
+        </section>
+
+        <p class="footer">Created for scheduling and project tracking. Based on provided notes and Kubo-san's available lecture dates image.</p>
+      </div>
+    </article>
+  </main>
+</body>
+</html>
