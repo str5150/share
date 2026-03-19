@@ -236,7 +236,7 @@
 
     .gantthead, .ganttrow {
       display: grid;
-      grid-template-columns: 280px repeat(8, minmax(74px, 1fr));
+      grid-template-columns: 280px repeat(9, minmax(74px, 1fr));
       gap: 6px;
       align-items: center;
     }
@@ -438,6 +438,7 @@
           <div class="gantt">
             <div class="gantthead">
               <div>タスク</div>
+              <div class="month">4月</div>
               <div class="month">5月</div>
               <div class="month">6月</div>
               <div class="month">7月</div>
@@ -451,6 +452,7 @@
             <div class="ganttrow">
               <div class="taskname">既存講座集客の現状分析</div>
               <div class="slot"><div class="bar-blue"></div></div>
+              <div class="slot"><div class="bar-blue"></div></div>
               <div class="slot"></div>
               <div class="slot"></div>
               <div class="slot"></div>
@@ -461,7 +463,21 @@
             </div>
 
             <div class="ganttrow">
+              <div class="taskname">6月開催に向けた既存講座集客準備</div>
+              <div class="slot"><div class="bar-blue"></div></div>
+              <div class="slot"></div>
+              <div class="slot"><div class="bar-blue"></div></div>
+              <div class="slot"></div>
+              <div class="slot"></div>
+              <div class="slot"></div>
+              <div class="slot"></div>
+              <div class="slot"></div>
+              <div class="slot"></div>
+            </div>
+
+            <div class="ganttrow">
               <div class="taskname">6〜8月既存講座の集客運用</div>
+              <div class="slot"></div>
               <div class="slot"></div>
               <div class="slot"><div class="bar-blue"></div></div>
               <div class="slot"><div class="bar-blue"></div></div>
@@ -476,6 +492,7 @@
               <div class="taskname">無料動画、説明会、導線の大枠設計</div>
               <div class="slot"><div class="bar-green"></div></div>
               <div class="slot"><div class="bar-green"></div></div>
+              <div class="slot"><div class="bar-green"></div></div>
               <div class="slot"></div>
               <div class="slot"></div>
               <div class="slot"></div>
@@ -486,6 +503,7 @@
 
             <div class="ganttrow">
               <div class="taskname">UTAGE構築、ステップLINE/メール</div>
+              <div class="slot"></div>
               <div class="slot"></div>
               <div class="slot"><div class="bar-green"></div></div>
               <div class="slot"><div class="bar-green"></div></div>
@@ -499,6 +517,7 @@
             <div class="ganttrow">
               <div class="taskname">オプトLP、セールスLP制作</div>
               <div class="slot"></div>
+              <div class="slot"></div>
               <div class="slot"><div class="bar-green"></div></div>
               <div class="slot"><div class="bar-green"></div></div>
               <div class="slot"><div class="bar-green"></div></div>
@@ -510,6 +529,7 @@
 
             <div class="ganttrow">
               <div class="taskname">動画撮影、編集、収録環境整備</div>
+              <div class="slot"></div>
               <div class="slot"></div>
               <div class="slot"><div class="bar-green"></div></div>
               <div class="slot"><div class="bar-green"></div></div>
@@ -525,6 +545,7 @@
               <div class="slot"><div class="bar-orange"></div></div>
               <div class="slot"><div class="bar-orange"></div></div>
               <div class="slot"><div class="bar-orange"></div></div>
+              <div class="slot"><div class="bar-orange"></div></div>
               <div class="slot"></div>
               <div class="slot"></div>
               <div class="slot"></div>
@@ -534,6 +555,7 @@
 
             <div class="ganttrow">
               <div class="taskname">説明会導線の小規模テスト</div>
+              <div class="slot"></div>
               <div class="slot"></div>
               <div class="slot"></div>
               <div class="slot"><div class="bar-purple"></div></div>
@@ -546,6 +568,7 @@
 
             <div class="ganttrow">
               <div class="taskname">説明会→個別相談→講座販売の本格運用</div>
+              <div class="slot"></div>
               <div class="slot"></div>
               <div class="slot"></div>
               <div class="slot"></div>
@@ -576,31 +599,12 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>4月後半〜5月前半</td>
-                <td>6/7開催に向けたSNS訴求、過去見込み客掘り起こし、DM整理</td>
-                <td>商品構造と導線全体設計、必要人材洗い出し</td>
-              </tr>
-              <tr>
-                <td>5月前半〜中旬</td>
-                <td>6/7の申込状況確認、価格で離脱した見込み客の理由収集</td>
-                <td>UTAGE担当候補、LP制作担当、司会、相談担当の選定</td>
-              </tr>
-              <tr>
-                <td>5月中旬〜下旬</td>
-                <td>6/28開催の案内準備、会場確保、講座ページ更新</td>
-                <td>無料動画の設計、説明会の構成、ステップ配信草案作成</td>
-              </tr>
-              <tr>
-                <td>6月前半</td>
-                <td>6/7開催実施、反応率と申込率をレビュー</td>
-                <td>LPワイヤー、動画台本、相談フロー草案を作る</td>
-              </tr>
-              <tr>
-                <td>6月後半</td>
-                <td>6/28開催実施、7月開催へ向けて改善点を反映</td>
-                <td>収録、導線構築、個別相談トークの初版作成</td>
-              </tr>
+              <tr><td>4月前半</td><td>過去のIG集客、DM数、申込率、断り理由を棚卸し</td><td>商品構造と導線全体設計、必要人材洗い出し</td></tr>
+              <tr><td>4月後半</td><td>6/7開催に向けたSNS訴求、過去見込み客掘り起こし、DM整理</td><td>UTAGE担当候補、LP制作担当、司会、相談担当の選定</td></tr>
+              <tr><td>5月前半</td><td>6/7向けの本格集客開始、会場確保、講座ページ更新</td><td>無料動画の設計、説明会の構成、ステップ配信草案作成</td></tr>
+              <tr><td>5月後半</td><td>6/28開催の案内準備、6/7の申込状況レビュー</td><td>LPワイヤー、動画台本、相談フロー草案を作る</td></tr>
+              <tr><td>6月前半</td><td>6/7開催実施、反応率と申込率をレビュー</td><td>収録、導線構築、個別相談トークの初版作成</td></tr>
+              <tr><td>6月後半</td><td>6/28開催実施、7月開催へ向けて改善点を反映</td><td>導線改善、初回テストへ向けた準備</td></tr>
             </tbody>
           </table>
         </section>
@@ -668,16 +672,17 @@
               </tr>
             </thead>
             <tbody>
-              <tr><td>既存運用</td><td>今までのIG集客実績、申込率、断り理由の整理</td><td>名川、久保さん</td><td>高</td><td>5月前半</td></tr>
-              <tr><td>既存運用</td><td>6月開催分の会場、集客、告知スケジュール確定</td><td>久保さん</td><td>高</td><td>5月前半</td></tr>
-              <tr><td>導線設計</td><td>無料動画 → 説明会 → 個別相談 → 講座の全体設計</td><td>名川、久保さん</td><td>高</td><td>5月中旬</td></tr>
-              <tr><td>導線設計</td><td>49.8万円の講座オファー設計</td><td>名川</td><td>高</td><td>5月中旬</td></tr>
-              <tr><td>制作</td><td>UTAGE構築担当の選定</td><td>名川</td><td>高</td><td>5月中旬</td></tr>
-              <tr><td>制作</td><td>ステップLINE、メールの草案作成</td><td>名川</td><td>中</td><td>6月前半</td></tr>
-              <tr><td>制作</td><td>オプトLP、セールスLPの制作着手</td><td>外注候補</td><td>中</td><td>6月前半</td></tr>
-              <tr><td>撮影</td><td>動画撮影の台本、スタジオ、撮影日確定</td><td>名川、久保さん、外注</td><td>中</td><td>6月後半</td></tr>
-              <tr><td>営業</td><td>司会兼インタビューアー候補の選定</td><td>名川</td><td>中</td><td>6月後半</td></tr>
-              <tr><td>営業</td><td>個別相談担当とセールストーク設計</td><td>名川、外部セールス</td><td>高</td><td>7月前半</td></tr>
+              <tr><td>既存運用</td><td>今までのIG集客実績、申込率、断り理由の整理</td><td>名川、久保さん</td><td>高</td><td>4月前半</td></tr>
+              <tr><td>既存運用</td><td>6月開催分の会場、集客、告知スケジュール確定</td><td>久保さん</td><td>高</td><td>4月後半</td></tr>
+              <tr><td>既存運用</td><td>6/7向けの本格集客開始</td><td>久保さん、名川</td><td>高</td><td>5月前半</td></tr>
+              <tr><td>導線設計</td><td>無料動画 → 説明会 → 個別相談 → 講座の全体設計</td><td>名川、久保さん</td><td>高</td><td>4月後半</td></tr>
+              <tr><td>導線設計</td><td>49.8万円の講座オファー設計</td><td>名川</td><td>高</td><td>5月前半</td></tr>
+              <tr><td>制作</td><td>UTAGE構築担当の選定</td><td>名川</td><td>高</td><td>5月前半</td></tr>
+              <tr><td>制作</td><td>ステップLINE、メールの草案作成</td><td>名川</td><td>中</td><td>5月後半</td></tr>
+              <tr><td>制作</td><td>オプトLP、セールスLPの制作着手</td><td>外注候補</td><td>中</td><td>5月後半</td></tr>
+              <tr><td>撮影</td><td>動画撮影の台本、スタジオ、撮影日確定</td><td>名川、久保さん、外注</td><td>中</td><td>6月前半</td></tr>
+              <tr><td>営業</td><td>司会兼インタビューアー候補の選定</td><td>名川</td><td>中</td><td>5月後半</td></tr>
+              <tr><td>営業</td><td>個別相談担当とセールストーク設計</td><td>名川、外部セールス</td><td>高</td><td>6月前半</td></tr>
               <tr><td>検証</td><td>説明会導線の小規模テスト</td><td>名川</td><td>中</td><td>7月〜8月</td></tr>
             </tbody>
           </table>
