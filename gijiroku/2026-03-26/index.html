@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>議事録 | 2026-03-26 くびれ第2回MTG</title>
+  <style>
+    :root {
+      --bg: #f4f1ec;
+      --paper: #fff;
+      --ink: #1f1a17;
+      --muted: #6d655e;
+      --line: #e5ddd3;
+      --soft: #f8f5f1;
+      --accent: #9d5136;
+      --accent-soft: #f3e9e2;
+      --warn: #7f3e2b;
+      --good: #255649;
+      --blue: #4f829d;
+      --blue-soft: #e2ecf3;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Hiragino Sans", "Noto Sans JP", sans-serif;
+      line-height: 1.68;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 24px));
+      margin: 0 auto;
+      padding: 24px 0 72px;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 14px;
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .back-link:hover { text-decoration: underline; }
+
+    .sheet {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(39, 29, 23, 0.05);
+      overflow: hidden;
+    }
+
+    .header {
+      padding: 28px 32px 22px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, #fffefe 0%, #faf7f3 100%);
+    }
+
+    .kicker {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(28px, 4vw, 40px);
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+    }
+
+    .lead {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      max-width: 84ch;
+    }
+
+    .meta {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      padding: 18px 32px 0;
+    }
+
+    .meta-card {
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 14px 16px;
+    }
+
+    .meta-card .label {
+      display: block;
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .meta-card .value {
+      font-size: 18px;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 6px;
+    }
+
+    .meta-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .body {
+      padding: 28px 32px 36px;
+    }
+
+    .section + .section {
+      margin-top: 34px;
+      padding-top: 28px;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 24px;
+      align-items: start;
+      margin-bottom: 16px;
+    }
+
+    .section-no {
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 26px;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .grid-2,
+    .grid-3 {
+      display: grid;
+      gap: 14px;
+    }
+
+    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fff;
+      padding: 16px 18px;
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 17px;
+      line-height: 1.3;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .decision,
+    .highlight-box {
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 18px 20px;
+    }
+
+    .decision strong,
+    .highlight-box strong {
+      color: var(--warn);
+    }
+
+    .list {
+      margin: 0;
+      padding-left: 1.15em;
+    }
+
+    .list li + li {
+      margin-top: 6px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+      text-align: left;
+    }
+
+    th {
+      background: var(--soft);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    tr:last-child td { border-bottom: 0; }
+
+    .flow-diagram {
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 24px;
+      font-family: monospace;
+      font-size: 13px;
+      line-height: 1.8;
+      overflow-x: auto;
+    }
+
+    .flow-diagram .label {
+      display: inline-block;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-size: 11px;
+      margin-right: 4px;
+    }
+
+    .flow-diagram .label-blue {
+      background: var(--blue-soft);
+      color: var(--blue);
+    }
+
+    .insight-tag {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .tag-important {
+      background: #f3e2e2;
+      color: var(--warn);
+    }
+
+    .tag-insight {
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+
+    .tag-decision {
+      background: #e2f3e8;
+      color: var(--good);
+    }
+
+    details {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fff;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    summary {
+      cursor: pointer;
+      padding: 14px 16px;
+      background: var(--soft);
+      font-weight: 700;
+      color: var(--accent);
+      list-style: none;
+    }
+
+    summary::-webkit-details-marker { display: none; }
+
+    .transcript {
+      padding: 16px;
+      white-space: pre-wrap;
+      font-size: 13px;
+      line-height: 1.72;
+      color: #2c231d;
+      max-height: 600px;
+      overflow-y: auto;
+    }
+
+    .footer {
+      margin-top: 24px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    @media (max-width: 980px) {
+      .meta,
+      .grid-2,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .header { padding: 20px 16px 16px; }
+      .body { padding: 20px 16px 28px; }
+      .meta { padding: 14px 16px 0; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <a class="back-link" href="../">&larr; 議事録一覧に戻る</a>
+
+    <article class="sheet">
+      <header class="header">
+        <span class="kicker">Gijiroku / 2026-03-26 &mdash; 第2回</span>
+        <h1>くびれ第2回MTG 議事録</h1>
+        <p class="lead">前回（3/18）で合意した方向性を踏まえ、具体的なスケジュール・集客導線・ターゲット分析・業界の競合プレイヤーについて深掘りした回。久保さんとの雑談から重要なインサイトが多数出た。</p>
+      </header>
+
+      <section class="meta">
+        <div class="meta-card">
+          <span class="label">Date</span>
+          <div class="value">2026-03-26</div>
+          <p>くびれ第2回MTG（約52分）</p>
+        </div>
+        <div class="meta-card">
+          <span class="label">Participants</span>
+          <div class="value">4名</div>
+          <p>kyosuke（久保）、宮城、山本、名川</p>
+        </div>
+        <div class="meta-card">
+          <span class="label">Main Topic</span>
+          <div class="value">導線設計 × ターゲット分析</div>
+          <p>3パターンの集客導線と受講者属性の深掘り</p>
+        </div>
+        <div class="meta-card">
+          <span class="label">Key Insight</span>
+          <div class="value">"時代遅れのマッチョ"層</div>
+          <p>数は多いが教育ステップが必要。基礎講座を挟む設計が有効</p>
+        </div>
+      </section>
+
+      <div class="body">
+
+        <!-- 01: 要約 -->
+        <section class="section">
+          <div class="section-head">
+            <div>
+              <div class="section-no">01 / 要約</div>
+              <h2>このMTGの要点</h2>
+            </div>
+            <p>前回のモデル論点から一歩進み、具体的な導線設計とターゲット属性の議論が中心。雑談ベースで業界の競合プレイヤー情報も多く出た。</p>
+          </div>
+
+          <div class="decision">
+            <ul class="list">
+              <li>集客導線は<strong>3パターン並走</strong>（既存IGオーガニック / IGブースト広告 / 動画広告ダイレクト）で進める方向</li>
+              <li>動画講座のコンテンツは<strong>「マニュアル批判」系</strong>が最も反響が高い（実証済み）。今までのインスタ発信の焼き直しで十分</li>
+              <li>ターゲットは「デビュー後数年のトレーナー」で、特に<strong>"時代遅れのマッチョ"層は基礎講座（教育ステップ）を挟んでからセールスする設計</strong>が有効</li>
+              <li>開催地は<strong>まず東京に集中</strong>してやり込む方針</li>
+              <li>書籍出版による<strong>権威性構築</strong>も並行検討</li>
+              <li>本講座の価格は<strong>現行よりも上げてもよい</strong>可能性あり</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- 02: 導線設計 -->
+        <section class="section">
+          <div class="section-head">
+            <div>
+              <div class="section-no">02 / 導線設計</div>
+              <h2>3つの集客パターン</h2>
+            </div>
+            <p>今回最も具体化した議論。既存のオーガニック運用に加え、広告を使った2つの新しい導線を並走させる設計。</p>
+          </div>
+
+          <div class="flow-diagram">
+<span class="label">① 既存IG</span> リール・フィード → プロフィール → 無料動画講座 → 本講座<br><br>
+<span class="label label-blue">② IGブースト</span> 広告でフォロワー増 → IGコンテンツで教育 → プロフィール → 無料動画講座 → 本講座<br><br>
+<span class="label">③ 動画広告</span> 広告 → 直接ステップ動画講座 → オンライン講座 or 本講座
+          </div>
+
+          <div class="highlight-box" style="margin-top:14px;">
+            <strong>重要ポイント:</strong> ①と②を並走し、ROASを比較。③は予算配分を見ながら調整。久保さんの既存インスタ運用（マニュアル批判系の発信）は変えずに、当たっているものに広告をかけてブーストするイメージ。
+          </div>
+
+          <div class="grid-2" style="margin-top:14px;">
+            <div class="card">
+              <h3>動画講座のコンテンツ方針</h3>
+              <ul class="list">
+                <li><strong>マニュアル批判系</strong>が最も反響が高い（実証済み）</li>
+                <li>知識提供よりも<strong>マインドセット・考え方の転換</strong>が刺さる</li>
+                <li>「勉強した、やってみた、でも変わらないよね」への共感</li>
+                <li>今までのインスタの焼き直し + 綺麗な場所で撮影し直すだけでOK</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h3>久保さんの発信スタイル</h3>
+              <ul class="list">
+                <li>くびれ一辺倒より、<strong>幅広いトレーナー向け知識</strong>を発信</li>
+                <li>「マニュアルと実践は違う」を言い続ける</li>
+                <li>たまにくびれ特化の引っかかりコンテンツ（例:「反り腰の方がいい」等）</li>
+                <li>コンテンツビジネス感を出しすぎず、等身大の良さを残す</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- 03: ターゲット分析 -->
+        <section class="section">
+          <div class="section-head">
+            <div>
+              <div class="section-no">03 / ターゲット分析</div>
+              <h2>受講者の属性と行動パターン</h2>
+            </div>
+            <p>久保さんとの雑談から、受講者の動機・属性・合格率に関する重要なインサイトが多数出た。</p>
+          </div>
+
+          <div class="grid-3">
+            <div class="card">
+              <h3>メインターゲット</h3>
+              <p>デビュー後数年経ったトレーナーの「武器作り」。デビュー前の資格講座は多いが、デビュー後は少ない = <strong>隙間市場</strong></p>
+            </div>
+            <div class="card">
+              <h3>知識欲が高い層</h3>
+              <p>合格率が高く、本講座向き。基礎知識の上積みがあるため習得が早い。少数だが<strong>LTVが高い</strong></p>
+            </div>
+            <div class="card">
+              <h3>"時代遅れのマッチョ"層</h3>
+              <p>数は多いが合格率は低い。勉強をサボってきた＋筋トレのポジティブホルモンで壁から逃げがち。<strong>基礎講座を挟む設計が必須</strong></p>
+            </div>
+          </div>
+
+          <div class="highlight-box" style="margin-top:14px;">
+            <span class="insight-tag tag-insight">インサイト</span>
+            <strong style="margin-left:8px;">マッチョ層の行動メカニズム:</strong> 勉強で詰まる → ジムで筋トレ → ホルモンでポジティブになる → 詰まっていたことを忘れる → 知識が伸びない。ピラティスの台頭で「整える」トレンドに置いていかれて焦りを感じている層。広告で新規は取りやすいが、成約率は低い。
+          </div>
+
+          <h3 style="margin-top:20px;font-size:15px;">学びの動機パターン</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>動機</th>
+                <th>説明</th>
+                <th>講座との相性</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>お客さんが変わらない</td>
+                <td>真摯に向き合っているトレーナー。変化が出ない壁にぶつかっている</td>
+                <td><span class="insight-tag tag-decision">最も相性が良い</span></td>
+              </tr>
+              <tr>
+                <td>売上・集客のため</td>
+                <td>独立トレーナーで崖っぷち。武器を手に入れて差別化したい</td>
+                <td><span class="insight-tag tag-insight">本講座向き</span></td>
+              </tr>
+              <tr>
+                <td>時代の変化への焦り</td>
+                <td>マッチョ系だがピラティスの台頭で遅れを感じている</td>
+                <td><span class="insight-tag tag-important">基礎講座が先</span></td>
+              </tr>
+              <tr>
+                <td>独立したい</td>
+                <td>大手ジム所属だが独立を検討中。差別化のための武器が欲しい</td>
+                <td><span class="insight-tag tag-insight">本講座向き</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- 04: 地域特性 -->
+        <section class="section">
+          <div class="section-head">
+            <div>
+              <div class="section-no">04 / 地域分析</div>
+              <h2>開催地域の反応と方針</h2>
+            </div>
+            <p>久保さんの実体験に基づく地域ごとの集客・成約率の違い。</p>
+          </div>
+
+          <table>
+            <thead>
+              <tr>
+                <th>地域</th>
+                <th>集客</th>
+                <th>合格率/成約</th>
+                <th>特徴</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>東京</strong></td>
+                <td>過去最多</td>
+                <td>普通</td>
+                <td>知識系インフルエンサーが多く、そちらに流れがち。SNSフォロワーの実感はまだ少ない</td>
+              </tr>
+              <tr>
+                <td><strong>大阪</strong></td>
+                <td>多い</td>
+                <td><span class="insight-tag tag-decision">高い</span></td>
+                <td>「元を取る」気質で貪欲。フォロワーの反応もIG上で最も高い</td>
+              </tr>
+              <tr>
+                <td><strong>福岡</strong></td>
+                <td>厳しい</td>
+                <td>低い</td>
+                <td>高単価講座への支払い感覚が東京・大阪と異なる。講座自体が少ない土地柄</td>
+              </tr>
+              <tr>
+                <td><strong>札幌</strong></td>
+                <td>未開催</td>
+                <td>—</td>
+                <td>フィットネス業界が発展途上。意識高い層は東京に出てくる習慣あり</td>
+              </tr>
+              <tr>
+                <td><strong>名古屋</strong></td>
+                <td>未開催</td>
+                <td>—</td>
+                <td>未開催のため未知数</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="highlight-box" style="margin-top:14px;">
+            <span class="insight-tag tag-decision">決定</span>
+            <strong style="margin-left:8px;">6/7の第1回は東京開催。</strong>まず東京でやり込み、成約率を見ながら他地域は来年判断する方針（山本さん提案）。福岡は動画講座ステップ経由だと結果が変わる可能性もあるため、完全には切らない。
+          </div>
+        </section>
+
+        <!-- 05: 業界プレイヤー -->
+        <section class="section">
+          <div class="section-head">
+            <div>
+              <div class="section-no">05 / 業界マップ</div>
+              <h2>競合・関連プレイヤー</h2>
+            </div>
+            <p>久保さんが把握している業界内の教育ビジネスプレイヤー。講座への登壇・提携先としても参考になる情報。</p>
+          </div>
+
+          <table>
+            <thead>
+              <tr>
+                <th>名前</th>
+                <th>概要</th>
+                <th>参考ポイント</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>コンパス（坂田さん）</strong></td>
+                <td>恵比寿のパーソナルジム。入会数No.1。元TBS出身でビジネス寄り</td>
+                <td>トレーナー向けビジネススクール開催。こちらのサロンで勉強会をさせてほしいと打診あり</td>
+              </tr>
+              <tr>
+                <td><strong>箱もこ（hacomono）</strong></td>
+                <td>ジム向け予約・顧客管理システム。業界シェアNo.1</td>
+                <td>業界トップを招いた勉強会を定期開催。IGを見ると登壇者が分かる。<strong>ここに登壇するのを短期ゴールにする</strong></td>
+              </tr>
+              <tr>
+                <td><strong>BARU Academy</strong></td>
+                <td>トレーナー向け教材プラットフォーム。理学療法士など専門性の高い講師が多い</td>
+                <td>知識のマニアック度が高い「モード体育会系」。知識勝負ではここに勝てない</td>
+              </tr>
+              <tr>
+                <td><strong>ビヨンド（BEYOND）</strong></td>
+                <td>大手パーソナルジム。マッチョ系トレーナーが多い</td>
+                <td>くびれ講座の合格率は低い傾向。ただし母数は多い</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="grid-2" style="margin-top:14px;">
+            <div class="card">
+              <h3>くびれアーティストの差別化</h3>
+              <ul class="list">
+                <li>知識量ではBARU等に勝てない → <strong>再現性（現場で効果が出る）</strong>で勝負</li>
+                <li>入り口は「ポップ」、中身は「本格」（ロールキャベツ型）</li>
+                <li>「くびれ」特化の講座は他にない → 先行逃げ切り</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h3>短期ゴール</h3>
+              <ul class="list">
+                <li>箱もこ（hacomono）の勉強会に登壇</li>
+                <li>「くびれ 資格」検索で1位を維持</li>
+                <li>パクられる前に「あそこが有名」ポジションを確立</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- 06: 権威性 -->
+        <section class="section">
+          <div class="section-head">
+            <div>
+              <div class="section-no">06 / ブランディング</div>
+              <h2>権威性の構築</h2>
+            </div>
+            <p>書籍出版やテレビ出演など、講座ビジネスの信頼性を高めるための施策。</p>
+          </div>
+
+          <div class="grid-2">
+            <div class="card">
+              <h3>書籍出版の検討</h3>
+              <ul class="list">
+                <li>名川の知り合いに出版（Amazon含む）が得意な人がいる</li>
+                <li>その人が最近テレビ出演 → テレビ・書籍で権威性をつける戦略もあり</li>
+                <li>久保さんの講座内容なら書籍化は十分可能</li>
+                <li>費用感は要確認（名川が調査）</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h3>過去の書籍オファー</h3>
+              <ul class="list">
+                <li>久保さん自身にもインスタ経由で書籍オファーが来たことがある</li>
+                <li>ただし費用が高く、連絡者のインスタがブランド品・夜景の写真ばかりで信用できず流した</li>
+                <li><span class="insight-tag tag-insight">教訓</span> 信頼できる人経由でないと動けない</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- 07: 制作・体制 -->
+        <section class="section">
+          <div class="section-head">
+            <div>
+              <div class="section-no">07 / 制作・体制</div>
+              <h2>撮影・リソース・価格</h2>
+            </div>
+            <p>制作環境と体制に関する実務的な話。</p>
+          </div>
+
+          <div class="grid-3">
+            <div class="card">
+              <h3>撮影場所</h3>
+              <p>おもやビル7階のスペースが使えることが判明（宮城が確認済み）。以前ピラティスをやっていた場所。現在は臨時の物置だが片付ければOK。</p>
+            </div>
+            <div class="card">
+              <h3>リソース</h3>
+              <p>山本さんから「リソースが必要なら人を当てる」との申し出。ステップメール等の外注OK。名川のフィーも含め相談可能。</p>
+            </div>
+            <div class="card">
+              <h3>価格設定</h3>
+              <p>本講座は<strong>現行よりも高単価でもよい</strong>可能性あり（山本さん・名川 共通見解）。事業計画で外注費込みの収益シミュレーションを作成予定。</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 08: アクション -->
+        <section class="section">
+          <div class="section-head">
+            <div>
+              <div class="section-no">08 / アクション</div>
+              <h2>次アクション</h2>
+            </div>
+            <p>今回のMTGから導かれる具体的なタスク。</p>
+          </div>
+
+          <table>
+            <thead>
+              <tr>
+                <th>担当</th>
+                <th>タスク</th>
+                <th>期限</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>名川</td>
+                <td>事業計画（外注費込みの収益シミュレーション）作成</td>
+                <td>4月前半</td>
+              </tr>
+              <tr>
+                <td>名川</td>
+                <td>コンテンツ制作・セールス・動画編集の外注候補を交流会で探す</td>
+                <td>4月中</td>
+              </tr>
+              <tr>
+                <td>名川</td>
+                <td>動画講座の区切り方・設計案を久保さんに壁打ち</td>
+                <td>4月中</td>
+              </tr>
+              <tr>
+                <td>名川</td>
+                <td>書籍出版の費用感を調査</td>
+                <td>4月中</td>
+              </tr>
+              <tr>
+                <td>久保さん</td>
+                <td>IG集客の実績データ共有（DM数・申込率・断り理由・属性）</td>
+                <td>4月前半</td>
+              </tr>
+              <tr>
+                <td>久保さん</td>
+                <td>6/7 東京開催の準備</td>
+                <td>5月</td>
+              </tr>
+              <tr>
+                <td>宮城</td>
+                <td>7階スペースの片付け・撮影準備</td>
+                <td>要調整</td>
+              </tr>
+              <tr>
+                <td>山本</td>
+                <td>週1定例の参加可能日程をLINEで共有</td>
+                <td>今週中</td>
+              </tr>
+              <tr>
+                <td>全員</td>
+                <td>週1定例MTGの開始</td>
+                <td>今週中に日程確定</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- 09: 前回との差分 -->
+        <section class="section">
+          <div class="section-head">
+            <div>
+              <div class="section-no">09 / 前回との差分</div>
+              <h2>第1回 → 第2回の進展</h2>
+            </div>
+            <p><a href="../2026-03-18/">第1回MTG（3/18）</a>からの進展ポイント。</p>
+          </div>
+
+          <table>
+            <thead>
+              <tr>
+                <th>テーマ</th>
+                <th>第1回（3/18）</th>
+                <th>第2回（3/26）</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>導線設計</td>
+                <td>「動画講座を含む多層モデル」の方向性合意</td>
+                <td>3パターンの具体的な導線設計が完成</td>
+              </tr>
+              <tr>
+                <td>ターゲット</td>
+                <td>未議論</td>
+                <td>「マッチョ層」「知識欲層」等の属性分析・導線の使い分けが明確に</td>
+              </tr>
+              <tr>
+                <td>価格</td>
+                <td>「価格で止まる人が多い」という課題認識</td>
+                <td>本講座はむしろ値上げ余地あり。教育ステップで納得感を作る</td>
+              </tr>
+              <tr>
+                <td>開催地</td>
+                <td>年間スケジュールを共有予定</td>
+                <td>東京集中方針に決定。6/7東京で第1回</td>
+              </tr>
+              <tr>
+                <td>体制</td>
+                <td>久保さん=コンテンツ、別人材=セールスの分担合意</td>
+                <td>山本さんのリソース提供あり。週1定例を開始</td>
+              </tr>
+              <tr>
+                <td>権威性</td>
+                <td>未議論</td>
+                <td>書籍出版・箱もこ登壇を短期ゴールとして新たに設定</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <p class="footer">Generated from transcript provided on 2026-03-26. <code>kyosuke</code> は久保さんとして整理。</p>
+      </div>
+    </article>
+  </main>
+</body>
+</html>
