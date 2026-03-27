@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>クビレアーティスト 競合分析レポート</title>
+  <style>
+    :root {
+      --bg: #f4f1ec;
+      --paper: #fff;
+      --ink: #1f1a17;
+      --muted: #6d655e;
+      --line: #e5ddd3;
+      --soft: #f8f5f1;
+      --accent: #9d5136;
+      --accent-soft: #f3e9e2;
+      --blue: #4f829d;
+      --green: #2d6a57;
+      --orange: #b86c34;
+      --purple: #6a5a9c;
+      --red: #9d3636;
+      --shadow: 0 10px 30px rgba(39, 29, 23, 0.05);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Hiragino Sans", "Noto Sans JP", sans-serif;
+      line-height: 1.68;
+    }
+
+    .page {
+      width: min(1240px, calc(100% - 24px));
+      margin: 0 auto;
+      padding: 24px 0 72px;
+    }
+
+    .sheet {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+
+    .header {
+      padding: 28px 32px 22px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, #fffefe 0%, #faf7f3 100%);
+    }
+
+    .header h1 {
+      margin: 0 0 4px;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: .02em;
+    }
+
+    .header .sub {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .section {
+      padding: 24px 32px;
+    }
+
+    .section + .section {
+      border-top: 1px solid var(--line);
+    }
+
+    .section h2 {
+      margin: 0 0 16px;
+      font-size: 16px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section h2 .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .section h3 {
+      margin: 20px 0 10px;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--muted);
+    }
+
+    /* テーブル */
+    .tbl-wrap {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin: 0 -4px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      min-width: 700px;
+    }
+
+    thead th {
+      background: var(--soft);
+      font-weight: 600;
+      text-align: left;
+      padding: 10px 14px;
+      border-bottom: 2px solid var(--line);
+      white-space: nowrap;
+      font-size: 12px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+
+    tbody td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    tbody tr:hover {
+      background: var(--soft);
+    }
+
+    .name-cell {
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    /* バッジ */
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .badge-direct {
+      background: #f3e9e2;
+      color: var(--accent);
+    }
+
+    .badge-indirect {
+      background: #e2ecf3;
+      color: var(--blue);
+    }
+
+    .badge-ig {
+      background: #e8f0e6;
+      color: var(--green);
+    }
+
+    .badge-high {
+      background: #f3e2e2;
+      color: var(--red);
+    }
+
+    .badge-mid {
+      background: #f3ede2;
+      color: var(--orange);
+    }
+
+    .badge-low {
+      background: #e8f0e6;
+      color: var(--green);
+    }
+
+    /* 価格ポジショニング */
+    .price-map {
+      display: flex;
+      align-items: flex-end;
+      gap: 12px;
+      padding: 20px 0;
+      overflow-x: auto;
+    }
+
+    .price-bar {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 100px;
+      flex: 1;
+    }
+
+    .price-bar .bar {
+      width: 100%;
+      border-radius: 8px 8px 0 0;
+      min-height: 20px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 6px 4px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .price-bar .label {
+      font-size: 11px;
+      color: var(--muted);
+      text-align: center;
+      margin-top: 6px;
+      line-height: 1.3;
+    }
+
+    /* ポイントカード */
+    .insight-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px;
+    }
+
+    .insight-card {
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 16px 18px;
+    }
+
+    .insight-card .num {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .insight-card .title {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .insight-card .desc {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* リスト */
+    .check-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .check-list li {
+      padding: 8px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 13px;
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+    }
+
+    .check-list li:last-child {
+      border-bottom: none;
+    }
+
+    .check-list .icon {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      margin-top: 1px;
+    }
+
+    .footer {
+      padding: 16px 32px;
+      border-top: 1px solid var(--line);
+      background: var(--soft);
+      font-size: 11px;
+      color: var(--muted);
+      text-align: right;
+    }
+
+    @media (max-width: 640px) {
+      .header { padding: 20px 16px 16px; }
+      .section { padding: 18px 16px; }
+      .header h1 { font-size: 18px; }
+      .insight-grid { grid-template-columns: 1fr; }
+      .footer { padding: 12px 16px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- ヘッダー -->
+    <div class="sheet">
+      <div class="header">
+        <h1>クビレアーティスト 競合分析レポート</h1>
+        <div class="sub">2026年3月27日作成 ｜ ボディメイク・くびれ系技術講座の競争環境リサーチ</div>
+      </div>
+
+      <!-- サマリー -->
+      <div class="section">
+        <h2><span class="dot" style="background:var(--accent)"></span>エグゼクティブサマリー</h2>
+        <div class="insight-grid">
+          <div class="insight-card">
+            <div class="num">49.8万円</div>
+            <div class="title">クビレアーティスト受講料</div>
+            <div class="desc">加圧トレーニング（44万）〜リボーンピラティス（64万）の中間。市場的に妥当な価格帯</div>
+          </div>
+          <div class="insight-card">
+            <div class="num">50+</div>
+            <div class="title">競合サービス数</div>
+            <div class="desc">ピラティス・加圧・整体・アートメイクなど、従来の業種を超えた競合が存在</div>
+          </div>
+          <div class="insight-card">
+            <div class="num">IG → 多媒体</div>
+            <div class="title">集客トレンド</div>
+            <div class="desc">Instagram単体からYouTube・TikTok・LINEの組み合わせへの転換が主流化</div>
+          </div>
+          <div class="insight-card">
+            <div class="num">認定 × 実績</div>
+            <div class="title">差別化の鍵</div>
+            <div class="desc">国際認定・医療系資格・受講生実績の可視化が競合との差別化に直結</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 直接競合 -->
+    <div class="sheet">
+      <div class="section">
+        <h2><span class="dot" style="background:var(--accent)"></span>直接競合 — ボディメイク・くびれ系の技術講座</h2>
+        <div class="tbl-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>サービス名</th>
+                <th>運営</th>
+                <th>価格</th>
+                <th>集客</th>
+                <th>特徴</th>
+                <th>脅威度</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="name-cell">加圧トレーニング<br>インストラクター資格</td>
+                <td>KAATSU JAPAN</td>
+                <td><strong>44万円</strong></td>
+                <td>Web・紹介</td>
+                <td>eラーニング＋実技1-2日。医療系資格 or 50回以上の経験が必要で参入障壁高い</td>
+                <td><span class="badge badge-high">高</span></td>
+              </tr>
+              <tr>
+                <td class="name-cell">Club Pilates<br>マシンピラティス資格</td>
+                <td>Club Pilates</td>
+                <td><strong>33〜45万円</strong></td>
+                <td>Web・スタジオ</td>
+                <td>リフォーマー認定。全国スタジオでの就業サポート付き。PMA加盟の権威性</td>
+                <td><span class="badge badge-high">高</span></td>
+              </tr>
+              <tr>
+                <td class="name-cell">リボーンピラティス資格</td>
+                <td>Reborn Pilates<br>（さいたま）</td>
+                <td><strong>64万円</strong><br><span style="font-size:11px;color:var(--muted)">マット保有者は18万引</span></td>
+                <td>Web</td>
+                <td>韓国発プログラム。最短6日の短期集中型</td>
+                <td><span class="badge badge-mid">中</span></td>
+              </tr>
+              <tr>
+                <td class="name-cell">加圧インストラクター養成</td>
+                <td>カラダメンテ<br>養成スクール</td>
+                <td><strong>44万円</strong></td>
+                <td>Web</td>
+                <td>加圧国際大学認定。eラーニング＋対面実技</td>
+                <td><span class="badge badge-mid">中</span></td>
+              </tr>
+              <tr>
+                <td class="name-cell">和の所作ボディメイク</td>
+                <td>佐藤令歩</td>
+                <td>不明</td>
+                <td>Web・SNS</td>
+                <td>独自メソッド「和の所作」。オンラインレッスン対応。個人運営</td>
+                <td><span class="badge badge-low">低</span></td>
+              </tr>
+              <tr>
+                <td class="name-cell">NESTA PFT資格</td>
+                <td>NESTA JAPAN</td>
+                <td>変動</td>
+                <td>Web・認定校</td>
+                <td>国際認定パーソナルトレーナー資格。4年更新制で継続教育が必要</td>
+                <td><span class="badge badge-mid">中</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- 間接競合 -->
+    <div class="sheet">
+      <div class="section">
+        <h2><span class="dot" style="background:var(--blue)"></span>間接競合 — 高単価美容講座ビジネス（50万円前後）</h2>
+        <div class="tbl-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>サービス名</th>
+                <th>運営</th>
+                <th>価格</th>
+                <th>集客</th>
+                <th>特徴</th>
+                <th>脅威度</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="name-cell">AAS アートメイクスクール</td>
+                <td>AMGグループ</td>
+                <td><strong>50万円前後</strong>（推定）</td>
+                <td>YouTube・IG・TikTok</td>
+                <td>銀座・横浜・梅田・芦屋の4拠点。累計300名以上の受講実績、30,000件の症例</td>
+                <td><span class="badge badge-mid">中</span></td>
+              </tr>
+              <tr>
+                <td class="name-cell">美容サロン向け<br>講師養成講座</td>
+                <td>shiawasesalon</td>
+                <td><strong>55万円</strong><br><span style="font-size:11px;color:var(--muted)">早割27.5万</span></td>
+                <td>メルマガ・ブログ</td>
+                <td>個別コンサル60分10万円の高付加価値モデル。段階的な価格設定</td>
+                <td><span class="badge badge-low">低</span></td>
+              </tr>
+              <tr>
+                <td class="name-cell">ビジネスメイク研修</td>
+                <td>Grace Style Salon<br>（元CA）</td>
+                <td><strong>6.6万円/h</strong></td>
+                <td>Web</td>
+                <td>企業向け研修。再現性の高い実践型。ビジネスシーン特化</td>
+                <td><span class="badge badge-low">低</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Instagram集客モデル -->
+    <div class="sheet">
+      <div class="section">
+        <h2><span class="dot" style="background:var(--green)"></span>Instagram集客で展開している類似モデル</h2>
+        <div class="tbl-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>サービス名</th>
+                <th>運営</th>
+                <th>価格</th>
+                <th>特徴</th>
+                <th>参考ポイント</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="name-cell">インスタブートキャンプ</td>
+                <td>IBC</td>
+                <td><strong>月額3万円</strong></td>
+                <td>美容室向けIG運用教育。月額制の継続モデル</td>
+                <td>サブスク型で安定収入を実現</td>
+              </tr>
+              <tr>
+                <td class="name-cell">シンデレラフィットネス</td>
+                <td>Cinderella Fitness</td>
+                <td>不明</td>
+                <td>花嫁特化パーソナルジム。オンライン対応</td>
+                <td>ライフイベント×ニッチ戦略</td>
+              </tr>
+              <tr>
+                <td class="name-cell">SlimBride</td>
+                <td>SlimBride</td>
+                <td>不明</td>
+                <td>ウェディング向け。LINE食事指導＋マンツーマン</td>
+                <td>食事指導の統合で差別化</td>
+              </tr>
+              <tr>
+                <td class="name-cell">INSTA BODY</td>
+                <td>メガロス</td>
+                <td>不明</td>
+                <td>2ヶ月短期集中ダイエット。大手ジムの信頼性</td>
+                <td>大手ブランドの安心感</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- 価格ポジショニング -->
+    <div class="sheet">
+      <div class="section">
+        <h2><span class="dot" style="background:var(--orange)"></span>価格ポジショニングマップ</h2>
+        <div class="price-map">
+          <div class="price-bar">
+            <div class="bar" style="height:110px;background:var(--blue)">33万</div>
+            <div class="label">Club Pilates<br>（下限）</div>
+          </div>
+          <div class="price-bar">
+            <div class="bar" style="height:146px;background:var(--blue)">44万</div>
+            <div class="label">加圧<br>KAATSU</div>
+          </div>
+          <div class="price-bar">
+            <div class="bar" style="height:150px;background:var(--blue)">45万</div>
+            <div class="label">Club Pilates<br>（上限）</div>
+          </div>
+          <div class="price-bar">
+            <div class="bar" style="height:166px;background:var(--accent);border:3px solid var(--ink)">49.8万</div>
+            <div class="label"><strong>クビレ<br>アーティスト</strong></div>
+          </div>
+          <div class="price-bar">
+            <div class="bar" style="height:183px;background:var(--blue)">55万</div>
+            <div class="label">美容サロン<br>講師養成</div>
+          </div>
+          <div class="price-bar">
+            <div class="bar" style="height:213px;background:var(--blue)">64万</div>
+            <div class="label">リボーン<br>ピラティス</div>
+          </div>
+        </div>
+        <p style="font-size:12px;color:var(--muted);margin:8px 0 0;text-align:center">
+          ※ 49.8万円は市場の中間〜やや上位に位置。価格だけでなく「卒業後の価値」で差別化が重要
+        </p>
+      </div>
+    </div>
+
+    <!-- 差別化ポイント -->
+    <div class="sheet">
+      <div class="section">
+        <h2><span class="dot" style="background:var(--purple)"></span>差別化の鍵 — 4つの戦略ポイント</h2>
+        <div class="insight-grid">
+          <div class="insight-card">
+            <div class="num" style="font-size:20px">01</div>
+            <div class="title">資格・認定の権威性</div>
+            <div class="desc">競合は国際認定（PMA・NESTA）や医療系資格を打ち出している。独自の認定制度と「クビレアーティスト」としてのブランド確立が必要。肩書きとして使える資格名を設計する。</div>
+          </div>
+          <div class="insight-card">
+            <div class="num" style="font-size:20px">02</div>
+            <div class="title">卒業後の支援体制</div>
+            <div class="desc">起業サポート・コミュニティ・継続教育プログラムの有無が購買決定に大きく影響。Club Pilatesの「就業サポート付き」やNESTAの「4年更新制」のような仕組みを参考に。</div>
+          </div>
+          <div class="insight-card">
+            <div class="num" style="font-size:20px">03</div>
+            <div class="title">多媒体マーケティング</div>
+            <div class="desc">Instagram単体ではなく、YouTube・TikTok・LINEの組み合わせが主流化。IG→無料動画→LINE→説明会の導線に加え、YouTube上の受講生の声やTikTokでの短尺コンテンツが効果的。</div>
+          </div>
+          <div class="insight-card">
+            <div class="num" style="font-size:20px">04</div>
+            <div class="title">実績の可視化</div>
+            <div class="desc">ビフォーアフター・受講生数・成約率などの数値公開が信頼構築に直結。AASの「累計300名以上・30,000件の症例」のように、具体的な数字が説得力を生む。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 競合のIG集客手法 -->
+    <div class="sheet">
+      <div class="section">
+        <h2><span class="dot" style="background:var(--green)"></span>競合が実践しているInstagram集客の傾向</h2>
+        <h3>コンテンツ配分（業界標準）</h3>
+        <div class="tbl-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>コンテンツ種類</th>
+                <th>配分</th>
+                <th>内容例</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="name-cell">教育型コンテンツ</td>
+                <td><strong>60%</strong></td>
+                <td>自宅でできるエクササイズ、正しいフォーム解説、よくある間違いと改善方法</td>
+              </tr>
+              <tr>
+                <td class="name-cell">実績・証拠コンテンツ</td>
+                <td><strong>25%</strong></td>
+                <td>ビフォーアフター、受講生の声、数値データ</td>
+              </tr>
+              <tr>
+                <td class="name-cell">ブランド・共感コンテンツ</td>
+                <td><strong>15%</strong></td>
+                <td>講師のストーリー、日常、理念・ビジョン</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>ハッシュタグ戦略</h3>
+        <div class="tbl-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>カテゴリ</th>
+                <th>投稿数</th>
+                <th>配分</th>
+                <th>例</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="name-cell">ビッグタグ</td>
+                <td>100万以上</td>
+                <td>2〜3個</td>
+                <td>#ダイエット #筋トレ #ボディメイク</td>
+              </tr>
+              <tr>
+                <td class="name-cell">ミドルタグ</td>
+                <td>10〜100万</td>
+                <td>5〜7個</td>
+                <td>#パーソナルトレーニング #くびれ作り</td>
+              </tr>
+              <tr>
+                <td class="name-cell">スモールタグ</td>
+                <td>1〜10万</td>
+                <td>3〜5個</td>
+                <td>#30代ダイエット #産後太り解消</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>導線パターン</h3>
+        <ul class="check-list">
+          <li>
+            <span class="icon" style="background:var(--accent-soft);color:var(--accent)">A</span>
+            <span><strong>Instagram → ホームページ → LINE → 説明会</strong>（最も一般的）</span>
+          </li>
+          <li>
+            <span class="icon" style="background:#e2ecf3;color:var(--blue)">B</span>
+            <span><strong>Instagram → YouTube（詳細動画）→ LINE → 個別相談</strong>（高単価向き）</span>
+          </li>
+          <li>
+            <span class="icon" style="background:#e8f0e6;color:var(--green)">C</span>
+            <span><strong>TikTok / Reels → Instagram → 無料動画 → 説明会</strong>（若年層向き）</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- まとめ -->
+    <div class="sheet">
+      <div class="section">
+        <h2><span class="dot" style="background:var(--accent)"></span>総括</h2>
+        <ul class="check-list">
+          <li>
+            <span class="icon" style="background:var(--accent-soft);color:var(--accent)">!</span>
+            <span>ボディメイク・くびれ技術講座の市場は、ピラティス・加圧・整体・アートメイクなど<strong>業種の境界が融解</strong>している。同じ30-50代女性層を奪い合う構造。</span>
+          </li>
+          <li>
+            <span class="icon" style="background:var(--accent-soft);color:var(--accent)">!</span>
+            <span>IG→無料動画→説明会→個別相談の導線は<strong>もはや標準的な手法</strong>。差別化には「導線の質」と「信頼構築の深さ」が求められる。</span>
+          </li>
+          <li>
+            <span class="icon" style="background:var(--accent-soft);color:var(--accent)">!</span>
+            <span>49.8万円の価格は市場内で妥当。ただし<strong>「受講後にどうなれるか」</strong>（資格・起業支援・コミュニティ）を明確にすることが、価格に対する納得感を生む鍵。</span>
+          </li>
+          <li>
+            <span class="icon" style="background:var(--accent-soft);color:var(--accent)">!</span>
+            <span>最大の競争優位は<strong>「くびれ特化」というポジショニングの明確さ</strong>。汎用ボディメイクではなく、くびれに絞った専門ブランドとしての認知が重要。</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer">
+        調査日：2026年3月27日 ｜ Perplexity Deep Research による網羅的リサーチに基づく
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
